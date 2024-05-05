@@ -16,3 +16,163 @@ CREATE TABLE compte (
 	UNIQUE (pseudo),
 	PRIMARY KEY (idcompte)
 );
+
+CREATE TABLE Astuce(
+   idastuce SERIAL,
+   libelle VARCHAR(50) NOT NULL,
+   PRIMARY KEY(idastuce)
+);
+
+CREATE TABLE Resultat(
+   idresultat SERIAL,
+   heure TIME NOT NULL,
+   score INTEGER NOT NULL,
+   PRIMARY KEY(idresultat)
+);
+
+CREATE TABLE Session(
+   idsession SERIAL,
+   heure TIME NOT NULL,
+   PRIMARY KEY(idsession)
+);
+
+CREATE TABLE Reponse(
+   idreponse SERIAL,
+   libelle VARCHAR(50) NOT NULL,
+   vraie BOOLEAN NOT NULL,
+   PRIMARY KEY(idreponse)
+);
+
+CREATE TABLE Poste(
+   idposte SERIAL,
+   PRIMARY KEY(idPoste)
+);
+
+CREATE TABLE Theme(
+   idtheme SERIAL,
+   nom VARCHAR(50) NOT NULL,
+   description VARCHAR(50) NOT NULL,
+   PRIMARY KEY(idtheme)
+);
+
+CREATE TABLE Media(
+   idmedia SERIAL,
+   titre VARCHAR(50) NOT NULL,
+   description VARCHAR(50) NOT NULL,
+   PRIMARY KEY(idmedia)
+);
+
+CREATE TABLE Joueur(
+   iduser SERIAL,
+   ville VARCHAR(50) NOT NULL,
+   categorie VARCHAR(50) NOT NULL,
+   idposte INTEGER NOT NULL,
+   PRIMARY KEY(iduser),
+   FOREIGN KEY(idposte) REFERENCES Poste(idposte)
+);
+
+CREATE TABLE Parcours(
+   idparcours SERIAL,
+   mode VARCHAR(50) NOT NULL,
+   PRIMARY KEY(idparcours)
+);
+
+CREATE TABLE Statistiques(
+   idstat SERIAL,
+   PRIMARY KEY(idstat)
+);
+
+CREATE TABLE Quiz(
+   idquiz SERIAL,
+   description VARCHAR(50) NOT NULL,
+   idtheme INTEGER NOT NULL,
+   PRIMARY KEY(idquiz),
+   FOREIGN KEY(idtheme) REFERENCES Theme(idtheme)
+);
+
+CREATE TABLE Question(
+   idquestion SERIAL,
+   enonce VARCHAR(50) NOT NULL,
+   media VARCHAR(50),
+   explication VARCHAR(50) NOT NULL,
+   idquiz INTEGER NOT NULL,
+   idastuce INTEGER NOT NULL,
+   idreponse INTEGER NOT NULL,
+   PRIMARY KEY(idquestion),
+   UNIQUE(idreponse),
+   FOREIGN KEY(idquiz) REFERENCES Quiz(idquiz),
+   FOREIGN KEY(idastuce) REFERENCES Astuce(idastuce),
+   FOREIGN KEY(idreponse) REFERENCES Reponse(idreponse)
+);
+
+CREATE TABLE administrer(
+   idcompte INTEGER,
+   idposte INTEGER,
+   PRIMARY KEY(idcompte, idposte),
+   FOREIGN KEY(idcompte) REFERENCES Compte(idcompte),
+   FOREIGN KEY(idposte) REFERENCES Poste(idposte)
+);
+
+CREATE TABLE elaborer(
+   idcompte INTEGER,
+   idsession INTEGER,
+   PRIMARY KEY(idcompte, idsession),
+   FOREIGN KEY(idcompte) REFERENCES Compte(idcompte),
+   FOREIGN KEY(idsession) REFERENCES Session(idsession)
+);
+
+CREATE TABLE posseder(
+   idquiz INTEGER,
+   idresultat INTEGER,
+   PRIMARY KEY(idquiz, idresultat),
+   FOREIGN KEY(idquiz) REFERENCES Quiz(idquiz),
+   FOREIGN KEY(idresultat) REFERENCES Resultat(idresultat)
+);
+
+CREATE TABLE englober(
+   idsession INTEGER,
+   idposte INTEGER,
+   PRIMARY KEY(idsession, idposte),
+   FOREIGN KEY(idsession) REFERENCES Session(idsession),
+   FOREIGN KEY(idposte) REFERENCES Poste(idposte)
+);
+
+CREATE TABLE inclure(
+   idquestion INTEGER,
+   idmedia INTEGER,
+   PRIMARY KEY(idquestion, idmedia),
+   FOREIGN KEY(idquestion) REFERENCES Question(idquestion),
+   FOREIGN KEY(idmedia) REFERENCES Media(idmedia)
+);
+
+CREATE TABLE effectuer(
+   idquiz INTEGER,
+   iduser INTEGER,
+   PRIMARY KEY(idquiz, iduser),
+   FOREIGN KEY(idquiz) REFERENCES Quiz(idquiz),
+   FOREIGN KEY(iduser) REFERENCES Joueur(iduser)
+);
+
+CREATE TABLE etre_affilier_à(
+   idquiz INTEGER,
+   idparcours INTEGER,
+   PRIMARY KEY(idquiz, idparcours),
+   FOREIGN KEY(idquiz) REFERENCES Quiz(idquiz),
+   FOREIGN KEY(idparcours) REFERENCES Parcours(idparcours)
+);
+
+CREATE TABLE consulter(
+   idcompte INTEGER,
+   idstat INTEGER,
+   PRIMARY KEY(idcompte, idstat),
+   FOREIGN KEY(idcompte) REFERENCES Compte(idcompte),
+   FOREIGN KEY(idstat) REFERENCES Statistiques(idstat)
+);
+
+CREATE TABLE generer(
+   idresultat INTEGER,
+   idstat INTEGER,
+   PRIMARY KEY(idresultat, idstat),
+   FOREIGN KEY(idresultat) REFERENCES Resultat(idresultat),
+   FOREIGN KEY(idstat) REFERENCES Statistiques(idstat)
+);
