@@ -46,8 +46,8 @@ public class ModelConnexion {
 	
 	@PostConstruct
 	public void init() {
-		draft.setPseudo( "geek" );
-		draft.setMotDePasse( "geek" );
+		draft.setPseudo( "Admin" );
+		draft.setMotDePasse( "admin" );
 	}
 	
 	
