@@ -18,7 +18,7 @@ public class Test_KA extends Application {
 		stage.setScene( new Scene(root) );
 		stage.show();
 		
-		System.out.println( "Fin"  );
+		System.out.println( "Finii"  );
 	}
 	
 	public static void main(String[] args) {
