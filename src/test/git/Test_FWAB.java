@@ -18,7 +18,7 @@ public class Test_FWAB extends Application {
 		stage.setScene( new Scene(root) );
 		stage.show();
 		
-		System.out.println( "Stop"  );
+		System.out.println( "fake-dev 1"  );
 	}
 	
 	public static void main(String[] args) {
