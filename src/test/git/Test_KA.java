@@ -12,13 +12,13 @@ public class Test_KA extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		System.out.println( "Début"  );
+		System.out.println( "Start"  );
 
 		var root = FXMLLoader.<Parent>load( getClass().getResource("View_KA.fxml") );
 		stage.setScene( new Scene(root) );
 		stage.show();
 		
-		System.out.println( "Finii"  );
+		System.out.println( "Stop"  );
 	}
 	
 	public static void main(String[] args) {
