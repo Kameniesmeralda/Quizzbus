@@ -12,13 +12,13 @@ public class Test_FWAB extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		System.out.println( "Begin"  );
+		System.out.println( "Début"  );
 
 		var root = FXMLLoader.<Parent>load( getClass().getResource("View_FWAB.fxml") );
 		stage.setScene( new Scene(root) );
 		stage.show();
 		
-		System.out.println( "End"  );
+		System.out.println( "Fin"  );
 	}
 	
 	public static void main(String[] args) {
