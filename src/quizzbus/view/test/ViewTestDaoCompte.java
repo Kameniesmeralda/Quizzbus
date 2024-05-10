@@ -71,7 +71,7 @@ public class ViewTestDaoCompte extends ControllerAbstract {
 	private void doInsererSupprimer() {
 		textArea.clear();
 		var item = dao.retrouver( id );
-		item.setPseudo( item.getPseudo() + "2" );
+		item.setNom( item.getNom() + "2" );
 		dao.inserer( item );
 		dao.supprimer( item.getId() );
 		textArea.appendText( UtilFX.objectToString( item ) );

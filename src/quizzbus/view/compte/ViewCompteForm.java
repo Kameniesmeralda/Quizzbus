@@ -19,7 +19,7 @@ public class ViewCompteForm extends ControllerAbstract {
 	@FXML
 	private Label			labId;
 	@FXML
-	private TextField		txfPseudo;
+	private TextField		txfNom;
 	@FXML
 	private TextField		txfMotDePasse;
 	@FXML
@@ -51,11 +51,11 @@ public class ViewCompteForm extends ControllerAbstract {
 		bind( labId, draft.idProperty(), new ConverterInteger() );
 		
 		// Pseudo
-		bindBidirectional( txfPseudo, draft.pseudoProperty() );
-		validator.addRuleNotBlank( txfPseudo );
-		validator.addRuleMinLength( txfPseudo, 3 );
-		validator.addRuleMaxLength( txfPseudo, 25 );
-		validator.addRule(txfPseudo, "Ce pseudo est déjà utilisé", modelCompte::verifierUnicitePseudo  );
+		bindBidirectional( txfNom, draft.nomProperty() );
+		validator.addRuleNotBlank( txfNom );
+		validator.addRuleMinLength( txfNom, 3 );
+		validator.addRuleMaxLength( txfNom, 25 );
+		validator.addRule(txfNom, "Ce nom est déjà utilisé", modelCompte::verifierUniciteNom  );
 		
 		// Mot de passe
 		bindBidirectional( txfMotDePasse, draft.motDePasseProperty() );
@@ -78,7 +78,7 @@ public class ViewCompteForm extends ControllerAbstract {
 	
 	@Override
 	public void refresh() {
-		txfPseudo.requestFocus();
+		txfNom.requestFocus();
 	}
 	
 	//-------

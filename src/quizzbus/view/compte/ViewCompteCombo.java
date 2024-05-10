@@ -30,7 +30,11 @@ public class ViewCompteCombo extends ControllerAbstract {
 	@FXML
 	private Label				labId;
 	@FXML
-	private TextField			txfPseudo;
+	private TextField			txfNom;
+	@FXML
+	private TextField			txfPrenom;
+	@FXML
+	private TextField			txfDate;
 	@FXML
 	private TextField			txfMotDePasse;
 	@FXML
@@ -61,7 +65,7 @@ public class ViewCompteCombo extends ControllerAbstract {
 		
 		// ListView des comptes
 		lsvComptes.setItems( modelCompte.getList() );
-		UtilFX.setCellFactory( lsvComptes, "pseudo" );
+		UtilFX.setCellFactory( lsvComptes, "nom" );
 		bindBidirectional( lsvComptes, modelCompte.currentProperty(), modelCompte.flagRefreshingListProperty() );
 
 		// Comportement si modificaiton de la séleciton
@@ -80,12 +84,12 @@ public class ViewCompteCombo extends ControllerAbstract {
 		// Id
 		bind( labId, draft.idProperty(), new ConverterInteger() );
 		
-		// Pseudo
-		bindBidirectional( txfPseudo, draft.pseudoProperty() );
-		validator.addRuleNotBlank( txfPseudo );
-		validator.addRuleMinLength( txfPseudo, 3 );
-		validator.addRuleMaxLength( txfPseudo, 25 );
-		validator.addRule(txfPseudo, "Ce pseudo est déjà utilisé", modelCompte::verifierUnicitePseudo  );
+		// Nom
+		bindBidirectional( txfNom, draft.nomProperty() );
+		validator.addRuleNotBlank( txfNom );
+		validator.addRuleMinLength( txfNom, 3 );
+		validator.addRuleMaxLength( txfNom, 25 );
+		validator.addRule(txfNom, "Ce nom est déjà utilisé", modelCompte::verifierUniciteNom  );
 		
 		// Mot de passe
 		bindBidirectional( txfMotDePasse, draft.motDePasseProperty() );
@@ -119,7 +123,7 @@ public class ViewCompteCombo extends ControllerAbstract {
 	@FXML
 	private void doAjouter() {
 		lsvComptes.getSelectionModel().select(null);
-		txfPseudo.requestFocus();
+		txfNom.requestFocus();
 	}
 
 	@FXML
