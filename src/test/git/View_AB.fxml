@@ -14,7 +14,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextArea layoutX="10.0" layoutY="67.0" prefHeight="66.0" prefWidth="181.0" text="Hello !" />
+      <TextArea layoutX="10.0" layoutY="67.0" prefHeight="66.0" prefWidth="181.0" text="Bonjour !" />
       <Button layoutX="72.0" layoutY="161.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="56.0" text="OK" />
    </children>
 </AnchorPane>
