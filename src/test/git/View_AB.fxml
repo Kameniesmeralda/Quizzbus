@@ -6,10 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16">
+<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="82.0" layoutY="14.0" text="Test">
+      <Label layoutX="82.0" layoutY="14.0" text="Test" textFill="#9e3737">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
