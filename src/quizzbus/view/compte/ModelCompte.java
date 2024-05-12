@@ -92,7 +92,7 @@ public class ModelCompte {
 		}
 	}
 	
-	public boolean verifierUnicitePseudo( String pseudo) {
+	public boolean verifierUniciteNom( String pseudo) {
 		var id = draft.getId()==null ? -1 : draft.getId();
 		return daoCompte.verifierUnicitePseudo( pseudo, id );
 	}
