@@ -6,7 +6,7 @@ import java.util.Objects;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
-public class Session {
+public class Configuration_Poste {
 	
 	//-------
 	// Données observables
@@ -14,6 +14,7 @@ public class Session {
 	
 	private final ObjectProperty<Integer>	id			= new SimpleObjectProperty<>();
 	private final ObjectProperty<LocalTime> heure = new SimpleObjectProperty<>();
+	private final ObjectProperty<Poste>	poste = new SimpleObjectProperty<>();
 
 
 	//-------
@@ -45,16 +46,30 @@ public class Session {
 		this.heureProperty().set(heure);
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(heure, id);
+	public final ObjectProperty<Poste> posteProperty() {
+		return this.poste;
 	}
+	
+
+	public final Poste getPoste() {
+		return this.posteProperty().get();
+	}
+	
+
+	public final void setPoste(final Poste poste) {
+		this.posteProperty().set(poste);
+	}
+	
+
 
 
 	//-------
 	// hashCode() & equals()
 	//-------
-		
+	@Override
+	public int hashCode() {
+		return Objects.hash(heure, id);
+	}
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -64,9 +79,11 @@ public class Session {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Session other = (Session) obj;
+		Configuration_Poste other = (Configuration_Poste) obj;
 		return Objects.equals(heure, other.heure) && Objects.equals(id, other.id);
 	}
+
+	
 	
 	
 	

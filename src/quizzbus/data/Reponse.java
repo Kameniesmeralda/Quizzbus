@@ -9,7 +9,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Response {
+public class Reponse {
 	//-------
 	// Données observables
 	//-------
@@ -17,6 +17,7 @@ public class Response {
 	private final ObjectProperty<Integer>	id			= new SimpleObjectProperty<>();
 	private final StringProperty			libelle		= new SimpleStringProperty();
 	private final BooleanProperty			vraie	= new SimpleBooleanProperty();
+	private final ObjectProperty<Question>	question = new SimpleObjectProperty<>();
 	
 
 	//-------
@@ -59,7 +60,21 @@ public class Response {
 	public final void setVraie(final boolean vraie) {
 		this.vraieProperty().set(vraie);
 	}
+	
+	public final ObjectProperty<Question> questionProperty() {
+		return this.question;
+	}
+	
 
+	public final Question getQuestion() {
+		return this.questionProperty().get();
+	}
+	
+
+	public final void setQuestion(final Question question) {
+		this.questionProperty().set(question);
+	}
+	
 
 	//-------
 	// hashCode() & equals()
@@ -79,10 +94,13 @@ public class Response {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Response other = (Response) obj;
+		Reponse other = (Reponse) obj;
 		return Objects.equals(id, other.id) && Objects.equals(libelle, other.libelle)
 				&& Objects.equals(vraie, other.vraie);
 	}
+
+
+	
 	
 	
 		

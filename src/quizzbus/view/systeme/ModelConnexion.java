@@ -46,7 +46,7 @@ public class ModelConnexion {
 	
 	@PostConstruct
 	public void init() {
-		draft.setPseudo( "Admin" );
+		draft.setNom( "Admin" );
 		draft.setMotDePasse( "admin" );
 	}
 	
@@ -57,7 +57,7 @@ public class ModelConnexion {
 	public void ouvrirSessionUtilisateur() {
 
 		Compte compte = daoCompte.validerAuthentification(
-					draft.getPseudo(), draft.getMotDePasse() );
+					draft.getNom(), draft.getMotDePasse() );
 		
 		if( compte == null ) {
 			throw new ExceptionValidation( "Pseudo ou mot de passe invalide." );

@@ -1,4 +1,4 @@
-package quizzbus.view.compte;
+package quizzbus.view.quizz;
 
 import jakarta.inject.Inject;
 import javafx.beans.property.BooleanProperty;
@@ -11,22 +11,22 @@ import javafx.collections.ObservableList;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.Mode;
 import quizzbus.commun.IMapper;
-import quizzbus.dao.DaoCompte;
-import quizzbus.data.Compte;
+import quizzbus.dao.DaoQuizz;
+import quizzbus.data.Quizz;
 
-public class ModelCompte {
+public class ModelQuizz {
 	
 	//-------
 	// Données observables 
 	//-------
 	
-	private final ObservableList<Compte>	list 	= FXCollections.observableArrayList(); 
+	private final ObservableList<Quizz>	list 	= FXCollections.observableArrayList(); 
 	
 	private final BooleanProperty			flagRefreshingList = new SimpleBooleanProperty();
 	
-	private final Compte					draft 	= new Compte();
+	private final Quizz					draft 	= new Quizz();
 	
-	private final ObjectProperty<Compte>	current	= new SimpleObjectProperty<>();
+	private final ObjectProperty<Quizz>	current	= new SimpleObjectProperty<>();
 	
 	//-------
 	// Autres champs
@@ -36,13 +36,13 @@ public class ModelCompte {
     @Inject
 	private IMapper		mapper;
     @Inject
-	private DaoCompte	daoCompte;
+	private DaoQuizz	daoQuizz;
 
 	//-------
 	// Getters & Setters
 	//-------
 	
-	public ObservableList<Compte> getList() {
+	public ObservableList<Quizz> getList() {
 		return list;
 	}
 
@@ -50,19 +50,19 @@ public class ModelCompte {
 		return flagRefreshingList;
 	}
 
-	public Compte getDraft() {
+	public Quizz getDraft() {
 		return draft;
 	}
 
-	public Property<Compte> currentProperty() {
+	public Property<Quizz> currentProperty() {
 		return current;
 	}
 
-	public Compte getCurrent() {
+	public Quizz getCurrent() {
 		return current.get();
 	}
 
-	public void setCurrent(Compte item) {
+	public void setCurrent(Quizz item) {
 		current.set(item);
 	}
 	
@@ -78,24 +78,21 @@ public class ModelCompte {
 		// flagRefreshingList vaut true pendant la durée  
 		// du traitement de mise à jour de la liste
 		flagRefreshingList.set(true);
-		list.setAll( daoCompte.listerTout() );
+		list.setAll( daoQuizz.listerTout() );
 		flagRefreshingList.set(false);
  	}
 
 	public void initDraft(Mode mode) {
 		this.mode = mode;
 		if( mode == Mode.NEW ) {
-			mapper.update( draft, new Compte() );
+			mapper.update( draft, new Quizz() );
 		} else {
-			setCurrent( daoCompte.retrouver( getCurrent().getId() ) );
+			setCurrent( daoQuizz.retrouver( getCurrent().getId() ) );
 			mapper.update( draft, getCurrent() );
 		}
 	}
 	
-	public boolean verifierUniciteNom( String pseudo) {
-		var id = draft.getId()==null ? -1 : draft.getId();
-		return daoCompte.verifierUnicitePseudo( pseudo, id );
-	}
+	
 	
 	public void saveDraft() {
 
@@ -115,12 +112,12 @@ public class ModelCompte {
 		
 		if ( mode == Mode.NEW ) {
 			// Insertion
-			daoCompte.inserer( draft );
+			daoQuizz.inserer( draft );
 			// Actualise le courant
-			setCurrent( mapper.update( new Compte(), draft ) );
+			setCurrent( mapper.update( new Quizz(), draft ) );
 		} else {
 			// modficiation
-			daoCompte.modifier( draft );
+			daoQuizz.modifier( draft );
 			// Actualise le courant
 			mapper.update( getCurrent(), draft );
 		}
@@ -128,7 +125,7 @@ public class ModelCompte {
 	
 	public void deleteCurrent() {
 		// Effectue la suppression
-		daoCompte.supprimer( getCurrent().getId() );
+		daoQuizz.supprimer( getCurrent().getId() );
 		// Détermine le nouveau courant
 		setCurrent( UtilFX.findNext( list, getCurrent() ) );
 	}

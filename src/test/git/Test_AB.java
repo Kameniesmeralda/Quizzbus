@@ -7,18 +7,18 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class Test_FWAB extends Application {
+public class Test_AB extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		System.out.println( "fake-master 1"  );
+		System.out.println( "Debut"  );
 
-		var root = FXMLLoader.<Parent>load( getClass().getResource("View_FWAB.fxml") );
+		var root = FXMLLoader.<Parent>load( getClass().getResource("View_AB.fxml") );
 		stage.setScene( new Scene(root) );
 		stage.show();
 		
-		System.out.println( "fake-dev 1"  );
+		System.out.println( "Fin"  );
 	}
 	
 	public static void main(String[] args) {

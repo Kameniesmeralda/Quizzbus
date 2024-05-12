@@ -1,4 +1,4 @@
-package quizzbus.view.compte;
+package quizzbus.view.joueur;
 
 import jakarta.inject.Inject;
 import javafx.beans.property.BooleanProperty;
@@ -11,22 +11,22 @@ import javafx.collections.ObservableList;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.Mode;
 import quizzbus.commun.IMapper;
-import quizzbus.dao.DaoCompte;
-import quizzbus.data.Compte;
+import quizzbus.dao.DaoJoueur;
+import quizzbus.data.Joueur;
 
-public class ModelCompte {
+public class ModelJoueur {
 	
 	//-------
 	// Données observables 
 	//-------
 	
-	private final ObservableList<Compte>	list 	= FXCollections.observableArrayList(); 
+	private final ObservableList<Joueur>	list 	= FXCollections.observableArrayList(); 
 	
 	private final BooleanProperty			flagRefreshingList = new SimpleBooleanProperty();
 	
-	private final Compte					draft 	= new Compte();
+	private final Joueur					draft 	= new Joueur();
 	
-	private final ObjectProperty<Compte>	current	= new SimpleObjectProperty<>();
+	private final ObjectProperty<Joueur>	current	= new SimpleObjectProperty<>();
 	
 	//-------
 	// Autres champs
@@ -36,13 +36,13 @@ public class ModelCompte {
     @Inject
 	private IMapper		mapper;
     @Inject
-	private DaoCompte	daoCompte;
+	private DaoJoueur	daoJoueur;
 
 	//-------
 	// Getters & Setters
 	//-------
 	
-	public ObservableList<Compte> getList() {
+	public ObservableList<Joueur> getList() {
 		return list;
 	}
 
@@ -50,19 +50,19 @@ public class ModelCompte {
 		return flagRefreshingList;
 	}
 
-	public Compte getDraft() {
+	public Joueur getDraft() {
 		return draft;
 	}
 
-	public Property<Compte> currentProperty() {
+	public Property<Joueur> currentProperty() {
 		return current;
 	}
 
-	public Compte getCurrent() {
+	public Joueur getCurrent() {
 		return current.get();
 	}
 
-	public void setCurrent(Compte item) {
+	public void setCurrent(Joueur item) {
 		current.set(item);
 	}
 	
@@ -78,24 +78,21 @@ public class ModelCompte {
 		// flagRefreshingList vaut true pendant la durée  
 		// du traitement de mise à jour de la liste
 		flagRefreshingList.set(true);
-		list.setAll( daoCompte.listerTout() );
+		list.setAll( daoJoueur.listerTout() );
 		flagRefreshingList.set(false);
  	}
 
 	public void initDraft(Mode mode) {
 		this.mode = mode;
 		if( mode == Mode.NEW ) {
-			mapper.update( draft, new Compte() );
+			mapper.update( draft, new Joueur() );
 		} else {
-			setCurrent( daoCompte.retrouver( getCurrent().getId() ) );
+			setCurrent( daoJoueur.retrouver( getCurrent().getId() ) );
 			mapper.update( draft, getCurrent() );
 		}
 	}
 	
-	public boolean verifierUniciteNom( String pseudo) {
-		var id = draft.getId()==null ? -1 : draft.getId();
-		return daoCompte.verifierUnicitePseudo( pseudo, id );
-	}
+	
 	
 	public void saveDraft() {
 
@@ -115,12 +112,12 @@ public class ModelCompte {
 		
 		if ( mode == Mode.NEW ) {
 			// Insertion
-			daoCompte.inserer( draft );
+			daoJoueur.inserer( draft );
 			// Actualise le courant
-			setCurrent( mapper.update( new Compte(), draft ) );
+			setCurrent( mapper.update( new Joueur(), draft ) );
 		} else {
 			// modficiation
-			daoCompte.modifier( draft );
+			daoJoueur.modifier( draft );
 			// Actualise le courant
 			mapper.update( getCurrent(), draft );
 		}
@@ -128,7 +125,7 @@ public class ModelCompte {
 	
 	public void deleteCurrent() {
 		// Effectue la suppression
-		daoCompte.supprimer( getCurrent().getId() );
+		daoJoueur.supprimer( getCurrent().getId() );
 		// Détermine le nouveau courant
 		setCurrent( UtilFX.findNext( list, getCurrent() ) );
 	}

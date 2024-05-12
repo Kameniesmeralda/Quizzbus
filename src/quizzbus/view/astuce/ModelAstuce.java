@@ -1,4 +1,4 @@
-package quizzbus.view.compte;
+package quizzbus.view.astuce;
 
 import jakarta.inject.Inject;
 import javafx.beans.property.BooleanProperty;
@@ -11,22 +11,22 @@ import javafx.collections.ObservableList;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.Mode;
 import quizzbus.commun.IMapper;
-import quizzbus.dao.DaoCompte;
-import quizzbus.data.Compte;
+import quizzbus.dao.DaoAstuce;
+import quizzbus.data.Astuce;
 
-public class ModelCompte {
+public class ModelAstuce {
 	
 	//-------
 	// Données observables 
 	//-------
 	
-	private final ObservableList<Compte>	list 	= FXCollections.observableArrayList(); 
+	private final ObservableList<Astuce>	list 	= FXCollections.observableArrayList(); 
 	
 	private final BooleanProperty			flagRefreshingList = new SimpleBooleanProperty();
 	
-	private final Compte					draft 	= new Compte();
+	private final Astuce					draft 	= new Astuce();
 	
-	private final ObjectProperty<Compte>	current	= new SimpleObjectProperty<>();
+	private final ObjectProperty<Astuce>	current	= new SimpleObjectProperty<>();
 	
 	//-------
 	// Autres champs
@@ -36,13 +36,13 @@ public class ModelCompte {
     @Inject
 	private IMapper		mapper;
     @Inject
-	private DaoCompte	daoCompte;
+	private DaoAstuce	daoAstuce;
 
 	//-------
 	// Getters & Setters
 	//-------
 	
-	public ObservableList<Compte> getList() {
+	public ObservableList<Astuce> getList() {
 		return list;
 	}
 
@@ -50,19 +50,19 @@ public class ModelCompte {
 		return flagRefreshingList;
 	}
 
-	public Compte getDraft() {
+	public Astuce getDraft() {
 		return draft;
 	}
 
-	public Property<Compte> currentProperty() {
+	public Property<Astuce> currentProperty() {
 		return current;
 	}
 
-	public Compte getCurrent() {
+	public Astuce getCurrent() {
 		return current.get();
 	}
 
-	public void setCurrent(Compte item) {
+	public void setCurrent(Astuce item) {
 		current.set(item);
 	}
 	
@@ -78,24 +78,21 @@ public class ModelCompte {
 		// flagRefreshingList vaut true pendant la durée  
 		// du traitement de mise à jour de la liste
 		flagRefreshingList.set(true);
-		list.setAll( daoCompte.listerTout() );
+		list.setAll( daoAstuce.listerTout() );
 		flagRefreshingList.set(false);
  	}
 
 	public void initDraft(Mode mode) {
 		this.mode = mode;
 		if( mode == Mode.NEW ) {
-			mapper.update( draft, new Compte() );
+			mapper.update( draft, new Astuce() );
 		} else {
-			setCurrent( daoCompte.retrouver( getCurrent().getId() ) );
+			setCurrent( daoAstuce.retrouver( getCurrent().getId() ) );
 			mapper.update( draft, getCurrent() );
 		}
 	}
 	
-	public boolean verifierUniciteNom( String pseudo) {
-		var id = draft.getId()==null ? -1 : draft.getId();
-		return daoCompte.verifierUnicitePseudo( pseudo, id );
-	}
+	
 	
 	public void saveDraft() {
 
@@ -115,12 +112,12 @@ public class ModelCompte {
 		
 		if ( mode == Mode.NEW ) {
 			// Insertion
-			daoCompte.inserer( draft );
+			daoAstuce.inserer( draft );
 			// Actualise le courant
-			setCurrent( mapper.update( new Compte(), draft ) );
+			setCurrent( mapper.update( new Astuce(), draft ) );
 		} else {
 			// modficiation
-			daoCompte.modifier( draft );
+			daoAstuce.modifier( draft );
 			// Actualise le courant
 			mapper.update( getCurrent(), draft );
 		}
@@ -128,7 +125,7 @@ public class ModelCompte {
 	
 	public void deleteCurrent() {
 		// Effectue la suppression
-		daoCompte.supprimer( getCurrent().getId() );
+		daoAstuce.supprimer( getCurrent().getId() );
 		// Détermine le nouveau courant
 		setCurrent( UtilFX.findNext( list, getCurrent() ) );
 	}

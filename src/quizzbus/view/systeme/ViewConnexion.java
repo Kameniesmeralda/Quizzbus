@@ -40,7 +40,7 @@ public class ViewConnexion extends ControllerAbstract {
 		var draft = modelConnexion.getDraft();
 		
 		// Data binding
-		bindBidirectional( txfPseudo, draft.pseudoProperty() );
+		bindBidirectional( txfPseudo, draft.nomProperty() );
 		bindBidirectional( pwfMotDePasse, draft.motDePasseProperty() );
 
 	}

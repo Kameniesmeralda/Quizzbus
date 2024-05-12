@@ -5,6 +5,8 @@ import java.util.Objects;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Resultat {
 	
@@ -15,11 +17,14 @@ public class Resultat {
 	private final ObjectProperty<Integer>	id			= new SimpleObjectProperty<>();
 	private final ObjectProperty<LocalTime> heure = new SimpleObjectProperty<>();
 	private final ObjectProperty<Integer>	score			= new SimpleObjectProperty<>();
-	
+	private final ObservableList<Statistique> stats = FXCollections.observableArrayList();
+
 	//-------
 	// Getters & Setters
 	//-------
-		
+	public ObservableList<Statistique> getStats() {
+		return stats;
+	}	
 	public final ObjectProperty<Integer> idProperty() {
 		return this.id;
 	}
