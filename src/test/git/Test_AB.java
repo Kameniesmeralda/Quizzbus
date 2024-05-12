@@ -12,13 +12,13 @@ public class Test_AB extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		System.out.println( "Debut"  );
+		System.out.println( "Start"  );
 
 		var root = FXMLLoader.<Parent>load( getClass().getResource("View_AB.fxml") );
 		stage.setScene( new Scene(root) );
 		stage.show();
 		
-		System.out.println( "Fin"  );
+		System.out.println( "Stop"  );
 	}
 	
 	public static void main(String[] args) {
