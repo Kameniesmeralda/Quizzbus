@@ -10,7 +10,7 @@ import jfox.javafx.view.ManagerGuiAbstract;
 import jfox.javafx.view.View;
 
 public class ManagerGui extends ManagerGuiAbstract {
-	
+	////////////
 	//-------
 	// Actions
 	//-------
