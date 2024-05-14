@@ -1,6 +1,7 @@
 package quizzbus.view;
 
-import quizzbus.view.systeme.ViewConnexion;
+//import quizzbus.view.systeme.ViewConnexion;
+import quizzbus.view.systeme.ViewPageConnexion;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -18,12 +19,12 @@ public class ManagerGui extends ManagerGuiAbstract {
 	public void configureStage()  {
 		
 		// Choisit la vue à afficher
-		showView( ViewConnexion.class );
+		showView( ViewPageConnexion.class );
 		
 		// Configure le stage
 		stage.setTitle( "Aau fil de l'eau" );
-		stage.setWidth(600);
-		stage.setHeight(440);
+		stage.setWidth(910);
+		stage.setHeight(710);
 		stage.setMinWidth(340);
 		stage.setMinHeight(300);
 //		stage.sizeToScene();
