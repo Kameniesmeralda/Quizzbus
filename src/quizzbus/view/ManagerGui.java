@@ -1,12 +1,12 @@
 package quizzbus.view;
 
-import quizzbus.view.systeme.ViewConnexion;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import jfox.javafx.view.ManagerGuiAbstract;
 import jfox.javafx.view.View;
+import quizzbus.view.systeme.ViewDashboard;
 
 public class ManagerGui extends ManagerGuiAbstract {
 	
@@ -18,7 +18,7 @@ public class ManagerGui extends ManagerGuiAbstract {
 	public void configureStage()  {
 		
 		// Choisit la vue à afficher
-		showView( ViewConnexion.class );
+		showView( ViewDashboard.class );
 		
 		// Configure le stage
 		stage.setTitle( "Aau fil de l'eau" );

@@ -9,9 +9,13 @@ import quizzbus.commun.IMapper;
 import quizzbus.view.ManagerGui;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import jfox.context.ContextGlobal;
 import jfox.context.IContext;
 import jfox.javafx.util.UtilFX;
@@ -20,6 +24,9 @@ import jfox.javafx.util.converter.ConverterLocalDateTime;
 import jfox.jdbc.DataSourceSingleConnection;
 
 public class AppliQuizzBus extends Application {
+	
+	// taille écran
+	double x,y;
 	
 	//-------
 	// Champs
@@ -41,14 +48,17 @@ public class AppliQuizzBus extends Application {
 	}
 	
 	@Override
-	public final void start(Stage stagePrimary) {
-
+	public final void start(Stage stagePrimary) throws Exception{
+		/*
+		Parent root = FXMLLoader.load(getClass().getResource("ViewDasboard.fxml"));
+		stagePrimary.initStyle(StageStyle.UNDECORATED);
+		*/
 		try {
 			
 			// Formats par défaut
 			ConverterLocalDate.setPatternDefault( "dd/MM/yyyy" );
 			ConverterLocalDateTime.setPatternDefault( "dd/MM/yyyy hh:mm" );
-
+		
 			// JDBC - DataSource
 			var dataSource = new DataSourceSingleConnection( 
 					UtilFX.getInputStram( "classpath:/META-INF/jdbc.properties" ) );

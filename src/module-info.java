@@ -10,5 +10,6 @@ open module quizzbus {
 	requires javafx.swing;
 	requires jasperreports;
 	requires jdk.xml.dom;
+	requires javafx.fxml;
 
 }
