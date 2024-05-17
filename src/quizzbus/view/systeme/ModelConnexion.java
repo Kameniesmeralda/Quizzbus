@@ -12,7 +12,7 @@ import jfox.exception.ExceptionValidation;
 
 public class ModelConnexion {
 	
-	
+	//
 	// Données observables 
 	
 	// Vue connexion
