@@ -1,5 +1,6 @@
 package quizzbus.view;
 
+
 //import quizzbus.view.systeme.ViewConnexion;
 import quizzbus.view.systeme.ViewPageConnexion;
 import javafx.scene.Node;
@@ -8,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import jfox.javafx.view.ManagerGuiAbstract;
 import jfox.javafx.view.View;
+import quizzbus.view.systeme.ViewDashBoard;
 
 public class ManagerGui extends ManagerGuiAbstract {
 	////////////
@@ -19,6 +21,9 @@ public class ManagerGui extends ManagerGuiAbstract {
 	public void configureStage()  {
 		
 		// Choisit la vue à afficher
+
+		showView( ViewDashBoard.class );
+
 		showView( ViewPageConnexion.class );
 		
 		// Configure le stage
