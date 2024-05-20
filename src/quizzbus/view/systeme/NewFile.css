@@ -1,0 +1,8 @@
+
+.sideAnchorpane{
+	-fx-background-color:#2207bb ;
+	-fx-border-color:#2207bb ;
+	-fx-border-width: 2px 2px 2px 2px;
+	-fx-background-raduis: 50px ;
+	-fx-border-style: solid; 
+}

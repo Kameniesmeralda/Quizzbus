@@ -12,7 +12,7 @@ import jfox.exception.ExceptionValidation;
 
 public class ModelConnexion {
 	
-	
+	//
 	// Données observables 
 	
 	// Vue connexion
@@ -46,8 +46,8 @@ public class ModelConnexion {
 	
 	@PostConstruct
 	public void init() {
-		draft.setNom( "Admin" );
-		draft.setMotDePasse( "admin" );
+		draft.setNom( "Kameni" );
+		draft.setMotDePasse( "kameni" );
 	}
 	
 	
@@ -60,7 +60,7 @@ public class ModelConnexion {
 					draft.getNom(), draft.getMotDePasse() );
 		
 		if( compte == null ) {
-			throw new ExceptionValidation( "Pseudo ou mot de passe invalide." );
+			throw new ExceptionValidation( "Nom ou mot de passe invalide." );
 		} else {
 			Platform.runLater( () -> compteActif.set( compte ) );
 		}

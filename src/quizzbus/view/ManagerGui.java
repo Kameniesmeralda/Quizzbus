@@ -1,15 +1,20 @@
 package quizzbus.view;
 
-import quizzbus.view.systeme.ViewConnexion;
+<<<<<<< HEAD
+=======
+//import quizzbus.view.systeme.ViewConnexion;
+import quizzbus.view.systeme.ViewPageConnexion;
+>>>>>>> 71e6df1cc55cc92207ec73445fc15c326bf4937b
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import jfox.javafx.view.ManagerGuiAbstract;
 import jfox.javafx.view.View;
+import quizzbus.view.systeme.ViewDashboard;
 
 public class ManagerGui extends ManagerGuiAbstract {
-	
+	////////////
 	//-------
 	// Actions
 	//-------
@@ -18,12 +23,16 @@ public class ManagerGui extends ManagerGuiAbstract {
 	public void configureStage()  {
 		
 		// Choisit la vue à afficher
-		showView( ViewConnexion.class );
+<<<<<<< HEAD
+		showView( ViewDashboard.class );
+=======
+		showView( ViewPageConnexion.class );
+>>>>>>> 71e6df1cc55cc92207ec73445fc15c326bf4937b
 		
 		// Configure le stage
 		stage.setTitle( "Aau fil de l'eau" );
-		stage.setWidth(600);
-		stage.setHeight(440);
+		stage.setWidth(910);
+		stage.setHeight(710);
 		stage.setMinWidth(340);
 		stage.setMinHeight(300);
 //		stage.sizeToScene();

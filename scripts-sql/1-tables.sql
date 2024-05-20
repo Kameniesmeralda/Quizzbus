@@ -21,7 +21,7 @@ CREATE TABLE compte (
 
 CREATE TABLE Astuce(
    idastuce SERIAL,
-   libelle VARCHAR(50) NOT NULL,
+   libelle VARCHAR(200) NOT NULL,
    PRIMARY KEY(idastuce)
 );
 

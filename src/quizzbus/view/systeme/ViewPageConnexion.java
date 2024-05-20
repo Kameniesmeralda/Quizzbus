@@ -1,23 +1,26 @@
 package quizzbus.view.systeme;
 
 import quizzbus.view.ManagerGui;
+
+//dfgbhnj,nbv
 import jakarta.inject.Inject;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import jfox.javafx.view.ControllerAbstract;
 
-public class ViewConnexion extends ControllerAbstract {
+public class ViewPageConnexion extends ControllerAbstract {
 
 	//-------
 	// Composants de la vue
 	//-------
 	
 	@FXML
-	private TextField		txfPseudo;
+	private TextField		userName;
 	@FXML
-	private PasswordField	pwfMotDePasse;
+	private PasswordField	password;
 	
 	//-------
 	// Autres champs
@@ -40,8 +43,8 @@ public class ViewConnexion extends ControllerAbstract {
 		var draft = modelConnexion.getDraft();
 		
 		// Data binding
-		bindBidirectional( txfPseudo, draft.nomProperty() );
-		bindBidirectional( pwfMotDePasse, draft.motDePasseProperty() );
+		bindBidirectional( userName, draft.nomProperty() );
+		bindBidirectional( password, draft.motDePasseProperty() );
 
 	}
 	
@@ -56,7 +59,10 @@ public class ViewConnexion extends ControllerAbstract {
 	//-------
 	// Actions
 	//-------
-	
+	 @FXML
+	    void AccountCreate(ActionEvent event) {
+
+	    }
 	@FXML
 	private void doConnexion() {
 		managerGui.execTask( () -> {
@@ -64,7 +70,7 @@ public class ViewConnexion extends ControllerAbstract {
 			Platform.runLater( () -> {
          			modelInfo.setTitre( "Bienvenue" );
         			modelInfo.setMessage( "Connexion réussie" );
-        			managerGui.showView( ViewInfo.class );
+        			managerGui.showView( ViewMenu.class );
             }) ;
 		} );
 	}
