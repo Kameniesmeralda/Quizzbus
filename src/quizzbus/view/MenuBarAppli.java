@@ -13,7 +13,7 @@ import quizzbus.view.compte.ViewCompteCombo;
 import quizzbus.view.compte.ViewCompteList;
 import quizzbus.view.systeme.ModelConnexion;
 import quizzbus.view.systeme.ViewAbout;
-import quizzbus.view.systeme.ViewConnexion;
+import quizzbus.view.systeme.ViewPageConnexion;
 import quizzbus.view.test.ViewTestDaoCompte;
 
 
@@ -55,7 +55,7 @@ public class MenuBarAppli extends MenuBarAbstract {
 		menu = addMenu( "Système" );
 
 		addMenuItem( "Se déconnecter", menu, flagConnexion,
-				e -> managerGui.showView( ViewConnexion.class ) );
+				e -> managerGui.showView( ViewPageConnexion.class ) );
 
 		addMenuItem( "Quitter", menu, 
 				e -> managerGui.exit() );

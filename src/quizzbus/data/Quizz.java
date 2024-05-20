@@ -12,11 +12,11 @@ public class Quizz {
 	// Données observables
 	//-------
 		
-	private final ObjectProperty<Integer>	id			= new SimpleObjectProperty<>();
-	private final StringProperty			description		= new SimpleStringProperty();
-	private final ObjectProperty<Theme>	theme = new SimpleObjectProperty<>();
+	private final ObjectProperty<Integer>  id			= new SimpleObjectProperty<>();
+	private final StringProperty		   description		= new SimpleStringProperty();
+	private final ObjectProperty<Theme>	   theme = new SimpleObjectProperty<>();
 	private final ObservableList<Question> questions = FXCollections.observableArrayList();
-	private final ObservableList<Joueur> joueurs = FXCollections.observableArrayList();
+	private final ObservableList<Joueur>   joueurs = FXCollections.observableArrayList();
 	private final ObservableList<Parcours> parcours = FXCollections.observableArrayList();
 	private final ObservableList<Resultat> resultats = FXCollections.observableArrayList();
 
