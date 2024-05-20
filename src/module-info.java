@@ -11,5 +11,7 @@ open module quizzbus {
 	requires jasperreports;
 	requires jdk.xml.dom;
 	requires de.jensd.fx.glyphs.fontawesome;
+	requires javafx.fxml;
+	requires javafx.controls;
 
 }
