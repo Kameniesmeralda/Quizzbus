@@ -1,18 +1,21 @@
 package quizzbus.view;
 
+import java.io.IOException;
 
-//import quizzbus.view.systeme.ViewConnexion;
-import quizzbus.view.systeme.ViewPageConnexion;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import jfox.javafx.view.ManagerGuiAbstract;
 import jfox.javafx.view.View;
-import quizzbus.view.systeme.ViewDashBoard;
+import quizzbus.view.systeme.ViewMenu;
+//import quizzbus.view.systeme.ViewConnexion;
+import quizzbus.view.systeme.ViewPageConnexion;
 
 public class ManagerGui extends ManagerGuiAbstract {
-	////////////
+	
 	//-------
 	// Actions
 	//-------
@@ -21,20 +24,20 @@ public class ManagerGui extends ManagerGuiAbstract {
 	public void configureStage()  {
 		
 		// Choisit la vue à afficher
-
-		showView( ViewDashBoard.class );
-
 		showView( ViewPageConnexion.class );
 		
 		// Configure le stage
 		stage.setTitle( "Aau fil de l'eau" );
-		stage.setWidth(910);
-		stage.setHeight(710);
+		stage.setWidth(800);
+		stage.setHeight(650);
 		stage.setMinWidth(340);
 		stage.setMinHeight(300);
 //		stage.sizeToScene();
 		stage.setResizable( true );
 		stage.getIcons().add(new Image(getClass().getResource("icone.png").toExternalForm()));
+		
+//		stage.initStyle(StageStyle.UNDECORATED);
+		
 		
 		// Configuration par défaut pour les boîtes de dialogue
 		typeConfigDialogDefault = ConfigDialog.class;
@@ -42,9 +45,26 @@ public class ManagerGui extends ManagerGuiAbstract {
 	
 	@Override
 	public Scene createScene( View view ) {
-		BorderPane paneMenu = new BorderPane( view.getRoot() );
-		paneMenu.setTop( (Node) factoryController.call( MenuBarAppli.class ) );
-		Scene scene = new Scene( paneMenu );
+
+		BorderPane paneRoot = new BorderPane( view.getRoot() );
+		paneRoot.setTop( (Node) factoryController.call( MenuBarAppli.class ) );
+		
+		// Ajout du menu à gauche
+		if( view.getController() != null && view.getController().getClass() != ViewPageConnexion.class ) {
+			var name = ViewMenu.class.getSimpleName() + ".fxml";
+			var location = ViewMenu.class.getResource( name );
+			FXMLLoader loader = new FXMLLoader( location );
+			loader.setControllerFactory(factoryController);
+			Pane menu;
+			try {
+				menu = loader.load();
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+			paneRoot.setLeft(menu);
+		}
+		
+		Scene scene = new Scene( paneRoot );
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		return scene;
 	}
