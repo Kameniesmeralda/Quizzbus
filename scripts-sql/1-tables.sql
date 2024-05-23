@@ -21,7 +21,7 @@ CREATE TABLE compte (
 
 CREATE TABLE Astuce(
    idastuce SERIAL,
-   libelle VARCHAR(200) NOT NULL,
+   libelle VARCHAR(500) NOT NULL,
    PRIMARY KEY(idastuce)
 );
 
@@ -34,7 +34,7 @@ CREATE TABLE Resultat(
 
 CREATE TABLE Poste(
    idposte SERIAL,
-   libelle VARCHAR(50) NOT NULL,
+   libelle VARCHAR(200) NOT NULL,
    PRIMARY KEY(idposte)
 );
 
