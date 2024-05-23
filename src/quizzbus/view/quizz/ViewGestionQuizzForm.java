@@ -11,14 +11,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.util.converter.ConverterInteger;
-import jfox.javafx.view.ConfigView;
 import jfox.javafx.view.ControllerAbstract;
 import quizzbus.data.Question;
 import quizzbus.data.Theme;
 import quizzbus.view.ManagerGui;
 import quizzbus.view.question.ViewQuestionForm;
+import quizzbus.view.question.ViewQuestionList;
 
-@ConfigView( flagTransient = false )
+
 public class ViewGestionQuizzForm extends ControllerAbstract {
   
   //-------
@@ -84,7 +84,7 @@ public class ViewGestionQuizzForm extends ControllerAbstract {
     //Thèmes
     cbThemes.setItems( modelQuizz.getTheme() );
     bindBidirectional( cbThemes, draft.themeProperty() );
-    UtilFX.setCellFactory( cbThemes, "libelle" );
+    UtilFX.setCellFactory( cbThemes, "nom" );
     
     
     // Configuraiton des boutons
@@ -124,7 +124,7 @@ public class ViewGestionQuizzForm extends ControllerAbstract {
   
   @FXML
   private void doQuestionAjouter() {
-    managerGui.showDialog( ViewQuestionForm.class );
+    managerGui.showDialog( ViewQuestionList.class );
   }
 
   @FXML
