@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import jfox.javafx.view.ManagerGuiAbstract;
 import jfox.javafx.view.View;
+import quizzbus.view.systeme.ViewDashBoard;
 import quizzbus.view.systeme.ViewMenu;
 //import quizzbus.view.systeme.ViewConnexion;
 import quizzbus.view.systeme.ViewPageConnexion;
@@ -28,9 +29,9 @@ public class ManagerGui extends ManagerGuiAbstract {
 		
 		// Configure le stage
 		stage.setTitle( "Aau fil de l'eau" );
-		stage.setWidth(800);
-		stage.setHeight(650);
-		stage.setMinWidth(340);
+		stage.setWidth(900);
+		stage.setHeight(700);
+		stage.setMinWidth(350);
 		stage.setMinHeight(300);
 //		stage.sizeToScene();
 		stage.setResizable( true );
@@ -49,9 +50,11 @@ public class ManagerGui extends ManagerGuiAbstract {
 		BorderPane paneRoot = new BorderPane( view.getRoot() );
 		paneRoot.setTop( (Node) factoryController.call( MenuBarAppli.class ) );
 		
+		
+		
 		// Ajout du menu à gauche
 		if( view.getController() != null && view.getController().getClass() != ViewPageConnexion.class ) {
-			var name = ViewMenu.class.getSimpleName() + ".fxml";
+			var name = ViewDashBoard.class.getSimpleName() + ".fxml";
 			var location = ViewMenu.class.getResource( name );
 			FXMLLoader loader = new FXMLLoader( location );
 			loader.setControllerFactory(factoryController);
@@ -61,8 +64,10 @@ public class ManagerGui extends ManagerGuiAbstract {
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
-			paneRoot.setLeft(menu);
+			paneRoot.setRight(menu);
 		}
+		
+		
 		
 		Scene scene = new Scene( paneRoot );
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
