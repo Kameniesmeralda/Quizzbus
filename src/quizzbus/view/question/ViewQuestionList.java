@@ -1,8 +1,5 @@
 package quizzbus.view.question;
 
-import quizzbus.data.Question;
-import quizzbus.data.Quizz;
-import quizzbus.view.ManagerGui;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,6 +9,9 @@ import javafx.scene.input.MouseEvent;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.ControllerAbstract;
 import jfox.javafx.view.Mode;
+import quizzbus.data.Question;
+import quizzbus.view.ManagerGui;
+import quizzbus.view.quizz.ViewGestionQuizzForm;
 
 public class ViewQuestionList extends ControllerAbstract {
 	
