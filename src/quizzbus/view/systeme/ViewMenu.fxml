@@ -39,7 +39,7 @@
                   <Image url="@../../../images/home-2935359_1280.png" />
                </image>
             </ImageView>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#doDashBoard" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #141313;" text="DashBoard" textAlignment="CENTER">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#doDashBoard" prefHeight="36.0" prefWidth="98.0" style="-fx-background-color: #141313;" text="DashBoard" textAlignment="CENTER" textFill="WHITE">
                <HBox.margin>
                   <Insets bottom="5.0" right="5.0" top="5.0" />
                </HBox.margin>
@@ -59,7 +59,7 @@
                   <Image url="@../../../images/question-mark-1751217_1280.png" />
                </image>
             </ImageView>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: #141313;" text="Gestion Quizz" textAlignment="CENTER">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#doGestionQuizz" prefHeight="36.0" prefWidth="111.0" style="-fx-background-color: #141313;" text="Gestion Quizz" textAlignment="CENTER" textFill="WHITE">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
@@ -79,7 +79,7 @@
                   <Image url="@../../../images/people-8327862_1280.png" />
                </image>
             </ImageView>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="96.0" style="-fx-background-color: #141313;" text="Session" textAlignment="CENTER">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#doSession" prefHeight="36.0" prefWidth="96.0" style="-fx-background-color: #141313;" text="Session" textAlignment="CENTER" textFill="WHITE">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
@@ -99,7 +99,7 @@
                   <Image url="@../../../images/blank-profile-picture-973460_1280.png" />
                </image>
             </ImageView>
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="96.0" style="-fx-background-color: #141313;" text="Utilisateur" textAlignment="CENTER">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#doUtilisateur" prefHeight="36.0" prefWidth="96.0" style="-fx-background-color: #141313;" text="Utilisateur" textAlignment="CENTER" textFill="WHITE">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>

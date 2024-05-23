@@ -13,7 +13,7 @@ public class DaoQuizz extends DaoAbstract {
 	// Champs
 	//-------
 	
-	private static final String sqlDefault = "SELECT * FROM Quizz WHERE idquizz = ?";
+	private static final String sqlDefault = "SELECT * FROM Quiz WHERE idquizz = ?";
 	@Inject
 	private DaoTheme daoTheme;
 	//-------
@@ -28,8 +28,8 @@ public class DaoQuizz extends DaoAbstract {
 	
 	protected Quizz build( Query query ) throws SQLException {
 		var quizz = new Quizz();
-		quizz.setId(			query.get( "idquestion", Integer.class ) );
-		quizz.setDescription(			query.get( "description ", String.class ) );
+		quizz.setId(			query.get( "idquizz", Integer.class ) );
+		quizz.setDescription(   query.get( "description", String.class ) );
 		var idTheme = query.get( "idtheme", Integer.class );
 		if ( idTheme != null ) {
 			quizz.setTheme( daoTheme.retrouver( idTheme ) );
@@ -67,7 +67,7 @@ public class DaoQuizz extends DaoAbstract {
 	}
 
 	public List<Quizz> listerTout()   {
-		var query = createQuery(  "SELECT * FROM Quizz ORDER BY description" );
+		var query = createQuery(  "SELECT * FROM Quiz ORDER BY description" );
 		return query.getResultList( this::build );
 	}
 
