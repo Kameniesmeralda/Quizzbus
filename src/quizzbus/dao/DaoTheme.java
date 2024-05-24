@@ -25,7 +25,7 @@ public class DaoTheme extends DaoAbstract {
 	
 	protected Theme build( Query query ) throws SQLException {
 		var theme = new Theme();
-		theme.setId(			query.get( "idmedia", Integer.class ) );
+		theme.setId(			query.get( "idtheme", Integer.class ) );
 		theme.setNom(			query.get( "nom", String.class ) );
 		theme.setDescription(			query.get( "description", String.class ) );
 		return theme;

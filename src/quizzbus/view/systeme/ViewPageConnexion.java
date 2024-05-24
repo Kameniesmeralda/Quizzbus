@@ -70,7 +70,7 @@ public class ViewPageConnexion extends ControllerAbstract {
 			Platform.runLater( () -> {
          			modelInfo.setTitre( "Bienvenue" );
         			modelInfo.setMessage( "Connexion réussie" );
-        			managerGui.showView( ViewMenu.class );
+        			managerGui.showView( ViewDashBoard.class );
             }) ;
 		} );
 	}

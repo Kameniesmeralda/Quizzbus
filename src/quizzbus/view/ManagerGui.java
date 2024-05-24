@@ -10,7 +10,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import jfox.javafx.view.ManagerGuiAbstract;
 import jfox.javafx.view.View;
-import quizzbus.view.systeme.ViewDashBoard;
 import quizzbus.view.systeme.ViewMenu;
 //import quizzbus.view.systeme.ViewConnexion;
 import quizzbus.view.systeme.ViewPageConnexion;
@@ -30,7 +29,7 @@ public class ManagerGui extends ManagerGuiAbstract {
 		
 		// Configure le stage
 		stage.setTitle( "Aau fil de l'eau" );
-		stage.setWidth(900);
+		stage.setWidth(950);
 		stage.setHeight(700);
 		stage.setMinWidth(350);
 		stage.setMinHeight(300);
@@ -54,19 +53,20 @@ public class ManagerGui extends ManagerGuiAbstract {
 		
 		
 		// Ajout du menu à gauche
-		if( view.getController() != null && view.getController().getClass() != ViewPageConnexion.class ) {
-			var name = ViewDashBoard.class.getSimpleName() + ".fxml";
-			var location = ViewMenu.class.getResource( name );
-			FXMLLoader loader = new FXMLLoader( location );
-			loader.setControllerFactory(factoryController);
-			Pane menu;
-			try {
-				menu = loader.load();
-			} catch (IOException e) {
-				throw new RuntimeException(e);
-			}
-			paneRoot.setRight(menu);
-		}
+				if( view.getController() != null && view.getController().getClass() != ViewPageConnexion.class ) {
+					var name = ViewMenu.class.getSimpleName() + ".fxml";
+					var location = ViewMenu.class.getResource( name );
+					FXMLLoader loader = new FXMLLoader( location );
+					loader.setControllerFactory(factoryController);
+					Pane menu;
+					try {
+						menu = loader.load();
+					} catch (IOException e) {
+						throw new RuntimeException(e);
+					}
+					paneRoot.setLeft(menu);
+				}
+
 		
 		
 		
