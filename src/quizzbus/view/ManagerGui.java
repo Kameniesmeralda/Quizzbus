@@ -14,6 +14,7 @@ import quizzbus.view.systeme.ViewDashBoard;
 import quizzbus.view.systeme.ViewMenu;
 //import quizzbus.view.systeme.ViewConnexion;
 import quizzbus.view.systeme.ViewPageConnexion;
+import quizzbus.view.systeme.ViewVeille;
 
 public class ManagerGui extends ManagerGuiAbstract {
 	
@@ -25,7 +26,7 @@ public class ManagerGui extends ManagerGuiAbstract {
 	public void configureStage()  {
 		
 		// Choisit la vue à afficher
-		showView( ViewPageConnexion.class );
+		showView( ViewVeille.class );
 		
 		// Configure le stage
 		stage.setTitle( "Aau fil de l'eau" );

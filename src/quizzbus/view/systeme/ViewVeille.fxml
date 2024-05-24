@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="499.0" style="-fx-background-color: #E5D2C4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizzbus.view.systeme.ViewVeille">
+   <children>
+      <ImageView fitHeight="81.0" fitWidth="106.0" layoutX="79.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/Sourire.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="32.0" fitWidth="27.0" layoutX="393.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/Sourire.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="85.0" fitWidth="92.0" layoutX="-10.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/riviere.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="92.0" fitWidth="82.0" layoutX="411.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/soleil.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="26.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/reponse.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="81.0" fitWidth="106.0" layoutX="228.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/chenille.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="touchMeButton" layoutX="-10.0" layoutY="-5.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="397.0" prefWidth="515.0" style="-fx-background-color: transparent;" text="Touch Me" textFill="#28b2bc">
+         <font>
+            <Font name="Bradley Hand ITC" size="45.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="81.0" fitWidth="106.0" layoutX="259.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/etoile_video.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="81.0" fitWidth="47.0" layoutX="24.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/etoile_video.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="123.0" fitWidth="112.0" layoutX="351.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/Fleur_tombante.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="85.0" fitWidth="123.0" layoutX="347.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/oiseai.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="85.0" fitWidth="81.0" layoutX="132.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/fille.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
