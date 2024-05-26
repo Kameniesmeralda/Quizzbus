@@ -1,4 +1,4 @@
-package quizzbus.view.quizz;
+package quizzbus.view.theme;
 
 import jakarta.inject.Inject;
 import javafx.beans.property.BooleanProperty;
@@ -11,24 +11,22 @@ import javafx.collections.ObservableList;
 import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.Mode;
 import quizzbus.commun.IMapper;
-import quizzbus.dao.DaoQuizz;
-import quizzbus.data.Quizz;
+import quizzbus.dao.DaoTheme;
 import quizzbus.data.Theme;
-import quizzbus.view.theme.ModelTheme;
 
-public class ModelQuizz {
+public class ModelTheme {
 	
 	//-------
 	// Données observables 
 	//-------
 	
-	private final ObservableList<Quizz>	list 	= FXCollections.observableArrayList(); 
+	private final ObservableList<Theme>	list 	= FXCollections.observableArrayList(); 
 	
 	private final BooleanProperty			flagRefreshingList = new SimpleBooleanProperty();
 	
-	private final Quizz					draft 	= new Quizz();
+	private final Theme					draft 	= new Theme();
 	
-	private final ObjectProperty<Quizz>	current	= new SimpleObjectProperty<>();
+	private final ObjectProperty<Theme>	current	= new SimpleObjectProperty<>();
 	
 	//-------
 	// Autres champs
@@ -38,15 +36,13 @@ public class ModelQuizz {
     @Inject
 	private IMapper		mapper;
     @Inject
-	private DaoQuizz	daoQuizz;
-    @Inject
-	private ModelTheme	modelTheme;
+	private DaoTheme	daoTheme;
 
 	//-------
 	// Getters & Setters
 	//-------
 	
-	public ObservableList<Quizz> getList() {
+	public ObservableList<Theme> getList() {
 		return list;
 	}
 
@@ -54,23 +50,19 @@ public class ModelQuizz {
 		return flagRefreshingList;
 	}
 
-	public Quizz getDraft() {
+	public Theme getDraft() {
 		return draft;
 	}
-	 
-	public ObservableList<Theme> getTheme() {
-		return modelTheme.getList();
-	}
 
-	public Property<Quizz> currentProperty() {
+	public Property<Theme> currentProperty() {
 		return current;
 	}
 
-	public Quizz getCurrent() {
+	public Theme getCurrent() {
 		return current.get();
 	}
 
-	public void setCurrent(Quizz item) {
+	public void setCurrent(Theme item) {
 		current.set(item);
 	}
 	
@@ -86,16 +78,16 @@ public class ModelQuizz {
 		// flagRefreshingList vaut true pendant la durée  
 		// du traitement de mise à jour de la liste
 		flagRefreshingList.set(true);
-		list.setAll( daoQuizz.listerTout() );
+		list.setAll( daoTheme.listerTout() );
 		flagRefreshingList.set(false);
  	}
 
 	public void initDraft(Mode mode) {
 		this.mode = mode;
 		if( mode == Mode.NEW ) {
-			mapper.update( draft, new Quizz() );
+			mapper.update( draft, new Theme() );
 		} else {
-			setCurrent( daoQuizz.retrouver( getCurrent().getId() ) );
+			setCurrent( daoTheme.retrouver( getCurrent().getId() ) );
 			mapper.update( draft, getCurrent() );
 		}
 	}
@@ -120,12 +112,12 @@ public class ModelQuizz {
 		
 		if ( mode == Mode.NEW ) {
 			// Insertion
-			daoQuizz.inserer( draft );
+			daoTheme.inserer( draft );
 			// Actualise le courant
-			setCurrent( mapper.update( new Quizz(), draft ) );
+			setCurrent( mapper.update( new Theme(), draft ) );
 		} else {
 			// modficiation
-			daoQuizz.modifier( draft );
+			daoTheme.modifier( draft );
 			// Actualise le courant
 			mapper.update( getCurrent(), draft );
 		}
@@ -133,7 +125,7 @@ public class ModelQuizz {
 	
 	public void deleteCurrent() {
 		// Effectue la suppression
-		daoQuizz.supprimer( getCurrent().getId() );
+		daoTheme.supprimer( getCurrent().getId() );
 		// Détermine le nouveau courant
 		setCurrent( UtilFX.findNext( list, getCurrent() ) );
 	}
