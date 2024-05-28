@@ -68,6 +68,12 @@ public class Poste {
 		Poste other = (Poste) obj;
 		return Objects.equals(id, other.id);
 	}
+
+
+	@Override
+	public String toString() {
+		return "Poste [id=" + id + ", libelle=" + libelle + "]";
+	}
 	
 
 	

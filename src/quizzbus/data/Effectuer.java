@@ -9,6 +9,12 @@ public class Effectuer {
 	// Données observables
 	//-------
 			
+	@Override
+	public String toString() {
+		return "Effectuer [quizz=" + quizz + ", joueur=" + joueur + "]";
+	}
+
+
 	private final ObjectProperty<Quizz>quizz = new SimpleObjectProperty<>();
 	private final ObjectProperty<Joueur>joueur = new SimpleObjectProperty<>();
 

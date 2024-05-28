@@ -38,6 +38,11 @@ public class Administrer {
 	public final void setPoste(final Poste poste) {
 		this.posteProperty().set(poste);
 	}
+
+	@Override
+	public String toString() {
+		return "Administrer [compte=" + compte + ", poste=" + poste + "]";
+	}
 	
 	
 }

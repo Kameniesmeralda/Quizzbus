@@ -64,6 +64,11 @@ public class Astuce {
 		Astuce other = (Astuce) obj;
 		return Objects.equals(id, other.id) && Objects.equals(libelle, other.libelle);
 	}
+
+	@Override
+	public String toString() {
+		return "Astuce [id=" + id + ", libelle=" + libelle + "]";
+	}
 	
 	
 	

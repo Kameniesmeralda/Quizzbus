@@ -40,6 +40,11 @@ public class Consulter {
 	public final void setStatistique(final Statistique statistique) {
 		this.statistiqueProperty().set(statistique);
 	}
+
+	@Override
+	public String toString() {
+		return "Consulter [compte=" + compte + ", statistique=" + statistique + "]";
+	}
 	
 	
 	
