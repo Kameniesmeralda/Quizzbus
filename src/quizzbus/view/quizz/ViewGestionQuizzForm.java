@@ -16,10 +16,8 @@ import jfox.javafx.view.Mode;
 import quizzbus.data.Question;
 import quizzbus.data.Theme;
 import quizzbus.view.ManagerGui;
-<<<<<<< HEAD
-=======
+
 import quizzbus.view.question.ModelQuestion;
->>>>>>> e960eac7f34648cdd8a13ed0e5a7297d56734fc1
 import quizzbus.view.question.ViewQuestionList;
 
 public class ViewGestionQuizzForm extends ControllerAbstract {
