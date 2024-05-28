@@ -15,7 +15,6 @@ import jfox.javafx.view.ControllerAbstract;
 import quizzbus.data.Question;
 import quizzbus.data.Theme;
 import quizzbus.view.ManagerGui;
-import quizzbus.view.question.ViewQuestionForm;
 import quizzbus.view.question.ViewQuestionList;
 
 

@@ -78,6 +78,11 @@ public class Theme {
 		return Objects.equals(description, other.description) && Objects.equals(id, other.id)
 				&& Objects.equals(nom, other.nom);
 	}
+
+	@Override
+	public String toString() {
+		return getNom();
+	}
 	
 
 	
