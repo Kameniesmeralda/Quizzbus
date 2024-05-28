@@ -53,7 +53,7 @@ public class ManagerGui extends ManagerGuiAbstract {
 		
 		
 		// Ajout du menu à gauche
-				if( view.getController() != null && view.getController().getClass() != ViewPageConnexion.class ) {
+				if( view.getController() != null && view.getController().getClass() != ViewPageConnexion.class && view.getController().getClass() != ViewVeille.class  ) {
 					var name = ViewMenu.class.getSimpleName() + ".fxml";
 					var location = ViewMenu.class.getResource( name );
 					FXMLLoader loader = new FXMLLoader( location );

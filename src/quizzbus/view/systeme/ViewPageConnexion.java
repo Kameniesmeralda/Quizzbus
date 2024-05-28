@@ -1,7 +1,6 @@
 package quizzbus.view.systeme;
 
 import quizzbus.view.ManagerGui;
-import quizzbus.view.quizz.ViewGestionQuizzList;
 import jakarta.inject.Inject;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
