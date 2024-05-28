@@ -152,6 +152,12 @@ public class Compte  {
 		Compte other = (Compte) obj;
 		return Objects.equals(id.get(), other.id.get() );
 	}
+	@Override
+	public String toString() {
+		return "Compte [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance
+				+ ", motDePasse=" + motDePasse + ", email=" + email + ", flagAdmin=" + flagAdmin + ", administrations="
+				+ administrations + ", statistiques=" + statistiques + ", configurations=" + configurations + "]";
+	}
 
 
 	

@@ -39,6 +39,11 @@ public class Inclure {
 	public final void setQuestion(final Question question) {
 		this.questionProperty().set(question);
 	}
+
+	@Override
+	public String toString() {
+		return "Inclure [media=" + media + ", question=" + question + "]";
+	}
 	
 
 	

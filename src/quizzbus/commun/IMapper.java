@@ -7,6 +7,7 @@ import quizzbus.data.Astuce;
 import quizzbus.data.Compte;
 import quizzbus.data.Configuration_Poste;
 import quizzbus.data.Joueur;
+import quizzbus.data.Poste;
 import quizzbus.data.Question;
 import quizzbus.data.Quizz;
 import quizzbus.data.Theme;
@@ -22,4 +23,5 @@ public interface IMapper {
 	Theme update( @MappingTarget Theme target, Theme source  );
 	Astuce update( @MappingTarget Astuce target, Astuce source  );
 	Question update( @MappingTarget Question target, Question source  );
+	Poste update( @MappingTarget Poste target, Poste source  );
 }

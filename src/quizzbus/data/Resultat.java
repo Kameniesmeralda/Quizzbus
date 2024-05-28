@@ -82,6 +82,10 @@ public class Resultat {
 		Resultat other = (Resultat) obj;
 		return Objects.equals(heure, other.heure) && Objects.equals(id, other.id) && Objects.equals(score, other.score);
 	}
+	@Override
+	public String toString() {
+		return "Resultat [id=" + id + ", heure=" + heure + ", score=" + score + ", stats=" + stats + "]";
+	}
 	
 	
 	

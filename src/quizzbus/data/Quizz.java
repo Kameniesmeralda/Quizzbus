@@ -70,6 +70,11 @@ public class Quizz {
 	public final void setTheme(final Theme theme) {
 		this.themeProperty().set(theme);
 	}
+	@Override
+	public String toString() {
+		return "Quizz [id=" + id + ", description=" + description + ", theme=" + theme + ", questions=" + questions
+				+ ", joueurs=" + joueurs + ", parcours=" + parcours + ", resultats=" + resultats + "]";
+	}
 	
 	
 	

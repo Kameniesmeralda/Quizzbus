@@ -41,6 +41,11 @@ public class EtreAffilierA {
 	public final void setParcours(final Parcours parcours) {
 		this.parcoursProperty().set(parcours);
 	}
+
+	@Override
+	public String toString() {
+		return "EtreAffilierA [quizz=" + quizz + ", parcours=" + parcours + "]";
+	}
 	
 	
 	
