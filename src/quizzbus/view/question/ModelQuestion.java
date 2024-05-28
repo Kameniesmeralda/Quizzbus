@@ -23,7 +23,6 @@ import jfox.javafx.view.Mode;
 import quizzbus.commun.IMapper;
 import quizzbus.dao.DaoMedia;
 import quizzbus.dao.DaoQuestion;
-import quizzbus.dao.DaoReponse;
 import quizzbus.data.Media;
 import quizzbus.data.Question;
 import quizzbus.view.systeme.ModelConfig;
@@ -56,8 +55,7 @@ public class ModelQuestion {
 	private IMapper mapper;
 	@Inject
 	private DaoQuestion daoQuestion;
-	@Inject
-	private DaoReponse daoReponse;
+	
 	@Inject
 	private DaoMedia daoMedia;
 	@Inject

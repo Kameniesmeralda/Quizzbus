@@ -15,7 +15,6 @@ public class Question {
 
 	private final ObjectProperty<Integer> id = new SimpleObjectProperty<>();
 	private final StringProperty enonce = new SimpleStringProperty();
-	private final StringProperty explication = new SimpleStringProperty();
 	private final ObjectProperty<Astuce> astuce = new SimpleObjectProperty<>();
 	private final ObservableList<Media> medias = FXCollections.observableArrayList();
 
@@ -23,6 +22,9 @@ public class Question {
 	// AUtres Données observables
 	// -------
 	private final ObjectProperty<Reponse> reponse = new SimpleObjectProperty<Reponse>();
+	private final ObjectProperty<Reponse> reponse2 = new SimpleObjectProperty<Reponse>();
+	private final ObjectProperty<Reponse> reponse3 = new SimpleObjectProperty<Reponse>();
+	private final ObjectProperty<Reponse> reponse4 = new SimpleObjectProperty<Reponse>();
 
 	// -------
 	// Getters & Setters
@@ -56,18 +58,7 @@ public class Question {
 		this.enonceProperty().set(enonce);
 	}
 
-	public final StringProperty explicationProperty() {
-		return this.explication;
-	}
-
-	public final String getExplication() {
-		return this.explicationProperty().get();
-	}
-
-	public final void setExplication(final String explication) {
-		this.explicationProperty().set(explication);
-	}
-
+	
 	public final ObjectProperty<Astuce> astuceProperty() {
 		return this.astuce;
 	}
@@ -111,9 +102,54 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return "Question [id=" + id + ", enonce=" + enonce + ", explication=" + explication + ", astuce=" + astuce
+		return "Question [id=" + id + ", enonce=" + enonce + ", astuce=" + astuce
 				+ ", medias=" + medias + ", reponse=" + reponse + "]";
 	}
+
+	public final ObjectProperty<Reponse> reponse2Property() {
+		return this.reponse2;
+	}
+	
+
+	public final Reponse getReponse2() {
+		return this.reponse2Property().get();
+	}
+	
+
+	public final void setReponse2(final Reponse reponse2) {
+		this.reponse2Property().set(reponse2);
+	}
+	
+
+	public final ObjectProperty<Reponse> reponse3Property() {
+		return this.reponse3;
+	}
+	
+
+	public final Reponse getReponse3() {
+		return this.reponse3Property().get();
+	}
+	
+
+	public final void setReponse3(final Reponse reponse3) {
+		this.reponse3Property().set(reponse3);
+	}
+	
+
+	public final ObjectProperty<Reponse> reponse4Property() {
+		return this.reponse4;
+	}
+	
+
+	public final Reponse getReponse4() {
+		return this.reponse4Property().get();
+	}
+	
+
+	public final void setReponse4(final Reponse reponse4) {
+		this.reponse4Property().set(reponse4);
+	}
+	
 	
 	
 
