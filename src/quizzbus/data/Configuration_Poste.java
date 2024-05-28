@@ -83,6 +83,11 @@ public class Configuration_Poste {
 		return Objects.equals(heure, other.heure) && Objects.equals(id, other.id);
 	}
 
+	@Override
+	public String toString() {
+		return "Configuration_Poste [id=" + id + ", heure=" + heure + ", poste=" + poste + "]";
+	}
+
 	
 	
 	

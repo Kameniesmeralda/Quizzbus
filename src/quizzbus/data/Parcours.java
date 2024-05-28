@@ -40,6 +40,11 @@ public class Parcours {
 	public final void setMode(final String mode) {
 		this.modeProperty().set(mode);
 	}
+
+	@Override
+	public String toString() {
+		return "Parcours [id=" + id + ", mode=" + mode + "]";
+	}
 	
 	
 	

@@ -48,6 +48,12 @@ public class Statistique {
 	public final void setLibelle(final String libelle) {
 		this.libelleProperty().set(libelle);
 	}
+
+
+	@Override
+	public String toString() {
+		return "Statistique [id=" + id + ", libelle=" + libelle + "]";
+	}
 	
 	
 	

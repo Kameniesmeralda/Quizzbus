@@ -1,8 +1,7 @@
 package quizzbus.view.systeme;
 
 import quizzbus.view.ManagerGui;
-
-//dfgbhnj,nbv
+import quizzbus.view.quizz.ViewGestionQuizzList;
 import jakarta.inject.Inject;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -70,7 +69,7 @@ public class ViewPageConnexion extends ControllerAbstract {
 			Platform.runLater( () -> {
          			modelInfo.setTitre( "Bienvenue" );
         			modelInfo.setMessage( "Connexion réussie" );
-        			managerGui.showView( ViewDashBoard.class );
+        			managerGui.showView( ViewDashBoard.class );//Aaron : à modifier pour le démarrage
             }) ;
 		} );
 	}

@@ -39,6 +39,11 @@ public class Contenir {
 	public final void setQuestion(final Question question) {
 		this.questionProperty().set(question);
 	}
+
+	@Override
+	public String toString() {
+		return "Contenir [quizz=" + quizz + ", question=" + question + "]";
+	}
 	
 	
 	
