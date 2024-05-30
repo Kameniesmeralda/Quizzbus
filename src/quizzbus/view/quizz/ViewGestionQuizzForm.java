@@ -128,6 +128,7 @@ public class ViewGestionQuizzForm extends ControllerAbstract {
 	private void doQuestionSupprimer() {
 		var items = lsvQuestions.getSelectionModel().getSelectedItems();
 		lsvQuestions.getItems().removeAll(items);
+
 	}
 
 	@FXML
