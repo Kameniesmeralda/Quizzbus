@@ -13,6 +13,7 @@ import jfox.javafx.util.UtilFX;
 import jfox.javafx.util.converter.ConverterInteger;
 import jfox.javafx.view.ControllerAbstract;
 import jfox.javafx.view.Mode;
+import quizzbus.dao.DaoTheme;
 import quizzbus.data.Question;
 import quizzbus.data.Theme;
 import quizzbus.view.ManagerGui;
@@ -54,6 +55,8 @@ public class ViewGestionQuizzForm extends ControllerAbstract {
 	private ModelQuizz modelQuizz;
 	@Inject
 	private ModelQuestion modelQuestion;
+	@Inject
+	private DaoTheme daoTheme;
 
 	// -------
 	// Initialisation du Controller
@@ -82,7 +85,7 @@ public class ViewGestionQuizzForm extends ControllerAbstract {
 		lsvQuestions.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
 		// Thèmes
-		cbThemes.setItems(modelQuizz.getTheme());
+		cbThemes.setItems(daoTheme.listerTout());
 		bindBidirectional(cbThemes, draft.themeProperty());
 		UtilFX.setCellFactory(cbThemes, "nom");
 
