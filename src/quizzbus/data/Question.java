@@ -58,10 +58,6 @@ public class Question {
 		this.enonceProperty().set(enonce);
 	}
 
-<<<<<<< HEAD
-=======
-	
->>>>>>> e7259724677ba55bc6559f63290f354dd7f092c9
 	public final ObjectProperty<Astuce> astuceProperty() {
 		return this.astuce;
 	}
@@ -105,12 +101,8 @@ public class Question {
 
 	@Override
 	public String toString() {
-<<<<<<< HEAD
+
 		return getEnonce();
-	}
-=======
-		return "Question [id=" + id + ", enonce=" + enonce + ", astuce=" + astuce
-				+ ", medias=" + medias + ", reponse=" + reponse + "]";
 	}
 
 	public final ObjectProperty<Reponse> reponse2Property() {
@@ -158,7 +150,5 @@ public class Question {
 	}
 	
 	
-	
->>>>>>> e7259724677ba55bc6559f63290f354dd7f092c9
 
 }
