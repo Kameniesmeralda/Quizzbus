@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="sideAnchorpane" prefHeight="700.0" prefWidth="250.0" style="-fx-background-color: #303551; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-width: 2 2 2 2; -fx-border-style: solid; -fx-border-color: #141313;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizzbus.view.systeme.ViewMenu">
+<AnchorPane fx:id="sideAnchorpane" prefHeight="700.0" prefWidth="250.0" style="-fx-background-color: #303551; -fx-background-radius: 5; -fx-border-radius: 5; -fx-border-width: 2 2 2 2; -fx-border-style: solid; -fx-border-color: #141313;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizzbus.view.systeme.ViewMenu">
    <children>
       <Pane layoutX="14.0" layoutY="22.0" prefHeight="52.0" prefWidth="183.0" style="-fx-background-color: #748CF1; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-width: 2 2 2 2; -fx-border-style: solid; -fx-border-color: #748CF1;">
          <children>

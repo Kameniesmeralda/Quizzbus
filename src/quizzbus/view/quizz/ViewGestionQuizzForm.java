@@ -121,7 +121,6 @@ public class ViewGestionQuizzForm extends ControllerAbstract {
 
 	@FXML
 	private void doQuestionAjouter() {
-		modelQuizz.initDraft(Mode.NEW);
 		managerGui.showDialog(ViewQuestionList.class);
 	}
 
@@ -129,6 +128,7 @@ public class ViewGestionQuizzForm extends ControllerAbstract {
 	private void doQuestionSupprimer() {
 		var items = lsvQuestions.getSelectionModel().getSelectedItems();
 		lsvQuestions.getItems().removeAll(items);
+
 	}
 
 	@FXML

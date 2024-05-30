@@ -101,7 +101,17 @@ CREATE TABLE Reponse(
    idreponse SERIAL,
    libelle VARCHAR(100) NOT NULL,
    vraie BOOLEAN NOT NULL,
-   PRIMARY KEY(idreponse)
+   idquestion INTEGER,
+   PRIMARY KEY(idreponse),
+   FOREIGN KEY (idquestion) REFERENCES Question(idquestion)
+);
+
+CREATE TABLE avoir(
+   idquestion INTEGER,
+   idtheme INTEGER,
+   PRIMARY KEY(idquestion,idtheme),
+   FOREIGN KEY(idquestion) REFERENCES Question(idquestion),
+   FOREIGN KEY(idtheme)REFERENCES Theme(idtheme)
 );
 
 CREATE TABLE administrer(
@@ -175,4 +185,5 @@ CREATE TABLE generer(
    FOREIGN KEY(idresultat) REFERENCES Resultat(idresultat),
    FOREIGN KEY(idstat) REFERENCES Statistique(idstat)
 );
+
 
