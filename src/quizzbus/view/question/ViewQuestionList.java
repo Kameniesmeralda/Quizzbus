@@ -44,7 +44,7 @@ public class ViewQuestionList extends ControllerAbstract {
 
 		// ListView
 		lsvQuestion.setItems( modelQuestion.getList() );
-		UtilFX.setCellFactory( lsvQuestion, "description" );
+		UtilFX.setCellFactory( lsvQuestion, "enonce" );
 		bindBidirectional( lsvQuestion, modelQuestion.currentProperty(), modelQuestion.flagRefreshingListProperty() );
 		
 		// Configuraiton des boutons
@@ -67,7 +67,6 @@ public class ViewQuestionList extends ControllerAbstract {
 	
 	@FXML
 	private void doAjouter() {
-		modelQuestion.initDraft( Mode.NEW );;
 		managerGui.showView( ViewGestionQuizzForm.class );
 	}
 
