@@ -15,7 +15,6 @@ public class Question {
 
 	private final ObjectProperty<Integer> id = new SimpleObjectProperty<>();
 	private final StringProperty enonce = new SimpleStringProperty();
-	private final StringProperty explication = new SimpleStringProperty();
 	private final ObjectProperty<Astuce> astuce = new SimpleObjectProperty<>();
 	private final ObservableList<Media> medias = FXCollections.observableArrayList();
 
@@ -54,18 +53,6 @@ public class Question {
 
 	public final void setEnonce(final String enonce) {
 		this.enonceProperty().set(enonce);
-	}
-
-	public final StringProperty explicationProperty() {
-		return this.explication;
-	}
-
-	public final String getExplication() {
-		return this.explicationProperty().get();
-	}
-
-	public final void setExplication(final String explication) {
-		this.explicationProperty().set(explication);
 	}
 
 	public final ObjectProperty<Astuce> astuceProperty() {
@@ -111,10 +98,7 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return "Question [id=" + id + ", enonce=" + enonce + ", explication=" + explication + ", astuce=" + astuce
-				+ ", medias=" + medias + ", reponse=" + reponse + "]";
+		return getEnonce();
 	}
-	
-	
 
 }

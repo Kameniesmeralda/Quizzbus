@@ -72,8 +72,7 @@ public class Quizz {
 	}
 	@Override
 	public String toString() {
-		return "Quizz [id=" + id + ", description=" + description + ", theme=" + theme + ", questions=" + questions
-				+ ", joueurs=" + joueurs + ", parcours=" + parcours + ", resultats=" + resultats + "]";
+		return "N°"+getId();
 	}
 	
 	

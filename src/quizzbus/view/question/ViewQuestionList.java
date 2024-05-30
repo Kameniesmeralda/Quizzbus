@@ -68,13 +68,19 @@ public class ViewQuestionList extends ControllerAbstract {
 	@FXML
 	private void doAjouter() {
 		modelQuestion.initDraft( Mode.NEW );;
-		managerGui.showView( ViewGestionQuizzForm.class );
+		managerGui.showView( ViewQuestionForm.class );
+	}
+	
+	@FXML
+	private void doCreation() {
+		modelQuestion.initDraft( Mode.NEW );;
+		managerGui.showView( ViewQuestionList.class );
 	}
 
 	@FXML
 	private void doModifier() {
 		modelQuestion.initDraft( Mode.EDIT );;
-		managerGui.showView( ViewGestionQuizzForm.class );
+		managerGui.showView( ViewQuestionList.class );
 	}
 
 	@FXML
