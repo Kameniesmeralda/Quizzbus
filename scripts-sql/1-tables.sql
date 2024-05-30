@@ -44,7 +44,6 @@ CREATE TABLE Question(
    idastuce INTEGER NOT NULL,
    PRIMARY KEY(idquestion),
    FOREIGN KEY(idastuce) REFERENCES Astuce(idastuce)
-  
 );
 
 CREATE TABLE Theme(
