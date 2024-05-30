@@ -22,6 +22,9 @@ public class Question {
 	// AUtres Données observables
 	// -------
 	private final ObjectProperty<Reponse> reponse = new SimpleObjectProperty<Reponse>();
+	private final ObjectProperty<Reponse> reponse2 = new SimpleObjectProperty<Reponse>();
+	private final ObjectProperty<Reponse> reponse3 = new SimpleObjectProperty<Reponse>();
+	private final ObjectProperty<Reponse> reponse4 = new SimpleObjectProperty<Reponse>();
 
 	// -------
 	// Getters & Setters
@@ -55,6 +58,10 @@ public class Question {
 		this.enonceProperty().set(enonce);
 	}
 
+<<<<<<< HEAD
+=======
+	
+>>>>>>> e7259724677ba55bc6559f63290f354dd7f092c9
 	public final ObjectProperty<Astuce> astuceProperty() {
 		return this.astuce;
 	}
@@ -98,7 +105,60 @@ public class Question {
 
 	@Override
 	public String toString() {
+<<<<<<< HEAD
 		return getEnonce();
 	}
+=======
+		return "Question [id=" + id + ", enonce=" + enonce + ", astuce=" + astuce
+				+ ", medias=" + medias + ", reponse=" + reponse + "]";
+	}
+
+	public final ObjectProperty<Reponse> reponse2Property() {
+		return this.reponse2;
+	}
+	
+
+	public final Reponse getReponse2() {
+		return this.reponse2Property().get();
+	}
+	
+
+	public final void setReponse2(final Reponse reponse2) {
+		this.reponse2Property().set(reponse2);
+	}
+	
+
+	public final ObjectProperty<Reponse> reponse3Property() {
+		return this.reponse3;
+	}
+	
+
+	public final Reponse getReponse3() {
+		return this.reponse3Property().get();
+	}
+	
+
+	public final void setReponse3(final Reponse reponse3) {
+		this.reponse3Property().set(reponse3);
+	}
+	
+
+	public final ObjectProperty<Reponse> reponse4Property() {
+		return this.reponse4;
+	}
+	
+
+	public final Reponse getReponse4() {
+		return this.reponse4Property().get();
+	}
+	
+
+	public final void setReponse4(final Reponse reponse4) {
+		this.reponse4Property().set(reponse4);
+	}
+	
+	
+	
+>>>>>>> e7259724677ba55bc6559f63290f354dd7f092c9
 
 }
