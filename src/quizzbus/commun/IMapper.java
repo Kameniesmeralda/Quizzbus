@@ -10,6 +10,7 @@ import quizzbus.data.Joueur;
 import quizzbus.data.Poste;
 import quizzbus.data.Question;
 import quizzbus.data.Quizz;
+import quizzbus.data.Reponse;
 import quizzbus.data.Theme;
 
 
@@ -22,6 +23,7 @@ public interface IMapper {
 	Joueur update( @MappingTarget Joueur target, Joueur source  );
 	Theme update( @MappingTarget Theme target, Theme source  );
 	Astuce update( @MappingTarget Astuce target, Astuce source  );
+	Reponse update( @MappingTarget Reponse target, Reponse source  );
 	Question update( @MappingTarget Question target, Question source  );
 	Poste update( @MappingTarget Poste target, Poste source  );
 }

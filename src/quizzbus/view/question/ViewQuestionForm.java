@@ -6,13 +6,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
+import jfox.javafx.util.UtilFX;
 import jfox.javafx.util.converter.ConverterInteger;
 import jfox.javafx.view.ControllerAbstract;
+import quizzbus.data.Reponse;
 import quizzbus.view.ManagerGui;
 
 public class ViewQuestionForm extends ControllerAbstract {
@@ -20,6 +25,9 @@ public class ViewQuestionForm extends ControllerAbstract {
 	// -------
 	// Composants de la vue
 	// -------
+
+	@FXML
+	private ListView<Reponse> lsvReponse;
 
 	@FXML
 	private CheckBox chbProp1;
@@ -44,9 +52,6 @@ public class ViewQuestionForm extends ControllerAbstract {
 
 	@FXML
 	private TextArea txaQuestion;
-
-	@FXML
-	private Label lbId;
 
 	@FXML
 	private TextField txfProp1;
@@ -78,6 +83,9 @@ public class ViewQuestionForm extends ControllerAbstract {
 	@Inject
 	private ModelQuestion modelQuestion;
 
+	@Inject
+	private ModelReponse modelReponse;
+
 	// -------
 	// Initialisation du Controller
 	// -------
@@ -86,54 +94,39 @@ public class ViewQuestionForm extends ControllerAbstract {
 	private void initialize() {
 		var draft = modelQuestion.getDraft();
 
-		// Id
-		bind(lbId, draft.idProperty(), new ConverterInteger());
-
 		// Question
 		bindBidirectional(txaQuestion, draft.enonceProperty());
 		validator.addRuleNotBlank(txaQuestion);
 		validator.addRuleMaxLength(txaQuestion, 100);
-
-		// propsition 1
-		bindBidirectional(txfProp1, draft.enonceProperty());
-		validator.addRuleNotBlank(txfProp1);
-		validator.addRuleMaxLength(txfProp1, 100);
-
-		// propsition 2
-		bindBidirectional(txfProp2, draft.enonceProperty());
-		validator.addRuleNotBlank(txfProp2);
-		validator.addRuleMaxLength(txfProp2, 50);
-
-		// propsition 3
-		bindBidirectional(txfProp3, draft.enonceProperty());
-		validator.addRuleNotBlank(txfProp3);
-		validator.addRuleMaxLength(txfProp3, 100);
-
-		// propsition 4
-		bindBidirectional(txfProp4, draft.enonceProperty());
-		validator.addRuleNotBlank(txfProp4);
-		validator.addRuleMaxLength(txfProp4, 100);
-
-		// Reponse
-		bindBidirectional(txaQuestion, draft.enonceProperty());
-		validator.addRuleNotBlank(txaQuestion);
-		validator.addRuleMaxLength(txaQuestion, 100);
-
+//
+//		// propsition 1
+//		bindBidirectional(txfProp1, modelQuestion.proposition1Property());
+//		bindBidirectional(chbProp1, modelQuestion.flag1Property());
+//		validator.addRuleNotBlank(txfProp1);
+//		validator.addRuleMaxLength(txfProp1, 100);
+//
+//		// propsition 2
+//		bindBidirectional(txfProp2, modelQuestion.proposition2Property());
+//		bindBidirectional(chbProp2, modelQuestion.flag2Property());
+//		validator.addRuleNotBlank(txfProp2);
+//		validator.addRuleMaxLength(txfProp2, 100);
+//
+//		// propsition 3
+//		bindBidirectional(txfProp3, modelQuestion.proposition3Property());
+//		bindBidirectional(chbProp3, modelQuestion.flag3Property());
+//		validator.addRuleNotBlank(txfProp2);
+//		validator.addRuleMaxLength(txfProp2, 100);
+//
+//		// propsition 4
+//		bindBidirectional(txfProp1, modelQuestion.proposition4Property());
+//		bindBidirectional(chbProp1, modelQuestion.flag4Property());
+//		validator.addRuleNotBlank(txfProp2);
+//		validator.addRuleMaxLength(txfProp2, 100);
+//
 		// Astuce
-		bindBidirectional(txaAstuce, draft.enonceProperty());
+		bindBidirectional(txaAstuce, modelQuestion.astuceProperty());
 		validator.addRuleNotBlank(txaAstuce);
 		validator.addRuleMaxLength(txaAstuce, 500);
-
-		// Flag
-		//bindBidirectional( chbProp1, draft.reponseProperty() );
-//		bindBidirectional(chbProp1.selectedProperty(), getReponseProperty(draft.reponseProperty(), 0));
-//		bindBidirectional(chbProp2.selectedProperty(), getReponseProperty(draft.reponseProperty(), 1));
-//		bindBidirectional(chbProp3.selectedProperty(), getReponseProperty(draft.reponseProperty(), 2));
-//		bindBidirectional(chbProp4.selectedProperty(), getReponseProperty(draft.reponseProperty(), 3));
-
-//		cmbCategorie.setItems(modelMemo.getCategories());
-//		bindBidirectional(cmbCategorie, draft.categorieProperty());
-//		UtilFX.setCellFactory(cmbCategorie, "libelle");
 
 		// Bouton VAlider
 		btnValider.disableProperty().bind(validator.invalidProperty());
@@ -143,6 +136,11 @@ public class ViewQuestionForm extends ControllerAbstract {
 
 		// imageview
 		imvImage.imageProperty().bindBidirectional(modelQuestion.imageProperty());
+
+		// ListView
+		lsvReponse.setItems(modelReponse.getList());
+		UtilFX.setCellFactory(lsvReponse, "libelle");
+		bindBidirectional(lsvReponse, modelReponse.currentProperty(), modelReponse.flagRefreshingListProperty());
 	}
 
 //	@Override
@@ -181,6 +179,34 @@ public class ViewQuestionForm extends ControllerAbstract {
 	private void doImageSupprimer() {
 		imvImage.setImage(null);
 	}
+
+	@FXML
+	void doAjouterNewReponse() {
+		managerGui.showView(ViewReponseForm.class);
+	}
+
+	@FXML
+	void doSupprimerReponse() {
+		if (managerGui.showDialogConfirm("Confirmez-vous la suppresion ?")) {
+			modelReponse.deleteCurrent();
+			refresh();
+		}
+	}
+
+	// Clic sur la liste
+	@FXML
+	private void gererClicSurListe(MouseEvent event) {
+		if (event.getButton().equals(MouseButton.PRIMARY)) {
+			if (event.getClickCount() == 2) {
+				if (lsvReponse.getSelectionModel().getSelectedIndex() == -1) {
+					managerGui.showDialogError("Aucun élément n'est sélectionné dans la liste.");
+				} else {
+					doSupprimerReponse();
+				}
+			}
+		}
+	}
+
 	// -------
 	// Méthodes auxiliaires
 	// -------

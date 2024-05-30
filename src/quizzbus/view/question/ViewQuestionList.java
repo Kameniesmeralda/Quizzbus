@@ -18,6 +18,8 @@ public class ViewQuestionList extends ControllerAbstract {
 	// -------
 	// Composants de la vue
 	// -------
+	@FXML
+	private Button btnCreer;
 
 	@FXML
 	private ListView<Question> lsvQuestion;
@@ -36,6 +38,8 @@ public class ViewQuestionList extends ControllerAbstract {
 	private ModelQuestion modelQuestion;
 	@Inject
 	private ModelQuizz modelQuizz;
+	
+	
 
 	// -------
 	// Initialisations
@@ -77,8 +81,7 @@ public class ViewQuestionList extends ControllerAbstract {
 	@FXML
 	private void doCreation() {
 		modelQuestion.initDraft(Mode.NEW);
-		;
-		managerGui.showView(ViewQuestionList.class);
+		managerGui.showView(ViewQuestionForm.class);
 	}
 
 	@FXML

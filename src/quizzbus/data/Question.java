@@ -1,6 +1,9 @@
 package quizzbus.data;
 
 import java.util.Objects;
+
+import javafx.beans.Observable;
+
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -17,10 +20,16 @@ public class Question {
 	private final StringProperty enonce = new SimpleStringProperty();
 	private final ObjectProperty<Astuce> astuce = new SimpleObjectProperty<>();
 	private final ObservableList<Media> medias = FXCollections.observableArrayList();
+	
 
 	// -------
 	// AUtres Données observables
 	// -------
+	private final ObservableList<Reponse>	reponses	= FXCollections.observableArrayList(
+			t ->  new Observable[] { t.libelleProperty(), t.vraieProperty() } 
+		);
+	
+	
 	private final ObjectProperty<Reponse> reponse = new SimpleObjectProperty<Reponse>();
 	private final ObjectProperty<Reponse> reponse2 = new SimpleObjectProperty<Reponse>();
 	private final ObjectProperty<Reponse> reponse3 = new SimpleObjectProperty<Reponse>();
@@ -30,8 +39,13 @@ public class Question {
 	// Getters & Setters
 	// -------
 
+	
 	public ObservableList<Media> getMedias() {
 		return medias;
+	}
+
+	public ObservableList<Reponse> getReponses() {
+		return reponses;
 	}
 
 	public final ObjectProperty<Integer> idProperty() {

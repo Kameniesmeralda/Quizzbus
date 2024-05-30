@@ -1,10 +1,12 @@
 package quizzbus.dao;
 
 import java.sql.SQLException;
-import java.util.List;
-import quizzbus.data.Theme;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import jfox.jdbc.DaoAbstract;
 import jfox.jdbc.Query;
+import quizzbus.data.Theme;
 
 public class DaoTheme extends DaoAbstract {
 	
@@ -60,9 +62,11 @@ public class DaoTheme extends DaoAbstract {
 		return query.getSingleResult( this::build );
 	}
 
-	public List<Theme> listerTout()   {
+	public ObservableList<Theme> listerTout()   {
 		var query = createQuery(  "SELECT * FROM Theme ORDER BY nom" );
-		return query.getResultList( this::build );
+		ObservableList<Theme> lt = FXCollections.observableArrayList();
+		lt.addAll(query.getResultList( this::build ));
+		return lt;
 	}
 
 
