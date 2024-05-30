@@ -39,6 +39,11 @@ public class Generer {
 	public final void setStatistique(final Statistique statistique) {
 		this.statistiqueProperty().set(statistique);
 	}
+
+	@Override
+	public String toString() {
+		return "Generer [resultat=" + resultat + ", statistique=" + statistique + "]";
+	}
 	
 
 	

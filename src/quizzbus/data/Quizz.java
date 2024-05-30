@@ -70,6 +70,10 @@ public class Quizz {
 	public final void setTheme(final Theme theme) {
 		this.themeProperty().set(theme);
 	}
+	@Override
+	public String toString() {
+		return "N°"+getId();
+	}
 	
 	
 	

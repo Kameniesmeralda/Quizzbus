@@ -92,6 +92,11 @@ public class Joueur {
 		return Objects.equals(categorie, other.categorie) && Objects.equals(id, other.id)
 				&& Objects.equals(poste, other.poste) && Objects.equals(ville, other.ville);
 	}
+
+	@Override
+	public String toString() {
+		return "Joueur [id=" + id + ", ville=" + ville + ", categorie=" + categorie + ", poste=" + poste + "]";
+	}
 	
 	
 	

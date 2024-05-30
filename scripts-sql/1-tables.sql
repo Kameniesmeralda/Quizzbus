@@ -40,8 +40,7 @@ CREATE TABLE Poste(
 
 CREATE TABLE Question(
    idquestion SERIAL,
-   enonce VARCHAR(50) NOT NULL,
-   explication VARCHAR(50) NOT NULL,
+   enonce VARCHAR(200) NOT NULL,
    idastuce INTEGER NOT NULL,
    PRIMARY KEY(idquestion),
    FOREIGN KEY(idastuce) REFERENCES Astuce(idastuce)
@@ -49,7 +48,7 @@ CREATE TABLE Question(
 
 CREATE TABLE Theme(
    idtheme SERIAL,
-   nom VARCHAR(50) NOT NULL,
+   nom VARCHAR(100) NOT NULL,
    description TEXT NOT NULL,
    PRIMARY KEY(idtheme)
 );
@@ -84,7 +83,7 @@ CREATE TABLE Statistique(
 
 CREATE TABLE Quiz(
    idquizz SERIAL,
-   description VARCHAR(50) NOT NULL,
+   description VARCHAR(200) NOT NULL,
    idtheme INTEGER NOT NULL,
    PRIMARY KEY(idquizz),
    FOREIGN KEY(idtheme) REFERENCES Theme(idtheme)
@@ -100,11 +99,19 @@ CREATE TABLE Configuration_Poste(
 
 CREATE TABLE Reponse(
    idreponse SERIAL,
-   libelle VARCHAR(50) NOT NULL,
+   libelle VARCHAR(100) NOT NULL,
    vraie BOOLEAN NOT NULL,
    idquestion INTEGER,
    PRIMARY KEY(idreponse),
-   FOREIGN KEY(idquestion) REFERENCES Question(idquestion)
+   FOREIGN KEY (idquestion) REFERENCES Question(idquestion)
+);
+
+CREATE TABLE avoir(
+   idquestion INTEGER,
+   idtheme INTEGER,
+   PRIMARY KEY(idquestion,idtheme),
+   FOREIGN KEY(idquestion) REFERENCES Question(idquestion),
+   FOREIGN KEY(idtheme)REFERENCES Theme(idtheme)
 );
 
 CREATE TABLE administrer(
@@ -178,4 +185,5 @@ CREATE TABLE generer(
    FOREIGN KEY(idresultat) REFERENCES Resultat(idresultat),
    FOREIGN KEY(idstat) REFERENCES Statistique(idstat)
 );
+
 

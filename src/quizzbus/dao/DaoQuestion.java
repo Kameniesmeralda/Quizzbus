@@ -22,7 +22,6 @@ public class DaoQuestion extends DaoAbstract {
 	
 	protected void setData( Query query, Question question ) throws SQLException {
 		query.set( "enonce ",		question.getEnonce());
-		query.set( "explication",		question.getExplication() );
 	query.set( "idastuce", question.getAstuce()==null? null:question.getAstuce().getId() );
 		
 	}
@@ -31,7 +30,6 @@ public class DaoQuestion extends DaoAbstract {
 		var question = new Question();
 		question.setId(			query.get( "idquestion", Integer.class ) );
 		question.setEnonce(			query.get( "enonce", String.class ) );
-		question.setExplication(		query.get( "explication", String.class ) );
 		var idAstuce = query.get( "idastuce", Integer.class );
 		if ( idAstuce != null ) {
 			question.setAstuce( daoAstuce.retrouver( idAstuce ) );

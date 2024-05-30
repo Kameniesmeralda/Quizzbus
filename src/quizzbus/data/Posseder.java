@@ -40,6 +40,11 @@ public class Posseder {
 	public final void setResultat(final Resultat resultat) {
 		this.resultatProperty().set(resultat);
 	}
+
+	@Override
+	public String toString() {
+		return "Posseder [quizz=" + quizz + ", resultat=" + resultat + "]";
+	}
 	
 	
 	

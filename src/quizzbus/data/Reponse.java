@@ -99,6 +99,11 @@ public class Reponse {
 				&& Objects.equals(vraie, other.vraie);
 	}
 
+	@Override
+	public String toString() {
+		return "Reponse [id=" + id + ", libelle=" + libelle + ", vraie=" + vraie + ", question=" + question + "]";
+	}
+
 
 	
 	

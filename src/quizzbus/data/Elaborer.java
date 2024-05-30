@@ -9,6 +9,11 @@ public class Elaborer {
 	// Données observables
 	//-------
 			
+	@Override
+	public String toString() {
+		return "Elaborer [compte=" + compte + ", ConfigurationPoste=" + ConfigurationPoste + "]";
+	}
+
 	private final ObjectProperty<Compte>compte = new SimpleObjectProperty<>();
 	private final ObjectProperty<Configuration_Poste>	ConfigurationPoste = new SimpleObjectProperty<>();
 	

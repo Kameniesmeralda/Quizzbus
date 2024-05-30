@@ -53,6 +53,11 @@ public class Media {
 	public final void setDescription(final String description) {
 		this.descriptionProperty().set(description);
 	}
+
+	@Override
+	public String toString() {
+		return "Media [id=" + id + ", titre=" + titre + ", description=" + description + "]";
+	}
 	
 	
 	
