@@ -71,7 +71,7 @@ public class ViewQuestionList extends ControllerAbstract {
 	private void doAjouter() {
 		Question quest = lsvQuestion.getSelectionModel().getSelectedItem();
 		modelQuizz.getDraft().getQuestions().add(quest);
-		managerGui.closeDialog();;
+		managerGui.closeDialog();
 	}
 
 	@FXML
