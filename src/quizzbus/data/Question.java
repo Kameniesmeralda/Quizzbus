@@ -28,12 +28,6 @@ public class Question {
 	private final ObservableList<Reponse>	reponses	= FXCollections.observableArrayList(
 			t ->  new Observable[] { t.libelleProperty(), t.vraieProperty() } 
 		);
-	
-	
-	private final ObjectProperty<Reponse> reponse = new SimpleObjectProperty<Reponse>();
-	private final ObjectProperty<Reponse> reponse2 = new SimpleObjectProperty<Reponse>();
-	private final ObjectProperty<Reponse> reponse3 = new SimpleObjectProperty<Reponse>();
-	private final ObjectProperty<Reponse> reponse4 = new SimpleObjectProperty<Reponse>();
 
 	// -------
 	// Getters & Setters
@@ -84,18 +78,6 @@ public class Question {
 		this.astuceProperty().set(astuce);
 	}
 
-	public final ObjectProperty<Reponse> reponseProperty() {
-		return this.reponse;
-	}
-
-	public final Reponse getReponse() {
-		return this.reponseProperty().get();
-	}
-
-	public final void setReponse(final Reponse reponse) {
-		this.reponseProperty().set(reponse);
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(enonce);
@@ -118,51 +100,5 @@ public class Question {
 
 		return getEnonce();
 	}
-
-	public final ObjectProperty<Reponse> reponse2Property() {
-		return this.reponse2;
-	}
-	
-
-	public final Reponse getReponse2() {
-		return this.reponse2Property().get();
-	}
-	
-
-	public final void setReponse2(final Reponse reponse2) {
-		this.reponse2Property().set(reponse2);
-	}
-	
-
-	public final ObjectProperty<Reponse> reponse3Property() {
-		return this.reponse3;
-	}
-	
-
-	public final Reponse getReponse3() {
-		return this.reponse3Property().get();
-	}
-	
-
-	public final void setReponse3(final Reponse reponse3) {
-		this.reponse3Property().set(reponse3);
-	}
-	
-
-	public final ObjectProperty<Reponse> reponse4Property() {
-		return this.reponse4;
-	}
-	
-
-	public final Reponse getReponse4() {
-		return this.reponse4Property().get();
-	}
-	
-
-	public final void setReponse4(final Reponse reponse4) {
-		this.reponse4Property().set(reponse4);
-	}
-	
-	
 
 }
