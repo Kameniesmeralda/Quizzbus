@@ -41,7 +41,7 @@ CREATE TABLE Poste(
 CREATE TABLE Question(
    idquestion SERIAL,
    enonce VARCHAR(200) NOT NULL,
-   idastuce INTEGER NOT NULL,
+   idastuce INTEGER,
    PRIMARY KEY(idquestion),
    FOREIGN KEY(idastuce) REFERENCES Astuce(idastuce)
 );
