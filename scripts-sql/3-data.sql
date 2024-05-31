@@ -5,9 +5,13 @@ DELETE FROM compte;
 
 
 DELETE FROM Resultat;
-DELETE FROM Configuration_Poste;
+
+
 DELETE FROM Joueur;
 DELETE FROM Poste;
+DELETE FROM Configuration_Poste;
+
+
 DELETE FROM Quiz;
 DELETE FROM avoir;
 DELETE FROM Theme;
@@ -18,8 +22,6 @@ DELETE FROM Statistique;
 DELETE FROM Reponse;
 DELETE FROM Question;
 DELETE FROM Astuce;
-
-
 
 DELETE FROM administrer;
 DELETE FROM elaborer;
@@ -245,11 +247,25 @@ INSERT INTO avoir (idquestion, idtheme) VALUES
 INSERT INTO Media (titre, description) VALUES
 ('Son de la mer', 'Un son de la mer pour détendre.');
 
+
+
+--poste
+INSERT INTO Poste(idposte,libelle) VALUES
+(1,'Poste 1'),
+(2,'Poste 2'),
+(3,'Poste 3');
 --Joueur
---INSERT INTO Joueur (ville, categorie, idposte) VALUES
---('Limoges', 'Cycle 1 et 2', 3),
---('Limoges', 'Cycle 3', 3),
---('Feytiat', 'Gd Public', 3);
+INSERT INTO Joueur (ville, categorie, idposte) VALUES
+('Limoges', 'Cycle 1 et 2', 3),
+('Bordeaux', 'Cycle 3', 3),
+('Saint-Juinien', 'Gd Public', 3);
+
+--Configuration_Poste
+INSERT INTO Configuration_Poste (heure, idposte) VALUES
+('09:00:00', 1),
+('10:00:00', 2),
+('11:00:00', 2);
+
 
 
 --Parcours
@@ -289,11 +305,6 @@ INSERT INTO Quiz (description, idtheme) VALUES
 ('Quiz sur la consommation, l’économie et les bons gestes pour Gd Public', 5);
 
 
---Configuration_Poste
---INSERT INTO Configuration_Poste (heure, idposte) VALUES
---('09:00:00', 1),
---('10:00:00', 2),
---('11:00:00', 2);
 
 --Reponse
 INSERT INTO Reponse (idReponse, libelle, vraie, idQuestion) VALUES
