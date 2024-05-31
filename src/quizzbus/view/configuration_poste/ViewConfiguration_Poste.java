@@ -7,6 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
@@ -20,6 +22,7 @@ import quizzbus.data.Configuration_Poste;
 import quizzbus.data.Parcours;
 import quizzbus.data.Poste;
 import quizzbus.view.ManagerGui;
+import quizzbus.view.joueur.ViewConnexionJoueur;
 
 public class ViewConfiguration_Poste extends ControllerAbstract {
 
@@ -88,16 +91,16 @@ public class ViewConfiguration_Poste extends ControllerAbstract {
 	@FXML
 	public void initialize() {
 
-		var draft = modelConfiPoste.getDraft();
+		//var draft = modelConfiPoste.getDraft();
 
 		// TableView
 		table.setItems(modelConfiPoste.getList());
 		// UtilFX.setCellFactory(lsvQuestion, "description");
 		bindBidirectional(table, modelConfiPoste.currentProperty(), modelConfiPoste.flagRefreshingListProperty());
 		table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		for (int i = 0; i < table.getItems().size(); i++) {
-			table.getSelectionModel().select(i);
-		}
+//		for (int i = 0; i < table.getItems().size(); i++) {
+//			table.getSelectionModel().select(i);
+//		}
 
 		// Configuraiton des boutons
 		table.getSelectionModel().selectedItemProperty().addListener(obs -> {
@@ -111,7 +114,7 @@ public class ViewConfiguration_Poste extends ControllerAbstract {
 	// Actions
 	// -------
 	@FXML
-	void doAjouterPosteASession(ActionEvent event) {
+	void doAjouterPosteASession() {
 		
 		Poste pers = lvListeDePoste.getSelectionModel().getSelectedItem();
 		if (pers == null) {
@@ -135,13 +138,13 @@ public class ViewConfiguration_Poste extends ControllerAbstract {
 	}
 
 	@FXML
-	void doDemarrerSession(ActionEvent event) {
-		modelConfiPoste.saveDraft();
-		//managerGui.showView(ViewPoste.class);
+	void doDemarrerSession() {
+		//modelConfiPoste.saveDraft();
+		managerGui.showView(ViewConnexionJoueur.class);
 	}
 
 	@FXML
-	void doRechercher(ActionEvent event) {
+	void doRechercher() {
 
 	}
 
@@ -156,6 +159,20 @@ public class ViewConfiguration_Poste extends ControllerAbstract {
 		var items = table.getSelectionModel().getSelectedItems();
 		table.getItems().removeAll(items);
 	}
+	
+	// Clic sur la liste
+		@FXML
+		private void gererClicSurListe( MouseEvent event ) {
+			if (event.getButton().equals(MouseButton.PRIMARY)) {
+				if (event.getClickCount() == 2) {
+					if ( table.getSelectionModel().getSelectedIndex() == -1 ) {
+						managerGui.showDialogError( "Aucun élément n'est sélectionné dans la liste.");
+					} else {
+						doAjouterPosteASession();
+					}
+				}
+			}
+		}
 
 	// -------
 	// Méthodes auxiliaires
@@ -165,7 +182,7 @@ public class ViewConfiguration_Poste extends ControllerAbstract {
 		var flagDisable = table.getSelectionModel().getSelectedItem() == null;
 		btnAjouter.setDisable(flagDisable);
 		btnSupprimer.setDisable(flagDisable);
-		btnDemarrerSession.setDisable(flagDisable);
+		//btnDemarrerSession.setDisable(flagDisable);
 		btnSupprimerSession.setDisable(flagDisable);
 	}
 

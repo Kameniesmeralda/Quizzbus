@@ -91,7 +91,7 @@ CREATE TABLE Quiz(
 
 CREATE TABLE Configuration_Poste(
    idconf SERIAL,
-   heure TIME NOT NULL,
+   heure TIME ,
    idposte INTEGER NOT NULL,
    PRIMARY KEY(idconf),
    FOREIGN KEY(idposte) REFERENCES Poste(idposte)

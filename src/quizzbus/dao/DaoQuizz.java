@@ -21,7 +21,7 @@ public class DaoQuizz extends DaoAbstract {
 	//-------
 	
 	protected void setData( Query query, Quizz quizz ) throws SQLException {
-		query.set( "description ",		quizz.getDescription());
+		query.set( "description",		quizz.getDescription());
 	query.set( "idtheme", quizz.getTheme()==null? null:quizz.getTheme().getId() );
 		
 	}
