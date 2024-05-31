@@ -30,8 +30,6 @@ public class ViewReponseForm extends ControllerAbstract {
 	private ManagerGui managerGui;
 	@Inject
 	private ModelReponse modelReponse;
-	@Inject
-	private ModelQuestion modelQuestion;
 
 	// -------
 	// Initialisations
@@ -54,7 +52,7 @@ public class ViewReponseForm extends ControllerAbstract {
 
 	@FXML
 	private void doAjouter() {
-		modelQuestion.getDraft().getReponses().add(modelReponse.getDraft());
+		modelReponse.saveDraft();
 		managerGui.showView(ViewQuestionForm.class);
 //		managerGui.closeDialog();
 	}

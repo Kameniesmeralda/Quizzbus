@@ -25,7 +25,12 @@ public class ViewQuestionForm extends ControllerAbstract {
 	// -------
 	// Composants de la vue
 	// -------
-
+	@FXML
+	private CheckBox ckbVraie;
+	
+	@FXML
+	private TextArea txaReponse;
+	
 	@FXML
 	private ListView<Reponse> lsvReponse;
 
@@ -80,6 +85,7 @@ public class ViewQuestionForm extends ControllerAbstract {
 
 	@Inject
 	private ManagerGui managerGui;
+	
 	@Inject
 	private ModelQuestion modelQuestion;
 
@@ -93,36 +99,18 @@ public class ViewQuestionForm extends ControllerAbstract {
 	@FXML
 	private void initialize() {
 		var draft = modelQuestion.getDraft();
+		var draft1 = modelReponse.getDraft();
+
+		bindBidirectional(ckbVraie, draft1.vraieProperty());
+		bindBidirectional(txaReponse, draft1.libelleProperty());
+		
+		validator.addRuleNotBlank(txaReponse);
 
 		// Question
 		bindBidirectional(txaQuestion, draft.enonceProperty());
 		validator.addRuleNotBlank(txaQuestion);
 		validator.addRuleMaxLength(txaQuestion, 100);
-//
-//		// propsition 1
-//		bindBidirectional(txfProp1, modelQuestion.proposition1Property());
-//		bindBidirectional(chbProp1, modelQuestion.flag1Property());
-//		validator.addRuleNotBlank(txfProp1);
-//		validator.addRuleMaxLength(txfProp1, 100);
-//
-//		// propsition 2
-//		bindBidirectional(txfProp2, modelQuestion.proposition2Property());
-//		bindBidirectional(chbProp2, modelQuestion.flag2Property());
-//		validator.addRuleNotBlank(txfProp2);
-//		validator.addRuleMaxLength(txfProp2, 100);
-//
-//		// propsition 3
-//		bindBidirectional(txfProp3, modelQuestion.proposition3Property());
-//		bindBidirectional(chbProp3, modelQuestion.flag3Property());
-//		validator.addRuleNotBlank(txfProp2);
-//		validator.addRuleMaxLength(txfProp2, 100);
-//
-//		// propsition 4
-//		bindBidirectional(txfProp1, modelQuestion.proposition4Property());
-//		bindBidirectional(chbProp1, modelQuestion.flag4Property());
-//		validator.addRuleNotBlank(txfProp2);
-//		validator.addRuleMaxLength(txfProp2, 100);
-//
+
 		// Astuce
 		bindBidirectional(txaAstuce, modelQuestion.astuceProperty());
 		validator.addRuleNotBlank(txaAstuce);
@@ -138,9 +126,9 @@ public class ViewQuestionForm extends ControllerAbstract {
 		imvImage.imageProperty().bindBidirectional(modelQuestion.imageProperty());
 
 		// ListView
-		lsvReponse.setItems(modelReponse.getList());
+		lsvReponse.setItems(draft.getReponses());
 		UtilFX.setCellFactory(lsvReponse, "libelle");
-		bindBidirectional(lsvReponse, modelReponse.currentProperty(), modelReponse.flagRefreshingListProperty());
+		
 	}
 
 //	@Override
@@ -182,7 +170,12 @@ public class ViewQuestionForm extends ControllerAbstract {
 
 	@FXML
 	void doAjouterNewReponse() {
-		managerGui.showView(ViewReponseForm.class);
+		Reponse rep = new Reponse();
+		rep.setLibelle(txaReponse.getText());
+		rep.setVraie(ckbVraie.isSelected());
+		modelReponse.setCurrent(rep);
+		modelReponse.saveDraft();
+		modelQuestion.getDraft().getReponses().add(rep);
 	}
 
 	@FXML

@@ -17,7 +17,6 @@ public class Reponse {
 	private final ObjectProperty<Integer>	id			= new SimpleObjectProperty<>();
 	private final StringProperty			libelle		= new SimpleStringProperty();
 	private final BooleanProperty			vraie	= new SimpleBooleanProperty();
-	private final ObjectProperty<Question>	question = new SimpleObjectProperty<>();
 	
 
 	//-------
@@ -60,21 +59,6 @@ public class Reponse {
 	public final void setVraie(final boolean vraie) {
 		this.vraieProperty().set(vraie);
 	}
-	
-	public final ObjectProperty<Question> questionProperty() {
-		return this.question;
-	}
-	
-
-	public final Question getQuestion() {
-		return this.questionProperty().get();
-	}
-	
-
-	public final void setQuestion(final Question question) {
-		this.questionProperty().set(question);
-	}
-	
 
 	//-------
 	// hashCode() & equals()
@@ -101,7 +85,7 @@ public class Reponse {
 
 	@Override
 	public String toString() {
-		return "Reponse [id=" + id + ", libelle=" + libelle + ", vraie=" + vraie + ", question=" + question + "]";
+		return "Reponse [id=" + id + ", libelle=" + libelle + ", vraie=" + vraie + "]";
 	}
 
 

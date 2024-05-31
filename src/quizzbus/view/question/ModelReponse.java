@@ -62,6 +62,8 @@ public class ModelReponse {
 	@Inject
 	private DaoMedia daoMedia;
 	@Inject
+	private ModelQuestion modelQuestion;
+	@Inject
 	private ModelConfig modelConfig; // Aaron
 
 	private boolean flagModifImage;
@@ -121,6 +123,7 @@ public class ModelReponse {
 	}
 
 	public void initDraft(Mode mode) {
+		refreshList();
 		this.mode = mode;
 		if (mode == Mode.NEW) {
 			mapper.update(draft, new Reponse());
@@ -128,8 +131,6 @@ public class ModelReponse {
 		} else {
 			setCurrent(daoReponse.retrouver(getCurrent().getId()));
 			mapper.update(draft, getCurrent());
-
-			
 		}
 		// Aaron
 		var chemin = getCheminImageCourante();
@@ -169,9 +170,9 @@ public class ModelReponse {
 		 * 
 		 **/
 
-		daoReponse.inserer(draft);
 		if (mode == Mode.NEW) {
 			// Insertion
+			modelQuestion.getDraft().getReponses().add(draft);
 			// Actualise le courant
 			setCurrent(mapper.update(new Reponse(), draft));
 		} else {
