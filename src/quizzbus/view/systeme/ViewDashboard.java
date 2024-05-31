@@ -24,7 +24,7 @@ public class ViewDashBoard extends ControllerAbstract{
 			
 			// ListView des comptes
 			lvQuizz.setItems( modelQuizz.getList() );
-			UtilFX.setCellFactory( lvQuizz, "pseudo" );
+			UtilFX.setCellFactory( lvQuizz, "description" );
 			bindBidirectional( lvQuizz, modelQuizz.currentProperty(), modelQuizz.flagRefreshingListProperty() );
 
 		
