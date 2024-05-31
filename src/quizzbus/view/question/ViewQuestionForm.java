@@ -15,7 +15,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import jfox.javafx.util.UtilFX;
-import jfox.javafx.util.converter.ConverterInteger;
+//import jfox.javafx.util.converter.ConverterInteger;
 import jfox.javafx.view.ControllerAbstract;
 import quizzbus.data.Reponse;
 import quizzbus.view.ManagerGui;

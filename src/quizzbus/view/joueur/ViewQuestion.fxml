@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="673.0" prefWidth="657.0" style="-fx-background-radius: 50px; -fx-background-color: #f8f5ec;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" layoutX="57.0" layoutY="-1.0" prefHeight="674.0" prefWidth="554.0">
@@ -28,27 +27,27 @@
                         <Font name="Verdana Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="77.0" prefWidth="348.0" text="Label" />
+                  <Label fx:id="question" prefHeight="77.0" prefWidth="348.0" text="Label" />
                </children>
             </HBox>
             <VBox alignment="CENTER" prefHeight="156.0" prefWidth="462.0">
                <children>
-                  <RadioButton mnemonicParsing="false" prefHeight="40.0" prefWidth="138.0" text="Reponse 1">
+                  <RadioButton fx:id="res1" mnemonicParsing="false" onAction="#repondre1" prefHeight="40.0" prefWidth="138.0" text="Reponse 1">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" prefHeight="40.0" prefWidth="138.0" text="Reponse 2">
+                  <RadioButton fx:id="res2" mnemonicParsing="false" onAction="#repondre2" prefHeight="40.0" prefWidth="138.0" text="Reponse 2">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" prefHeight="40.0" prefWidth="138.0" text="Reponse 3">
+                  <RadioButton fx:id="res3" mnemonicParsing="false" onAction="#repondre3" prefHeight="40.0" prefWidth="138.0" text="Reponse 3">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" prefHeight="40.0" prefWidth="138.0" text="Reponse 4">
+                  <RadioButton fx:id="res4" mnemonicParsing="false" onAction="#repondre4" prefHeight="40.0" prefWidth="138.0" text="Reponse 4">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -57,7 +56,7 @@
             </VBox>
             <HBox alignment="CENTER" prefHeight="94.0" prefWidth="472.0" spacing="100.0">
                <children>
-                  <Button graphicTextGap="10.0" layoutX="204.0" layoutY="44.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" text="Astuce">
+                  <Button fx:id="astuce" graphicTextGap="10.0" layoutX="204.0" layoutY="44.0" mnemonicParsing="false" onAction="#astuce" prefHeight="30.0" prefWidth="95.0" text="Astuce">
                      <graphic>
                         <FontIcon iconLiteral="antf-bulb" iconSize="15" text="" />
                      </graphic>
@@ -65,7 +64,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button graphicTextGap="10.0" layoutX="115.0" layoutY="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="94.0" text="Retour">
+                  <Button fx:id="retour" graphicTextGap="10.0" layoutX="115.0" layoutY="43.0" mnemonicParsing="false" onAction="#doRetour" prefHeight="30.0" prefWidth="94.0" text="Retour">
                      <graphic>
                         <FontIcon iconLiteral="anto-arrow-left" iconSize="20" />
                      </graphic>
@@ -73,7 +72,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button graphicTextGap="10.0" layoutX="108.0" layoutY="43.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="99.0" text="suivant">
+                  <Button fx:id="suivant" graphicTextGap="10.0" layoutX="108.0" layoutY="43.0" mnemonicParsing="false" onAction="#doSuivant" prefHeight="30.0" prefWidth="99.0" text="suivant">
                      <graphic>
                         <FontIcon iconLiteral="anto-arrow-right" iconSize="20" />
                      </graphic>

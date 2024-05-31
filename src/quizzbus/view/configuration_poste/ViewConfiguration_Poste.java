@@ -22,6 +22,7 @@ import quizzbus.data.Configuration_Poste;
 import quizzbus.data.Parcours;
 import quizzbus.data.Poste;
 import quizzbus.view.ManagerGui;
+import quizzbus.view.joueur.ViewConnexionJoueur;
 
 public class ViewConfiguration_Poste extends ControllerAbstract {
 
@@ -138,8 +139,8 @@ public class ViewConfiguration_Poste extends ControllerAbstract {
 
 	@FXML
 	void doDemarrerSession() {
-		modelConfiPoste.saveDraft();
-		//managerGui.showView(ViewPoste.class);
+		//modelConfiPoste.saveDraft();
+		managerGui.showView(ViewConnexionJoueur.class);
 	}
 
 	@FXML

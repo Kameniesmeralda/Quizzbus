@@ -25,10 +25,10 @@ import jfox.javafx.view.Mode;
 import quizzbus.commun.IMapper;
 import quizzbus.dao.DaoMedia;
 import quizzbus.dao.DaoQuestion;
-import quizzbus.dao.DaoReponse;
+//import quizzbus.dao.DaoReponse;
 import quizzbus.data.Media;
 import quizzbus.data.Question;
-import quizzbus.data.Reponse;
+//import quizzbus.data.Reponse;
 import quizzbus.view.systeme.ModelConfig;
 
 public class ModelQuestion {

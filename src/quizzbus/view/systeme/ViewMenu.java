@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import jfox.javafx.view.ControllerAbstract;
 import quizzbus.view.ManagerGui;
 import quizzbus.view.configuration_poste.ViewConfiguration_Poste;
+import quizzbus.view.joueur.ViewConnexionJoueur;
 import quizzbus.view.quizz.ViewGestionQuizzList;
 
 public class ViewMenu extends ControllerAbstract {
@@ -28,7 +29,7 @@ public class ViewMenu extends ControllerAbstract {
 	@FXML
 	private void doUtilisateur() {
 		System.out.println("Dashboard");
-		managerGui.showView( ViewDashBoard.class );
+		managerGui.showView( ViewConnexionJoueur.class );
 	}
 	
 	@FXML

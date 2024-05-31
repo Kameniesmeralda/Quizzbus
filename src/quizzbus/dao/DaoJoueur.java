@@ -3,6 +3,8 @@ package quizzbus.dao;
 import java.sql.SQLException;
 import java.util.List;
 import jakarta.inject.Inject;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import quizzbus.data.Joueur;
 import jfox.jdbc.DaoAbstract;
 import jfox.jdbc.Query;
@@ -73,6 +75,20 @@ public class DaoJoueur extends DaoAbstract {
 		return query.getResultList( this::build );
 	}
 
-	
+	public ObservableList<String> listerCategories()throws SQLException {
+        var query = createQuery("SELECT DISTINCT categorie FROM Joueur ORDER BY categorie");
+        return FXCollections.observableArrayList(query.getResultList(rs -> {
+            return rs.get("categorie", String.class);
+        }));
+    }
+
+    // Méthode pour lister toutes les villes
+	public ObservableList<String> listerVilles() throws SQLException {
+        var query = createQuery("SELECT DISTINCT ville FROM Joueur ORDER BY ville");
+        return FXCollections.observableArrayList(query.getResultList(rs -> {
+            return rs.get("ville", String.class);
+        }));
+    }
+
 	
 }
