@@ -6,7 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import jfox.jdbc.DaoAbstract;
 import jfox.jdbc.Query;
-import quizzbus.data.Question;
+//import quizzbus.data.Question;
 import quizzbus.data.Theme;
 
 public class DaoTheme extends DaoAbstract {

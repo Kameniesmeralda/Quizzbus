@@ -21,7 +21,7 @@ public class DaoQuestion extends DaoAbstract {
 	private DaoAstuce daoAstuce;
 	
 	@Inject
-	private DaoReponse daoReponse;
+	//private DaoReponse daoReponse;
 	//-------
 	// Méthodes auxiliaires
 	//-------

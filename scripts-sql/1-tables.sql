@@ -186,4 +186,11 @@ CREATE TABLE generer(
    FOREIGN KEY(idstat) REFERENCES Statistique(idstat)
 );
 
-
+CREATE TABLE etre_associer(
+    idquestion INTEGER,
+    idreponse INTEGER,
+    vraie BOOLEAN NOT NULL,
+    PRIMARY KEY(idquestion, idreponse),
+    FOREIGN KEY(idquestion) REFERENCES Question(idquestion),
+    FOREIGN KEY(idreponse) REFERENCES Reponse(idreponse)
+);

@@ -16,19 +16,19 @@ public class DaoReponse extends DaoAbstract {
 	
 	private static final String sqlDefault = "SELECT * FROM Reponse WHERE idreponse = ?";
 	@Inject
-	private DaoQuestion daoQuestion;
+	//private DaoQuestion daoQuestion;
 	//-------
 	// Méthodes auxiliaires
 	//-------
 	
 	protected void setData( Query query, Reponse reponse ) throws SQLException {
 		query.set( "libelle ",		reponse.getLibelle());
-		query.set( "vraie",		reponse.isVraie() );
-<<<<<<< HEAD
+		//query.set( "vraie",		reponse.isVraie() );
+
 //		query.set( "idquestion", reponse.getQuestion()==null? null:reponse.getQuestion().getId() );
-=======
+
 		//query.set( "idquestion", reponse.getQuestion()==null? null:reponse.getQuestion().getId() );
->>>>>>> 6d5a8dcfad4ea1419e8f912b039d44ad68ff9b2e
+
 		
 	}
 	
@@ -36,16 +36,13 @@ public class DaoReponse extends DaoAbstract {
 		var reponse = new Reponse();
 		reponse.setId(			query.get( "idreponse", Integer.class ) );
 		reponse.setLibelle(			query.get( "libelle", String.class ) );
-		reponse.setVraie(		query.get( "vraie", Boolean.class ) );
-<<<<<<< HEAD
-		
-		
-=======
+		//reponse.setVraie(		query.get( "vraie", Boolean.class ) );
+
 		var idQuestion= query.get( "idquestion", Integer.class );
 		if ( idQuestion != null ) {
 		//	reponse.setQuestion( daoQuestion.retrouver( idQuestion ) );
 		}
->>>>>>> 6d5a8dcfad4ea1419e8f912b039d44ad68ff9b2e
+
 		return reponse;
 	}
 

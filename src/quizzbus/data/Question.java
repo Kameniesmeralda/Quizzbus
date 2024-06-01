@@ -2,7 +2,6 @@ package quizzbus.data;
 
 import java.util.Objects;
 
-import javafx.beans.Observable;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -25,9 +24,7 @@ public class Question {
 	// -------
 	// AUtres Données observables
 	// -------
-	private final ObservableList<Reponse>	reponses	= FXCollections.observableArrayList(
-			t ->  new Observable[] { t.libelleProperty(), t.vraieProperty() } 
-		);
+	private final ObservableList<Reponse>	reponses	= FXCollections.observableArrayList();
 
 	// -------
 	// Getters & Setters

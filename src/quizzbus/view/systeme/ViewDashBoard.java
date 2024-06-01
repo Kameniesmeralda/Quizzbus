@@ -28,8 +28,11 @@ public class ViewDashBoard extends ControllerAbstract{
 			UtilFX.setCellFactory( lvQuizz, "description" );
 			bindBidirectional( lvQuizz, modelQuizz.currentProperty(), modelQuizz.flagRefreshingListProperty() );
 
-		
-
 			
 	}
+		
+		@Override
+		public void refresh() {
+			modelQuizz.refreshList();
+		}
 }

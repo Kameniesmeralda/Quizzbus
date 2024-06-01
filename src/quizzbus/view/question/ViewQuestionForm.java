@@ -85,7 +85,7 @@ public class ViewQuestionForm extends ControllerAbstract {
 		var draft = modelQuestion.getDraft();
 		var draft1 = modelReponse.getDraft();
 
-		bindBidirectional(ckbVraie, draft1.vraieProperty());
+		//bindBidirectional(ckbVraie, draft1.vraieProperty());
 		bindBidirectional(txaReponse, draft1.libelleProperty());
 
 		validator.addRuleNotBlank(txaReponse);
