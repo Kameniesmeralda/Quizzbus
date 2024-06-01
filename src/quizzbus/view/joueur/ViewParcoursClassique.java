@@ -7,13 +7,13 @@ import jfox.javafx.view.ControllerAbstract;
 import quizzbus.view.ManagerGui;
 
 
-public class ViewParcoursAventure  extends ControllerAbstract {
+public class ViewParcoursClassique  extends ControllerAbstract{
 	
 	@Inject
 	private ManagerGui managerGui;
 	
 	@FXML
-	private void doDemarrerAventure(ActionEvent event) {
+	private void doDemarrerClassique(ActionEvent event) {
 		System.out.println("Dashboard");
 		managerGui.showView(ViewQuestion.class);
 	}
