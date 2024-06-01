@@ -3,6 +3,7 @@ package quizzbus.view.configuration_poste;
 import java.time.LocalTime;
 
 import jakarta.inject.Inject;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -185,5 +186,15 @@ public class ViewConfiguration_Poste extends ControllerAbstract {
 		//btnDemarrerSession.setDisable(flagDisable);
 		btnSupprimerSession.setDisable(flagDisable);
 	}
+	
+//	private void chargerEtAfficherPostesDeJeux() {
+//        ObservableList<Poste> postes = ModelConfiguration_Poste.getPostes();
+//        lvListeDePoste.setItems(postes);
+//    }
+	
+	 private void initializePostesList() {
+	        modelConfiPoste.refreshPostesList();
+	        lvListeDePoste.setItems(modelConfiPoste.getListPostes());
+	    }
 
 }
