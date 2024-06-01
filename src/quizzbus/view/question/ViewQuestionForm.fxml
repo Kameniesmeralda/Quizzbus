@@ -3,6 +3,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
@@ -87,13 +88,9 @@
                      </VBox.margin>
                   </Label>
 <<<<<<< HEAD
-<<<<<<< HEAD
-                  <HBox prefHeight="307.0" prefWidth="486.0">
+                  <HBox prefHeight="366.0" prefWidth="486.0">
 =======
                   <HBox prefHeight="324.0" prefWidth="486.0">
->>>>>>> dev
-=======
-                  <HBox prefHeight="366.0" prefWidth="486.0">
 >>>>>>> dev
                      <children>
                         <ListView fx:id="lsvReponse" onMouseClicked="#gererClicSurListe" prefHeight="337.0" prefWidth="294.0" />
