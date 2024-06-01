@@ -13,14 +13,11 @@
       <Label alignment="CENTER" styleClass="titre-vue" text="QUESTION" textFill="#1a9cc4" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
          <font>
             <Font name="Times New Roman Bold" size="18.0" />
-         </font></Label>
+         </font>
+      </Label>
       <HBox alignment="CENTER" layoutY="79.2" prefHeight="561.0" prefWidth="700.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.0">
          <children>
-            <ListView fx:id="lsvQuestion" layoutX="88.0" layoutY="75.0" onMouseClicked="#gererClicSurListe" prefHeight="550.0" prefWidth="500.0">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </ListView>
+            <ListView fx:id="lsvQuestion" layoutX="88.0" layoutY="75.0" onMouseClicked="#gererClicSurListe" prefHeight="550.0" prefWidth="500.0" />
          </children>
       </HBox>
       <HBox alignment="CENTER" layoutY="263.0" prefHeight="60.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -28,7 +25,8 @@
             <Button mnemonicParsing="false" onAction="#doAjouter" text="Ajouter" textFill="#1a9cc4">
                <font>
                   <Font name="System Bold" size="14.0" />
-               </font></Button>
+               </font>
+            </Button>
             <Button fx:id="btnCreer" mnemonicParsing="false" onAction="#doCreation" prefHeight="30.0" prefWidth="82.0" text="Créer" textFill="#1a9cc4">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -37,11 +35,13 @@
             <Button fx:id="btnModifier" mnemonicParsing="false" onAction="#doModifier" text="Modifier" textFill="#1a9cc4">
                <font>
                   <Font name="System Bold" size="14.0" />
-               </font></Button>
+               </font>
+            </Button>
             <Button fx:id="btnSupprimer" mnemonicParsing="false" onAction="#doSupprimer" text="Supprimer" textFill="#1a9cc4">
                <font>
                   <Font name="System Bold" size="14.0" />
-               </font></Button>
+               </font>
+            </Button>
          </children>
       </HBox>
    </children>
