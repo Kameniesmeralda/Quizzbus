@@ -89,11 +89,13 @@ public class ViewConnexionJoueur extends ControllerAbstract {
 	}
 
     @FXML
-    void doConnect(ActionEvent event) {
-    	Parcours mode= cbParcours.getValue();
+    private void doConnect(ActionEvent event) {
+    	Parcours mode= cbParcours.getSelectionModel().getSelectedItem();
     	String parcours= mode.getMode();
-    	if(parcours=="Quizz individuel") {
-    		//managerGui.showView(ViewParcoursClassique.class);
+    	if(parcours.equals("Quizz individuel")) {
+    		managerGui.showView(ViewParcoursClassique.class);
+    	}else if(parcours.equals("Mode parcours") ){
+    		managerGui.showView(ViewParcoursAventure.class);
     	}
     }
 
