@@ -6,7 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -14,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
+import jfox.javafx.control.EditingCell;
 import jfox.javafx.util.UtilFX;
 //import jfox.javafx.util.converter.ConverterInteger;
 import jfox.javafx.view.ControllerAbstract;
@@ -26,25 +29,18 @@ public class ViewQuestionForm extends ControllerAbstract {
 	// Composants de la vue
 	// -------
 	@FXML
+	private TableColumn<Reponse, String> tableReponse;
+
+	@FXML
+	private TableView<Reponse> tableView;
+
+	@FXML
+	private TableColumn<Reponse, Boolean> tableVraie;
+	@FXML
 	private CheckBox ckbVraie;
-	
+
 	@FXML
 	private TextArea txaReponse;
-	
-	@FXML
-	private ListView<Reponse> lsvReponse;
-
-	@FXML
-	private CheckBox chbProp1;
-
-	@FXML
-	private CheckBox chbProp2;
-
-	@FXML
-	private CheckBox chbProp3;
-
-	@FXML
-	private CheckBox chbProp4;
 
 	@FXML
 	private ImageView imvImage;
@@ -57,18 +53,6 @@ public class ViewQuestionForm extends ControllerAbstract {
 
 	@FXML
 	private TextArea txaQuestion;
-
-	@FXML
-	private TextField txfProp1;
-
-	@FXML
-	private TextField txfProp2;
-
-	@FXML
-	private TextField txfProp3;
-
-	@FXML
-	private TextField txfProp4;
 
 	@FXML
 	private TextField txfTheme;
@@ -85,7 +69,7 @@ public class ViewQuestionForm extends ControllerAbstract {
 
 	@Inject
 	private ManagerGui managerGui;
-	
+
 	@Inject
 	private ModelQuestion modelQuestion;
 
@@ -103,7 +87,7 @@ public class ViewQuestionForm extends ControllerAbstract {
 
 		bindBidirectional(ckbVraie, draft1.vraieProperty());
 		bindBidirectional(txaReponse, draft1.libelleProperty());
-		
+
 		validator.addRuleNotBlank(txaReponse);
 
 		// Question
@@ -124,10 +108,15 @@ public class ViewQuestionForm extends ControllerAbstract {
 
 		// imageview
 		imvImage.imageProperty().bindBidirectional(modelQuestion.imageProperty());
-
-		// ListView
-		lsvReponse.setItems(draft.getReponses());
-		UtilFX.setCellFactory(lsvReponse, "libelle");
+		
+		//Liste des reponses
+		tableView.setItems(modelQuestion.getDraft().getReponses());
+		tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		
+		UtilFX.setValueFactory( tableReponse, "libelle" );
+		UtilFX.setValueFactory( tableVraie, "vraie" );
+		
+		tableReponse.setCellFactory(  p -> new EditingCell<>() );
 		
 	}
 
@@ -170,12 +159,18 @@ public class ViewQuestionForm extends ControllerAbstract {
 
 	@FXML
 	void doAjouterNewReponse() {
-		Reponse rep = new Reponse();
-		rep.setLibelle(txaReponse.getText());
-		rep.setVraie(ckbVraie.isSelected());
-		modelReponse.setCurrent(rep);
-		modelReponse.saveDraft();
-		modelQuestion.getDraft().getReponses().add(rep);
+		tableView.getItems().add(new Reponse());
+		tableView.requestFocus();
+		var index = tableView.getItems().size() - 1;
+		tableView.getSelectionModel().select(index);
+		tableView.scrollTo(index);
+		
+//		Reponse rep = new Reponse();
+//		rep.setLibelle(txaReponse.getText());
+//		rep.setVraie(ckbVraie.isSelected());
+//		modelReponse.setCurrent(rep);
+//		modelReponse.saveDraft();
+//		modelQuestion.getDraft().getReponses().add(rep);
 	}
 
 	@FXML
@@ -191,11 +186,9 @@ public class ViewQuestionForm extends ControllerAbstract {
 	private void gererClicSurListe(MouseEvent event) {
 		if (event.getButton().equals(MouseButton.PRIMARY)) {
 			if (event.getClickCount() == 2) {
-				if (lsvReponse.getSelectionModel().getSelectedIndex() == -1) {
+				if (tableView.getSelectionModel().getSelectedIndex() == -1) {
 					managerGui.showDialogError("Aucun élément n'est sélectionné dans la liste.");
-				} else {
-					doSupprimerReponse();
-				}
+				} 
 			}
 		}
 	}

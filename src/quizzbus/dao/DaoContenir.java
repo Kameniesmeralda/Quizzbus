@@ -45,6 +45,6 @@ public class DaoContenir extends DaoAbstract {
 		public List<Question> listerPourQuizz(Quizz quizz) {
 			var query = createQuery(  "SELECT qe.* FROM contenir c JOIN Question qe ON c.idquestion = qe.idquestion WHERE c.idquizz = ? ORDER BY qe.enonce" );
 			query.setParam( 1, quizz.getId() );
-			return query.getResultList( daoQuestion::build );
+			return query.getResultList( daoQuestion::build  );
 		}
 }
