@@ -24,7 +24,11 @@ public class DaoReponse extends DaoAbstract {
 	protected void setData( Query query, Reponse reponse ) throws SQLException {
 		query.set( "libelle ",		reponse.getLibelle());
 		query.set( "vraie",		reponse.isVraie() );
+<<<<<<< HEAD
 //		query.set( "idquestion", reponse.getQuestion()==null? null:reponse.getQuestion().getId() );
+=======
+		//query.set( "idquestion", reponse.getQuestion()==null? null:reponse.getQuestion().getId() );
+>>>>>>> 6d5a8dcfad4ea1419e8f912b039d44ad68ff9b2e
 		
 	}
 	
@@ -33,8 +37,15 @@ public class DaoReponse extends DaoAbstract {
 		reponse.setId(			query.get( "idreponse", Integer.class ) );
 		reponse.setLibelle(			query.get( "libelle", String.class ) );
 		reponse.setVraie(		query.get( "vraie", Boolean.class ) );
+<<<<<<< HEAD
 		
 		
+=======
+		var idQuestion= query.get( "idquestion", Integer.class );
+		if ( idQuestion != null ) {
+		//	reponse.setQuestion( daoQuestion.retrouver( idQuestion ) );
+		}
+>>>>>>> 6d5a8dcfad4ea1419e8f912b039d44ad68ff9b2e
 		return reponse;
 	}
 

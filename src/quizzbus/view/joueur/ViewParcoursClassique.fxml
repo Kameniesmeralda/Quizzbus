@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizzbus.view.joueur.ViewParcoursClassique">
    <children>
       <ProgressBar layoutX="147.0" layoutY="46.0" prefWidth="200.0" progress="0.95" style="-fx-accent: #3399ff; -fx-background-color: #e6f7ff; -fx-background-radius: 10; -fx-border-radius: 10;" />
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="400.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true">
@@ -25,7 +25,7 @@
             <Image url="@../../../../images/star.jpeg" />
          </image>
       </ImageView>
-      <Button layoutX="132.0" layoutY="211.0" mnemonicParsing="false" onAction="#doDemarrageClassique" style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 1);" text="LET'S GO" textAlignment="CENTER" textFill="#333333">
+      <Button layoutX="139.0" layoutY="220.0" mnemonicParsing="false" onAction="#doDemarrerClassique" style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 1);" text="LET'S GO" textAlignment="CENTER" textFill="#333333">
          <font>
             <Font name="Verdana Bold" size="36.0" />
          </font></Button>
