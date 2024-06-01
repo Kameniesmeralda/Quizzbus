@@ -1,4 +1,3 @@
-Bradley Aaron, [01/06/2024 15:48]
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
@@ -75,7 +74,6 @@ Bradley Aaron, [01/06/2024 15:48]
                       </GridPane.margin>
                     </TextArea>
 
-Bradley Aaron, [01/06/2024 15:48]
 <TextArea fx:id="txaAstuce" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                       <GridPane.margin>
                         <Insets bottom="15.0" top="15.0" />
