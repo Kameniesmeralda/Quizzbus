@@ -170,6 +170,7 @@ public class ModelReponse {
 		 * 
 		 **/
 
+		StringBuilder message = new StringBuilder();
 		if (mode == Mode.NEW) {
 			// Insertion
 			modelQuestion.getDraft().getReponses().add(draft);

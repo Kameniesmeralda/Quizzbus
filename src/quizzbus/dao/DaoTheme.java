@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import jfox.jdbc.DaoAbstract;
 import jfox.jdbc.Query;
+import quizzbus.data.Question;
 import quizzbus.data.Theme;
 
 public class DaoTheme extends DaoAbstract {
@@ -68,7 +69,8 @@ public class DaoTheme extends DaoAbstract {
 		lt.addAll(query.getResultList( this::build ));
 		return lt;
 	}
-
+	
+	
 
 	
 }

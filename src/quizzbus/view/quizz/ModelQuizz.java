@@ -101,6 +101,7 @@ public class ModelQuizz {
 	@PostConstruct
 	public void init() {
 		image.addListener(obs -> flagModifImage = true);
+		
 	}
 
 	public void refreshList() {
@@ -112,12 +113,13 @@ public class ModelQuizz {
 	}
 
 	public void initDraft(Mode mode) {
+		refreshList();
 		this.mode = mode;
 		if (mode == Mode.NEW) {
 			mapper.update(draft, new Quizz());
 		} else {
-			setCurrent(daoQuizz.retrouver(getCurrent().getId()));
 			mapper.update(draft, getCurrent());
+			setCurrent(daoQuizz.retrouver(getCurrent().getId()));			
 		}
 
 		var chemin = getCheminImageCourante();

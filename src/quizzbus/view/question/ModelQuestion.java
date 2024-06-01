@@ -133,8 +133,8 @@ public class ModelQuestion {
 			mapper.update(draft, new Question());
 
 		} else {
-			setCurrent(daoQuestion.retrouver(getCurrent().getId()));
 			mapper.update(draft, getCurrent());
+			setCurrent(daoQuestion.retrouver(getCurrent().getId()));
             
 			setAstuce(draft.getAstuce().getLibelle());
 		}
@@ -175,23 +175,11 @@ public class ModelQuestion {
 		 * mapper.update(getCurrent(), draft); }
 		 * 
 		 **/
-//		draft.getReponse().setLibelle(getProposition1());
-//		draft.getReponse().setVraie(isFlag1());
-//
-//		draft.getReponse2().setLibelle(getProposition2());
-//		draft.getReponse2().setVraie(isFlag2());
-//
-//		draft.getReponse3().setLibelle(getProposition3());
-//		draft.getReponse3().setVraie(isFlag3());
-//
-//		draft.getReponse4().setLibelle(getProposition4());
-//		draft.getReponse4().setVraie(isFlag4());
-//		
-//		draft.getAstuce().setLibelle(getAstuce());
 
-		daoQuestion.inserer(draft);
+		
 		if (mode == Mode.NEW) {
 			// Insertion
+			daoQuestion.inserer(draft);
 			// Actualise le courant
 			setCurrent(mapper.update(new Question(), draft));
 		} else {
