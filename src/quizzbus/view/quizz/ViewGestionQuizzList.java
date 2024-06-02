@@ -77,7 +77,6 @@ public class ViewGestionQuizzList extends ControllerAbstract {
 	@FXML
 	private void doAjouter() {
 		modelQuizz.initDraft(Mode.NEW);
-		;
 		managerGui.showView(ViewGestionQuizzForm.class);
 	}
 

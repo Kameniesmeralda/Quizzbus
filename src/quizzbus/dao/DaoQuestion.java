@@ -48,18 +48,33 @@ public class DaoQuestion extends DaoAbstract {
 	// Actions
 	//-------
 
-	public void inserer(  Question question  )  {
+	/*public void inserer(  Question question  )  {
 		var query = createQuery( sqlDefault );
 		query.insertRow( question, this::setData, true );
 		question.setId( query.get( "idquestion", Integer.class ));
 		query.close();
+	}*/
+	public void inserer(Question question) {
+	    var query = createQuery(sqlDefault);
+		query.executeQuery(); // Initialize the ResultSet
+		query.insertRow(question, this::setData, true);
+		question.setId(query.get("idquestion", Integer.class));
+		query.close();
 	}
-
+/*
 	public void modifier(  Question question   )  {
 		var query = createQuery( sqlDefault );
 		query.setParam( 1, question.getId() );
 		query.updateRow( question, this::setData );
+	}*/
+	public void modifier(Question question) {
+	    var query = createQuery(sqlDefault);
+		query.setParam(1, question.getId());
+		query.executeQuery(); // Initialize the ResultSet
+		query.updateRow(question, this::setData);
+		query.close();
 	}
+
 
 	public void supprimer( int idQuestion )  {
 		var query = createQuery( sqlDefault );
