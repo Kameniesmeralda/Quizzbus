@@ -15,5 +15,6 @@ open module quizzbus {
 	requires de.jensd.fx.glyphs.fontawesome;
 	requires javafx.controls;
 	requires org.kordamp.ikonli.javafx;
+	requires java.sql;
 
 }

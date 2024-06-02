@@ -1,5 +1,8 @@
 package quizzbus.view.configuration_poste;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import jakarta.inject.Inject;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
@@ -12,7 +15,9 @@ import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.Mode;
 import quizzbus.commun.IMapper;
 import quizzbus.dao.DaoConfigurationPoste;
+import quizzbus.dao.DaoPoste;
 import quizzbus.data.Configuration_Poste;
+import quizzbus.data.Poste;
 
 public class ModelConfiguration_Poste {
 	
@@ -28,6 +33,8 @@ public class ModelConfiguration_Poste {
 	
 	private final ObjectProperty<Configuration_Poste>	current	= new SimpleObjectProperty<>();
 	
+	private final ObservableList<Poste> listPostes = FXCollections.observableArrayList();
+	
 	//-------
 	// Autres champs
 	//-------
@@ -37,6 +44,8 @@ public class ModelConfiguration_Poste {
 	private IMapper		mapper;
     @Inject
 	private DaoConfigurationPoste	daoConfigurationPoste;
+    @Inject
+    private DaoPoste daoPoste;
 
 	//-------
 	// Getters & Setters
@@ -129,5 +138,13 @@ public class ModelConfiguration_Poste {
 		// Détermine le nouveau courant
 		setCurrent( UtilFX.findNext( list, getCurrent() ) );
 	}
+	
+	 public ObservableList<Poste> getListPostes() {
+	        return listPostes;
+	    }
+
+	 public void refreshPostesList() {
+	        listPostes.setAll(daoPoste.listerTout());
+	    }
 
 }
