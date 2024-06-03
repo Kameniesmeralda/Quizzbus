@@ -1,5 +1,7 @@
 package quizzbus.view.question;
 
+import java.sql.SQLException;
+
 import jakarta.inject.Inject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -110,7 +112,7 @@ public class ViewQuestionForm extends ControllerAbstract {
 		imvImage.imageProperty().bindBidirectional(modelQuestion.imageProperty());
 		
 		//Liste des reponses
-		tableView.setItems(modelQuestion.getDraft().getReponses());
+		//tableView.setItems(modelQuestion.getDraft().getReponses());
 		tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		
 		UtilFX.setValueFactory( tableReponse, "libelle" );
@@ -132,7 +134,7 @@ public class ViewQuestionForm extends ControllerAbstract {
 	// -------
 
 	@FXML
-	void doAjouterNewQuestion(ActionEvent event) {
+	void doAjouterNewQuestion(ActionEvent event) throws SQLException {
 		modelQuestion.saveDraft();
 		managerGui.showView(ViewQuestionList.class);
 	}

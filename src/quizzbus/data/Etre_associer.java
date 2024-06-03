@@ -7,7 +7,7 @@ import javafx.beans.property.SimpleObjectProperty;
 
 public class Etre_associer {
 	private final BooleanProperty			vraie	= new SimpleBooleanProperty();
-	private final ObjectProperty<Quizz>quizz = new SimpleObjectProperty<>();
+	private final ObjectProperty<Question>question = new SimpleObjectProperty<>();
 	private final ObjectProperty<Reponse>reponse = new SimpleObjectProperty<>();
 	
 	public final BooleanProperty vraieProperty() {
@@ -22,16 +22,16 @@ public class Etre_associer {
 		this.vraieProperty().set(vraie);
 	}
 	
-	public final ObjectProperty<Quizz> quizzProperty() {
-		return this.quizz;
+	public final ObjectProperty<Question> questionProperty() {
+		return this.question;
 	}
 	
-	public final Quizz getQuizz() {
-		return this.quizzProperty().get();
+	public final Question getQuestion() {
+		return this.questionProperty().get();
 	}
 	
-	public final void setQuizz(final Quizz quizz) {
-		this.quizzProperty().set(quizz);
+	public final void setQuestion(final Question question) {
+		this.questionProperty().set(question);
 	}
 	
 	public final ObjectProperty<Reponse> reponseProperty() {

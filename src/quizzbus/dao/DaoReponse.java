@@ -3,7 +3,6 @@ package quizzbus.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import jakarta.inject.Inject;
 import jfox.jdbc.DaoAbstract;
 import jfox.jdbc.Query;
 import quizzbus.data.Reponse;
@@ -15,7 +14,7 @@ public class DaoReponse extends DaoAbstract {
 	//-------
 	
 	private static final String sqlDefault = "SELECT * FROM Reponse WHERE idreponse = ?";
-	@Inject
+	
 	//private DaoQuestion daoQuestion;
 	//-------
 	// Méthodes auxiliaires
@@ -23,12 +22,6 @@ public class DaoReponse extends DaoAbstract {
 	
 	protected void setData( Query query, Reponse reponse ) throws SQLException {
 		query.set( "libelle ",		reponse.getLibelle());
-		//query.set( "vraie",		reponse.isVraie() );
-
-//		query.set( "idquestion", reponse.getQuestion()==null? null:reponse.getQuestion().getId() );
-
-		//query.set( "idquestion", reponse.getQuestion()==null? null:reponse.getQuestion().getId() );
-
 		
 	}
 	
@@ -36,13 +29,7 @@ public class DaoReponse extends DaoAbstract {
 		var reponse = new Reponse();
 		reponse.setId(			query.get( "idreponse", Integer.class ) );
 		reponse.setLibelle(			query.get( "libelle", String.class ) );
-		//reponse.setVraie(		query.get( "vraie", Boolean.class ) );
-
-		var idQuestion= query.get( "idquestion", Integer.class );
-		if ( idQuestion != null ) {
-		//	reponse.setQuestion( daoQuestion.retrouver( idQuestion ) );
-		}
-
+	
 		return reponse;
 	}
 

@@ -19,12 +19,11 @@ public class Question {
 	private final StringProperty enonce = new SimpleStringProperty();
 	private final ObjectProperty<Astuce> astuce = new SimpleObjectProperty<>();
 	private final ObservableList<Media> medias = FXCollections.observableArrayList();
+	private final ObservableList<Etre_associer> reponses = FXCollections.observableArrayList();
+
 	
 
-	// -------
-	// AUtres Données observables
-	// -------
-	private final ObservableList<Reponse>	reponses	= FXCollections.observableArrayList();
+	
 
 	// -------
 	// Getters & Setters
@@ -35,9 +34,10 @@ public class Question {
 		return medias;
 	}
 
-	public ObservableList<Reponse> getReponses() {
+	public ObservableList<Etre_associer> getReponses() {
 		return reponses;
-	}
+		}
+
 
 	public final ObjectProperty<Integer> idProperty() {
 		return this.id;

@@ -17,19 +17,20 @@ public class DaoQuestion extends DaoAbstract {
 	//-------
 	
 	private static final String sqlDefault = "SELECT * FROM Question WHERE idquestion = ?";
-	@Inject
-	private DaoAstuce daoAstuce;
 	
 	@Inject
-	//private DaoReponse daoReponse;
+	private DaoAstuce daoAstuce;
+	@Inject
+	private DaoEtreAssocier daoEtreAssocier;
+	
+	
 	//-------
 	// Méthodes auxiliaires
 	//-------
-	
-	protected void setData( Query query, Question question ) throws SQLException {
-		query.set( "enonce ",		question.getEnonce());
-	query.set( "idastuce", question.getAstuce()==null? null:question.getAstuce().getId() );
-		
+
+	protected void setData(Query query, Question question) throws SQLException {
+	    query.set("enonce", question.getEnonce()); // Utilisez correctement l'objet Query passé en paramètre
+	    query.set("idastuce", question.getAstuce() == null ? null : question.getAstuce().getId());
 	}
 	
 	protected Question build( Query query ) throws SQLException {
@@ -40,7 +41,7 @@ public class DaoQuestion extends DaoAbstract {
 		if ( idAstuce != null ) {
 			question.setAstuce( daoAstuce.retrouver( idAstuce ) );
 		}
-		
+		question.getReponses().setAll(daoEtreAssocier.listerPourQuestion(question));
 		return question;
 	}
 
@@ -48,33 +49,21 @@ public class DaoQuestion extends DaoAbstract {
 	// Actions
 	//-------
 
-	/*public void inserer(  Question question  )  {
-		var query = createQuery( sqlDefault );
-		query.insertRow( question, this::setData, true );
-		question.setId( query.get( "idquestion", Integer.class ));
+	
+	public void inserer(Question question) throws SQLException {
+	    var query = createQuery( sqlDefault );
+		query.insertRow( question, this::setData,true );
+		question.setId( query.get( "idmemo", Integer.class ));
 		query.close();
-	}*/
-	public void inserer(Question question) {
-	    var query = createQuery(sqlDefault);
-		query.executeQuery(); // Initialize the ResultSet
-		query.insertRow(question, this::setData, true);
-		question.setId(query.get("idquestion", Integer.class));
-		query.close();
+		daoEtreAssocier.mettreAJourPourQuestion(question);
 	}
-/*
-	public void modifier(  Question question   )  {
+
+	public void modifier(  Question question   ) throws SQLException  {
 		var query = createQuery( sqlDefault );
 		query.setParam( 1, question.getId() );
 		query.updateRow( question, this::setData );
-	}*/
-	public void modifier(Question question) {
-	    var query = createQuery(sqlDefault);
-		query.setParam(1, question.getId());
-		query.executeQuery(); // Initialize the ResultSet
-		query.updateRow(question, this::setData);
-		query.close();
+		daoEtreAssocier.mettreAJourPourQuestion(question);
 	}
-
 
 	public void supprimer( int idQuestion )  {
 		var query = createQuery( sqlDefault );
@@ -85,12 +74,12 @@ public class DaoQuestion extends DaoAbstract {
 	public Question retrouver( int idQuestion )  {
 		var query = createQuery( sqlDefault );
 		query.setParam( 1, idQuestion );
-		return query.getSingleResult( this::build);
+		return query.getSingleResult( q -> build( q ));
 	}
 
 	public List<Question> listerTout()   {
 		var query = createQuery(  "SELECT * FROM Question ORDER BY enonce" );
-		return query.getResultList(this::build );
+		return query.getResultList(q -> build( q ) );
 	}
 
 	public ObservableList<Question> listerPourQuestion(Theme t)   {

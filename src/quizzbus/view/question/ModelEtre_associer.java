@@ -1,12 +1,5 @@
 package quizzbus.view.question;
 
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.sql.SQLException;
-
-import javax.imageio.ImageIO;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
@@ -15,47 +8,39 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
-import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.Mode;
 import quizzbus.commun.IMapper;
+import quizzbus.dao.DaoEtreAssocier;
 import quizzbus.dao.DaoMedia;
-import quizzbus.dao.DaoQuestion;
-//import quizzbus.dao.DaoReponse;
+import quizzbus.data.Etre_associer;
 import quizzbus.data.Media;
-import quizzbus.data.Question;
-//import quizzbus.data.Reponse;
-import quizzbus.view.systeme.ModelConfig;
+//import quizzbus.view.systeme.ModelConfig;
 
-public class ModelQuestion {
+public class ModelEtre_associer {
 
 	// -------
 	// Données observables
 	// -------
 
-	private final ObservableList<Question> list = FXCollections.observableArrayList();
+	private final ObservableList<Etre_associer> list = FXCollections.observableArrayList();
 
 	private final BooleanProperty flagRefreshingList = new SimpleBooleanProperty();
 
-	private final Question draft = new Question();
+	private final Etre_associer draft = new Etre_associer();
 
-	private final ObjectProperty<Question> current = new SimpleObjectProperty<>();
+	private final ObjectProperty<Etre_associer> Etre_associer = new SimpleObjectProperty<>();
 
 	// Aaron
 	private final ObjectProperty<Image> image = new SimpleObjectProperty<Image>();// Aaron
 
 	private final ObservableList<Media> listMedia = FXCollections.observableArrayList();
 	
-	private final StringProperty proposition = new SimpleStringProperty();
 	private final BooleanProperty flag = new SimpleBooleanProperty();
-	
-	private final StringProperty astuce = new SimpleStringProperty();
-	
+
+
 	// -------
 	// Autres champs
 	// -------
@@ -64,13 +49,14 @@ public class ModelQuestion {
 	@Inject
 	private IMapper mapper;
 	@Inject
-	private DaoQuestion daoQuestion;
-	@Inject
-	private ModelReponse modelReponse;
+	private DaoEtreAssocier daoEtreAssocier;
+
 	@Inject
 	private DaoMedia daoMedia;
 	@Inject
-	private ModelConfig modelConfig; // Aaron
+	private ModelQuestion modelQuestion;
+	@Inject
+	//private ModelConfig modelConfig; // Aaron
 
 	private boolean flagModifImage;
 
@@ -87,7 +73,7 @@ public class ModelQuestion {
 		return image;
 	}
 
-	public ObservableList<Question> getList() {
+	public ObservableList<Etre_associer> getList() {
 		return list;
 	}
 
@@ -95,26 +81,27 @@ public class ModelQuestion {
 		return flagRefreshingList;
 	}
 
-	public Question getDraft() {
+	public Etre_associer getDraft() {
 		return draft;
 	}
 
-	public Property<Question> currentProperty() {
-		return current;
+	public Property<Etre_associer> currentProperty() {
+		return Etre_associer;
 	}
 
-	public Question getCurrent() {
-		return current.get();
+	public Etre_associer getCurrent() {
+		return Etre_associer.get();
 	}
 
-	public void setCurrent(Question item) {
-		current.set(item);
+	public void setCurrent(Etre_associer item) {
+		Etre_associer.set(item);
 	}
 
 	public Mode getMode() {
 		return mode;
 	}
 
+	
 	// -------
 	// Actions
 	// -------
@@ -123,28 +110,27 @@ public class ModelQuestion {
 		// flagRefreshingList vaut true pendant la durée
 		// du traitement de mise à jour de la liste
 		flagRefreshingList.set(true);
-		list.setAll(daoQuestion.listerTout());
+		list.setAll(daoEtreAssocier.listerPourQuestion(null));
 		flagRefreshingList.set(false);
 	}
 
 	public void initDraft(Mode mode) {
+		refreshList();
 		this.mode = mode;
 		if (mode == Mode.NEW) {
-			mapper.update(draft, new Question());
+			mapper.update(draft, new Etre_associer());
 
 		} else {
+			//setCurrent(daoEtreAssocier.retrouver(getCurrent().getId()));
 			mapper.update(draft, getCurrent());
-			setCurrent(daoQuestion.retrouver(getCurrent().getId()));
-            
-			setAstuce(draft.getAstuce().getLibelle());
 		}
-		// Aaron
+		/*// Aaron
 		var chemin = getCheminImageCourante();
 		if (chemin.exists()) {
 			image.set(new Image(chemin.toURI().toString()));
 		} else {
 			image.set(null);
-		} // Aaron
+		} // Aaron*/
 	}
 
 	// Méthode pour modifier l'indicateur flagModifImage
@@ -157,7 +143,7 @@ public class ModelQuestion {
 		return flagModifImage;
 	}
 
-	public void saveDraft() throws SQLException {
+	public void saveDraft() {
 		/**
 		 * // Vérifie la validité des données
 		 * 
@@ -169,26 +155,26 @@ public class ModelQuestion {
 		 * 
 		 * // Enregistre les données dans la base
 		 * 
-		 * if (mode == Mode.NEW) { // Insertion daoQuestion.inserer(draft); // Actualise
-		 * le courant setCurrent(mapper.update(new Question(), draft)); } else { //
-		 * modficiation daoQuestion.modifier(draft); // Actualise le courant
+		 * if (mode == Mode.NEW) { // Insertion daoReponse.inserer(draft); // Actualise
+		 * le courant setCurrent(mapper.update(new Reponse(), draft)); } else { //
+		 * modficiation daoReponse.modifier(draft); // Actualise le courant
 		 * mapper.update(getCurrent(), draft); }
 		 * 
 		 **/
-
+		// Effectue la mise à jour
 		
-		if (mode == Mode.NEW) {
-			// Insertion
-			daoQuestion.inserer(draft);
-			// Actualise le courant
-			setCurrent(mapper.update(new Question(), draft));
-		} else {
-			// modficiation
-			daoQuestion.modifier(draft);
-			// Actualise le courant
-			mapper.update(getCurrent(), draft);
-		}
-
+				if ( mode == Mode.NEW ) {
+					// Ajout à la question
+					var newItem = mapper.update( new Etre_associer(), draft );
+					modelQuestion.getDraft().getReponses().add( newItem );
+					// Actualise le corant
+					setCurrent( newItem );
+				} else {
+					// Actualise le courant
+					var newItem = mapper.update( getCurrent(), draft );
+					modelQuestion.getDraft().getReponses().add( newItem );
+				}
+/*
 		if (flagModifImage) {
 			if (image.get() == null) {
 				File imageFile = getCheminImageCourante();
@@ -203,7 +189,7 @@ public class ModelQuestion {
 					var newImage = new BufferedImage(original.getWidth(), original.getHeight(),
 							BufferedImage.TYPE_INT_BGR);
 					newImage.createGraphics().drawImage(original, 0, 0, Color.white, null);
-					ImageIO.write(newImage, "JPG", getCheminImageCourante());
+					//ImageIO.write(newImage, "JPG", getCheminImageCourante());
 				} catch (IOException e) {
 					// Gérer l'exception en cas de problème lors de l'écriture dans le fichier
 					e.printStackTrace();
@@ -212,19 +198,19 @@ public class ModelQuestion {
 				}
 			}
 
-		}
+		}*/
 
 	}
 
-	public void deleteCurrent() {
+	/*public void deleteCurrent() {
 		// Effectue la suppression
-		daoQuestion.supprimer(getCurrent().getId());
+		daoEtreAssocier.supprimer(getCurrent());
 		// Détermine le nouveau courant
 		setCurrent(UtilFX.findNext(list, getCurrent()));
 
 		// Aaron
 		getCheminImageCourante().delete();
-	}
+	}*/
 
 	// Aaron
 	public ObservableList<Media> getImagesFromDatabase() {
@@ -235,38 +221,11 @@ public class ModelQuestion {
 	// -------
 	// Méthodes auxiliaires
 	// -------
-	public File getCheminImageCourante() {// Aaron
+	/*public File getCheminImageCourante() {// Aaron
 		var nomFichier = String.format("%06d.jpg", draft.getId());
 		var dossierImages = modelConfig.getDossierImages();
 		return new File(dossierImages, nomFichier);
-	}
-
-	public final StringProperty astuceProperty() {
-		return this.astuce;
-	}
-
-	public final String getAstuce() {
-		return this.astuceProperty().get();
-	}
-
-	public final void setAstuce(final String astuce) {
-		this.astuceProperty().set(astuce);
-	}
-
-	public final StringProperty propositionProperty() {
-		return this.proposition;
-	}
-	
-
-	public final String getProposition() {
-		return this.propositionProperty().get();
-	}
-	
-
-	public final void setProposition(final String proposition) {
-		this.propositionProperty().set(proposition);
-	}
-	
+	}*/
 
 	public final BooleanProperty flagProperty() {
 		return this.flag;
@@ -281,4 +240,7 @@ public class ModelQuestion {
 	public final void setFlag(final boolean flag) {
 		this.flagProperty().set(flag);
 	}
+	
+
+	
 }

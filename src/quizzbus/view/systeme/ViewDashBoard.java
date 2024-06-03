@@ -1,5 +1,6 @@
 package quizzbus.view.systeme;
 
+
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -7,8 +8,6 @@ import jfox.javafx.util.UtilFX;
 import jfox.javafx.view.ControllerAbstract;
 import quizzbus.data.Quizz;
 import quizzbus.view.quizz.ModelQuizz;
-
-
 
 public class ViewDashBoard extends ControllerAbstract{
 	   @FXML
@@ -28,11 +27,7 @@ public class ViewDashBoard extends ControllerAbstract{
 			UtilFX.setCellFactory( lvQuizz, "description" );
 			bindBidirectional( lvQuizz, modelQuizz.currentProperty(), modelQuizz.flagRefreshingListProperty() );
 
-			
-	}
 		
-		@Override
-		public void refresh() {
-			modelQuizz.refreshList();
+
 		}
 }

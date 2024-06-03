@@ -6,6 +6,7 @@ import org.mapstruct.MappingTarget;
 import quizzbus.data.Astuce;
 import quizzbus.data.Compte;
 import quizzbus.data.Configuration_Poste;
+import quizzbus.data.Etre_associer;
 import quizzbus.data.Joueur;
 import quizzbus.data.Parcours;
 import quizzbus.data.Poste;
@@ -28,4 +29,6 @@ public interface IMapper {
 	Question update( @MappingTarget Question target, Question source  );
 	Poste update( @MappingTarget Poste target, Poste source  );
 	Parcours update( @MappingTarget Parcours target, Parcours source  );
+	Etre_associer update( @MappingTarget Etre_associer target, Etre_associer source  );
+
 }

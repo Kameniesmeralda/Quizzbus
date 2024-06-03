@@ -100,10 +100,7 @@ CREATE TABLE Configuration_Poste(
 CREATE TABLE Reponse(
    idreponse SERIAL,
    libelle VARCHAR(100) NOT NULL,
-   vraie BOOLEAN NOT NULL,
-   idquestion INTEGER,
-   PRIMARY KEY(idreponse),
-   FOREIGN KEY (idquestion) REFERENCES Question(idquestion)
+   PRIMARY KEY(idreponse)
 );
 
 CREATE TABLE avoir(
