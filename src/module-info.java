@@ -16,5 +16,9 @@ open module quizzbus {
 	requires javafx.controls;
 	requires org.kordamp.ikonli.javafx;
 	requires java.sql;
+	requires org.kordamp.ikonli.core;
+	requires org.kordamp.ikonli.antdesignicons;
+	requires org.kordamp.ikonli.fontawesome5;
+	requires org.kordamp.ikonli.websymbols;
 
 }
