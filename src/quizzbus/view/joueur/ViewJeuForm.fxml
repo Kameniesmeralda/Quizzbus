@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="818.0" prefWidth="967.0" spacing="10.0" style="-fx-background-color: white;" stylesheets="@ligth.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizzbus.view.joueur.ViewJeuForm">
+   <children>
+      <HBox alignment="CENTER" spacing="10.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mode de jeu:">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtModeJeu" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="letter-question" text="Aventure" />
+            <HBox HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Question:">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtNumQuestion" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="letter-question" text="3/50" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+        <HBox VBox.vgrow="ALWAYS">
+            <children>
+                <VBox alignment="CENTER" spacing="15.0" HBox.hgrow="ALWAYS">
+                    <children>
+                  <VBox>
+                     <children>
+                        <HBox alignment="CENTER" spacing="30.0" styleClass="input-area" VBox.vgrow="ALWAYS">
+                           <children>
+                                        <Label prefWidth="75.0" text="Enonce :" />
+                                        <TextArea fx:id="txtEnonce" editable="false" promptText="Enonce ..." HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox VBox.vgrow="ALWAYS" />
+                  <HBox alignment="CENTER" spacing="20.0">
+                     <children>
+                        <VBox styleClass="container" HBox.hgrow="ALWAYS">
+                           <children>
+                              <HBox VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <VBox HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <HBox style="-fx-border-radius: 5 0 0 0;" styleClass="row">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="head-question" text="Questions" />
+                                             </children>
+                                          </HBox>
+                                          <HBox styleClass="row">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="letter-question" text="a) " />
+                                                <TextField fx:id="textfield1" editable="false" promptText="Réponse 1" styleClass="input-field" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox styleClass="row">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="letter-question" text="b) " />
+                                                <TextField fx:id="textfield2" editable="false" promptText="Réponse 2" styleClass="input-field" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox styleClass="row">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="letter-question" text="c) " />
+                                                <TextField fx:id="textfield3" editable="false" promptText="Réponse 3" styleClass="input-field" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                          <HBox style="-fx-border-radius: 0 0 0 5;" styleClass="row">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="letter-question" text="d) " />
+                                                <TextField fx:id="textfield4" editable="false" promptText="Réponse 4" styleClass="input-field" HBox.hgrow="ALWAYS" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox>
+                                       <children>
+                                          <HBox style="-fx-border-radius: 0 5 0 0;" styleClass="row">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="head-question" text="Reponse correcte" />
+                                             </children>
+                                          </HBox>
+                                          <HBox styleClass="row">
+                                             <children>
+                                                <RadioButton fx:id="choice1" mnemonicParsing="false" selected="true">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="toggleGroup" />
+                                                   </toggleGroup>
+                                                </RadioButton>
+                                             </children>
+                                          </HBox>
+                                          <HBox styleClass="row">
+                                             <children>
+                                                <RadioButton fx:id="choice2" mnemonicParsing="false" toggleGroup="$toggleGroup" />
+                                             </children>
+                                          </HBox>
+                                          <HBox styleClass="row">
+                                             <children>
+                                                <RadioButton fx:id="choice3" mnemonicParsing="false" toggleGroup="$toggleGroup" />
+                                             </children>
+                                          </HBox>
+                                          <HBox style="-fx-border-radius: 0 0 5 0;" styleClass="row">
+                                             <children>
+                                                <RadioButton fx:id="choice4" mnemonicParsing="false" toggleGroup="$toggleGroup" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <Pane HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <Pane HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <Pane HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                              <HBox>
+                                 <children>
+                                    <Pane HBox.hgrow="ALWAYS" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox VBox.vgrow="ALWAYS" />
+                  <HBox alignment="CENTER" spacing="50.0">
+                     <children>
+                                   <Button fx:id="btnPrecedent" mnemonicParsing="false" onAction="#doPrecedent" text="Precedent" />
+                                   <Button fx:id="btnSuivant" mnemonicParsing="false" onAction="#doSuivant" text="Suivant" />
+                     </children>
+                  </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+   </children>
+   <padding>
+      <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+   </padding>
+</VBox>

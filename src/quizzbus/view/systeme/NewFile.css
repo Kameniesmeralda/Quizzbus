@@ -6,3 +6,22 @@
 	-fx-background-raduis: 50px ;
 	-fx-border-style: solid; 
 }
+
+.menu-side{
+	-fx-background-color: transparent;
+	-fx-alignment: center_left;
+	-fx-font-size: 15;
+	-fx-text-fill: white;
+	-fx-pref-height: 50;
+	-fx-font-weight: bold;
+	-fx-padding: 20;
+	-fx-cursor: hand;
+}
+.menu-side:hover{
+	-fx-background-color: #748cf1;
+}
+
+.menu-side .ikonli-font-icon{
+	-fx-fill: white;
+	-fx-font-size: 25;
+}

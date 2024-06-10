@@ -38,11 +38,11 @@ public class DaoInclure extends DaoAbstract {
 		// Actions
 		//-------
 
-		public void mettreAJourPourQuestion( Question question) {
+		/*public void mettreAJourPourQuestion( Question question) {
 			var query = createQuery(  "SELECT * FROM inclure WHERE idquestion = ?" );
 			query.setParam( 1, question.getId() );
 			query.updateChildren( question.getMedias(), this::build, (q, item) -> setData( q, question, item ) );
-		}
+		}*/
 
 		public List<Media> listerPourQuestion( Question question) {
 			var query = createQuery(  "SELECT m.* FROM inclure i JOIN Media m ON i.idmedia = m.idmedia WHERE i.idquestion = ? ORDER BY m.titre" );

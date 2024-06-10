@@ -1,7 +1,5 @@
 package quizzbus.view.configuration_poste;
 
-import java.sql.SQLException;
-import java.util.List;
 
 import jakarta.inject.Inject;
 import javafx.beans.property.BooleanProperty;

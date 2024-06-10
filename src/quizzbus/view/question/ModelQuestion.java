@@ -29,6 +29,7 @@ import quizzbus.dao.DaoQuestion;
 //import quizzbus.dao.DaoReponse;
 import quizzbus.data.Media;
 import quizzbus.data.Question;
+import quizzbus.data.Quizz;
 //import quizzbus.data.Reponse;
 import quizzbus.view.systeme.ModelConfig;
 
@@ -40,6 +41,7 @@ public class ModelQuestion {
 
 	private final ObservableList<Question> list = FXCollections.observableArrayList();
 
+	
 	private final BooleanProperty flagRefreshingList = new SimpleBooleanProperty();
 
 	private final Question draft = new Question();
@@ -56,6 +58,8 @@ public class ModelQuestion {
 	
 	private final StringProperty astuce = new SimpleStringProperty();
 	
+	
+	
 	// -------
 	// Autres champs
 	// -------
@@ -65,8 +69,6 @@ public class ModelQuestion {
 	private IMapper mapper;
 	@Inject
 	private DaoQuestion daoQuestion;
-	@Inject
-	private ModelReponse modelReponse;
 	@Inject
 	private DaoMedia daoMedia;
 	@Inject
@@ -90,6 +92,8 @@ public class ModelQuestion {
 	public ObservableList<Question> getList() {
 		return list;
 	}
+
+	
 
 	public BooleanProperty flagRefreshingListProperty() {
 		return flagRefreshingList;
@@ -115,15 +119,26 @@ public class ModelQuestion {
 		return mode;
 	}
 
+	
 	// -------
 	// Actions
 	// -------
+
+	
 
 	public void refreshList() {
 		// flagRefreshingList vaut true pendant la durée
 		// du traitement de mise à jour de la liste
 		flagRefreshingList.set(true);
 		list.setAll(daoQuestion.listerTout());
+		flagRefreshingList.set(false);
+	}
+
+	public void refreshList(Quizz quizz) {
+		// flagRefreshingList vaut true pendant la durée
+		// du traitement de mise à jour de la liste
+		flagRefreshingList.set(true);
+		list.setAll(daoQuestion.listerParQuizz(quizz));
 		flagRefreshingList.set(false);
 	}
 
@@ -135,8 +150,6 @@ public class ModelQuestion {
 		} else {
 			mapper.update(draft, getCurrent());
 			setCurrent(daoQuestion.retrouver(getCurrent().getId()));
-            
-			setAstuce(draft.getAstuce().getLibelle());
 		}
 		// Aaron
 		var chemin = getCheminImageCourante();

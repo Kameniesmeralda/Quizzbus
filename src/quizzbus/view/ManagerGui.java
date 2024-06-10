@@ -29,7 +29,7 @@ public class ManagerGui extends ManagerGuiAbstract {
 		
 		// Configure le stage
 		stage.setTitle( "Aau fil de l'eau" );
-		stage.setWidth(950);
+		stage.setWidth(806);
 		stage.setHeight(700);
 		stage.setMinWidth(350);
 		stage.setMinHeight(300);

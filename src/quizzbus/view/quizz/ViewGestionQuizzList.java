@@ -49,7 +49,7 @@ public class ViewGestionQuizzList extends ControllerAbstract {
 
 	@FXML
 	private void initialize() {
-		// Liste des reponses
+		// Liste des quizz
 		tableQuizz.setItems(modelQuizz.getList());
 		bindBidirectional(tableQuizz, modelQuizz.currentProperty(), modelQuizz.flagRefreshingListProperty());
 		tableQuizz.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);

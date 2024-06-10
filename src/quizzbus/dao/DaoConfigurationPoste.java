@@ -4,76 +4,84 @@ import java.sql.SQLException;
 import java.util.List;
 
 import jakarta.inject.Inject;
-
 import java.time.LocalTime;
 import quizzbus.data.Configuration_Poste;
 import jfox.jdbc.DaoAbstract;
 import jfox.jdbc.Query;
 
 public class DaoConfigurationPoste extends DaoAbstract {
-	
-	//-------
-	// Champs
-	//-------
-	
-	private static final String sqlDefault = "SELECT * FROM Configuration_Poste WHERE idconf = ?";
-	@Inject
-	private DaoPoste daoPoste;
-	//-------
-	// Méthodes auxiliaires
-	//-------
-	
-	protected void setData( Query query, Configuration_Poste conf ) throws SQLException {
-		query.set( "heure",		conf.getHeure() );
-		query.set( "idposte", conf.getPoste()==null? null:conf.getPoste().getId() );
-	
-	}
-	
-	protected Configuration_Poste build( Query query ) throws SQLException {
-		var conf = new Configuration_Poste();
-		conf.setId(			query.get( "idcompte", Integer.class ) );
-		conf.setHeure(		query.get( "idconf", LocalTime.class ) );
-		var idPoste = query.get( "idposte", Integer.class );
-		if ( idPoste != null ) {
-		 conf.setPoste( daoPoste.retrouver( idPoste ) );
-		}
-		return conf;
-	}
 
-	//-------
-	// Actions
-	//-------
+    //-------
+    // Champs
+    //-------
 
-	public void inserer( Configuration_Poste conf )  {
-		var query = createQuery( sqlDefault );
-		query.insertRow( conf, this::setData, true );
-		conf.setId( query.get( "idconf", Integer.class ));
-		query.close();
-	}
+    private static final String sqlDefault = "SELECT * FROM Configuration_Poste WHERE idconf = ?";
+    private static final String sqlListAll = "SELECT * FROM Configuration_Poste";
+    @Inject
+    private DaoTheme daoTheme;
+    @Inject
+    private DaoParcours daoParcours;
 
-	public void modifier(Configuration_Poste conf )  {
-		var query = createQuery( sqlDefault );
-		query.setParam( 1, conf.getId() );
-		query.updateRow( conf, this::setData );
-	}
+    //-------
+    // Méthodes auxiliaires
+    //-------
 
-	public void supprimer( int idConf )  {
-		var query = createQuery( sqlDefault );
-		query.setParam( 1, idConf );
-		query.deleteRow();
-	}
+    protected void setData(Query query, Configuration_Poste conf) throws SQLException {
+        query.set("heure", LocalTime.now());
+        query.set("idtheme", conf.getTheme() == null ? null : conf.getTheme().getId());
+        query.set("idparcours", conf.getParcours() == null ? null : conf.getParcours().getId());
+        query.set("score", conf.getScore());
+        query.set("question", conf.getQuestion());
+    }
 
-	public Configuration_Poste retrouver( int idConf )  {
-		var query = createQuery( sqlDefault );
-		query.setParam( 1, idConf );
-		return query.getSingleResult( this::build );
-	}
+    protected Configuration_Poste build(Query query) throws SQLException {
+        var conf = new Configuration_Poste();
+        conf.setId(query.get("idconf", Integer.class));
+        conf.setHeure(query.get("heure", LocalTime.class));
+        conf.setQuestion(query.get("question", Integer.class)); 
+        conf.setQuestion(query.get("score", Integer.class)); 
+        var theme = query.get("idtheme", Integer.class);
+        var parcours = query.get("idparcours", Integer.class);
+        if (theme != null) {
+            conf.setTheme(daoTheme.retrouver(theme));
+        }
+        if (parcours != null) {
+            conf.setParcours(daoParcours.retrouver(parcours));
+        }
+        return conf;
+    }
 
-	public List<Configuration_Poste> listerTout()   {
-		var query = createQuery( sqlDefault );
-		return query.getResultList( this::build );
-	}
+    //-------
+    // Actions
+    //-------
 
+    public void inserer(Configuration_Poste conf) {
+        var query = createQuery(sqlDefault);
+        query.insertRow(conf, this::setData, true);
+        conf.setId(query.get("idconf", Integer.class));
+        query.close();
+    }
 
-	
+    public void modifier(Configuration_Poste conf) {
+        var query = createQuery(sqlDefault);
+        query.setParam(1, conf.getId());
+        query.updateRow(conf, this::setData);
+    }
+
+    public void supprimer(int idConf) {
+        var query = createQuery(sqlDefault);
+        query.setParam(1, idConf);
+        query.deleteRow();
+    }
+
+    public Configuration_Poste retrouver(int idConf) {
+        var query = createQuery(sqlDefault);
+        query.setParam(1, idConf);
+        return query.getSingleResult(this::build);
+    }
+
+    public List<Configuration_Poste> listerTout() {
+        var query = createQuery(sqlListAll);
+        return query.getResultList(this::build);
+    }
 }

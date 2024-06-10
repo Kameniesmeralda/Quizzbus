@@ -43,7 +43,7 @@ public class ViewCompteList extends ControllerAbstract {
 
 		// ListView
 		lsvComptes.setItems( modelCompte.getList() );
-		UtilFX.setCellFactory( lsvComptes, "pseudo" );
+		UtilFX.setCellFactory( lsvComptes, "nom" );
 		bindBidirectional( lsvComptes, modelCompte.currentProperty(), modelCompte.flagRefreshingListProperty() );
 		
 		// Configuraiton des boutons

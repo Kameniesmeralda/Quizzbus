@@ -20,5 +20,8 @@ open module quizzbus {
 	requires org.kordamp.ikonli.antdesignicons;
 	requires org.kordamp.ikonli.fontawesome5;
 	requires org.kordamp.ikonli.websymbols;
+	requires org.kordamp.ikonli.boxicons;
+	requires org.kordamp.ikonli.fontawesome;
+	requires jakarta.inject;
 
 }

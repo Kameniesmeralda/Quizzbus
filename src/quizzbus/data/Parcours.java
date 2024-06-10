@@ -43,7 +43,7 @@ public class Parcours {
 
 	@Override
 	public String toString() {
-		return "Parcours [id=" + id + ", mode=" + mode + "]";
+		return mode.get();
 	}
 	
 	

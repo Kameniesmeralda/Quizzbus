@@ -9,86 +9,100 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizzbus.view.quizz.ViewGestionQuizzForm">
+
+<VBox style="-fx-background-color: white;" stylesheets="@NewFile.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizzbus.view.quizz.ViewGestionQuizzForm">
    <children>
-      <Label alignment="CENTER" styleClass="titre-vue" text="Quizz" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+      <Label alignment="CENTER" styleClass="title" text="Quizz">
          <font>
             <Font name="System Bold" size="18.0" />
-         </font></Label>
-      <HBox alignment="CENTER" fillHeight="false" layoutY="60.0" prefHeight="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+         </font>
+      </Label>
+      <VBox spacing="10.0">
          <children>
-            <GridPane alignment="CENTER" prefWidth="280.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="75.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
+            <HBox spacing="15.0">
                <children>
-                  <Label text="Id :" />
-                  <Label fx:id="labId" prefHeight="17.0" prefWidth="45.0" text="Label" GridPane.columnIndex="1" />
-                  <Label text="Description" GridPane.rowIndex="1" />
-                  <TextField fx:id="txfDescription" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label prefWidth="90.0" text="Id :" textFill="#727178">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labId" prefHeight="17.0" prefWidth="45.0" text="Label" textFill="#727178">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children>
-            </GridPane>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <Label prefWidth="90.0" text="Description:" textFill="#727178">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txfDescription" maxWidth="460.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
          </children>
-      </HBox>
-      <HBox alignment="CENTER" layoutX="59.0" layoutY="125.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="125.0">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
          <children>
-            <TabPane prefHeight="515.0" prefWidth="555.0" style="-fx-border-color: lightgray;">
+            <TabPane style="-fx-border-color: lightgray;" HBox.hgrow="ALWAYS">
                <tabs>
                   <Tab closable="false" text="Général">
                      <content>
-                        <AnchorPane>
+                        <VBox spacing="10.0">
                            <children>
-                              <TextArea fx:id="txaDescription" layoutX="20.0" layoutY="22.0" prefHeight="318.0" prefWidth="533.0" wrapText="true" AnchorPane.bottomAnchor="144.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="22.0" />
-                              <Label layoutX="14.0" layoutY="4.0" text="Description :" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="4.0" />
-                              <Label layoutX="14.0" layoutY="386.0" text="Thèmes : " />
-                              <ComboBox fx:id="cbThemes" layoutX="87.0" layoutY="382.0" prefHeight="26.0" prefWidth="280.0" />
+                              <Label prefWidth="90.0" text="Description:" textFill="#727178">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="txaDescription" prefHeight="318.0" prefWidth="533.0" wrapText="true" />
+                              <HBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <Label prefWidth="90.0" text="Thèmes : " textFill="#727178">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox fx:id="cbThemes" prefHeight="26.0" prefWidth="280.0" />
+                                 </children>
+                              </HBox>
                            </children>
-                        </AnchorPane>
+                        </VBox>
                      </content>
                   </Tab>
                   <Tab closable="false" text="Questions">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="485.0" prefWidth="222.0">
+                        <HBox spacing="25.0">
                            <children>
-                              <GridPane prefHeight="470.0" prefWidth="475.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="66.0" AnchorPane.topAnchor="10.0">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="405.6" minWidth="10.0" prefWidth="393.6" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="231.0" minWidth="10.0" prefWidth="80.60000000000002" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
-                                 </rowConstraints>
+                              <ListView fx:id="lsvQuestions" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+                              <VBox alignment="CENTER" spacing="15.0">
                                  <children>
-                                    <ListView fx:id="lsvQuestions" maxWidth="-Infinity" prefHeight="470.0" prefWidth="394.0" />
-                                    <AnchorPane prefHeight="470.0" prefWidth="40.0" GridPane.columnIndex="1">
+                                    <Label text="Questions" textFill="#0591f3">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox alignment="CENTER_LEFT" spacing="10.0">
                                        <children>
-                                          <Label layoutX="13.0" text="Questions" AnchorPane.leftAnchor="10.0" />
-                                          <VBox alignment="CENTER_LEFT" layoutX="-0.8" layoutY="24.0" prefHeight="430.0" prefWidth="82.0" spacing="10.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
-                                             <children>
-                                                <Button mnemonicParsing="false" onAction="#doQuestionAjouter" prefHeight="26.0" prefWidth="82.0" text="Ajouter" />
-                                                <Button fx:id="btnQuestionsSupprimer" mnemonicParsing="false" onAction="#doQuestionSupprimer" prefHeight="26.0" prefWidth="82.0" text="Supprimer" />
-                                                <Button mnemonicParsing="false" onAction="#doQuestionModier" prefHeight="26.0" prefWidth="82.0" text="Modifier" />
-                                             </children>
-                                          </VBox>
+                                          <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doQuestionAjouter" text="Ajouter" textAlignment="CENTER" />
+                                          <Button fx:id="btnQuestionsSupprimer" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doQuestionSupprimer" text="Supprimer" textAlignment="CENTER" />
+                                          <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doQuestionModier" text="Modifier" textAlignment="CENTER" />
                                        </children>
-                                    </AnchorPane>
+                                    </VBox>
                                  </children>
-                              </GridPane>
+                              </VBox>
                            </children>
-                        </AnchorPane>
+                        </HBox>
                      </content>
                   </Tab>
                </tabs>
@@ -98,11 +112,14 @@
             </TabPane>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="60.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <HBox alignment="CENTER" prefHeight="60.0" spacing="10.0">
          <children>
-            <Button fx:id="btnValider" defaultButton="true" mnemonicParsing="false" onAction="#doValider" prefHeight="25.0" prefWidth="60.0" text="Valider" />
+            <Button fx:id="btnValider" defaultButton="true" mnemonicParsing="false" onAction="#doValider" text="Valider" />
             <Button fx:id="buttonAnnuler" cancelButton="true" mnemonicParsing="false" onAction="#doAnnuler" text="Annuler" />
          </children>
       </HBox>
    </children>
-</AnchorPane>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

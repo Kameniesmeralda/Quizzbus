@@ -11,83 +11,121 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizzbus.view.configuration_poste.ViewConfiguration_Poste">
+<VBox prefHeight="878.0" prefWidth="1133.0" spacing="25.0" style="-fx-background-color: white;" stylesheets="@NewFile.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quizzbus.view.configuration_poste.ViewConfiguration_Poste">
    <children>
-      <Separator layoutX="10.0" layoutY="48.0" prefHeight="18.0" prefWidth="909.0" />
-      <TextField layoutX="57.0" layoutY="23.0" prefHeight="25.0" prefWidth="205.0" style="-fx-background-radius: 5; -fx-background-color: rgba(0,0,0,0.1); -fx-border-width: 1;" />
-      <FontAwesomeIconView glyphName="USER" layoutX="695.0" layoutY="40.0" />
-      <Label fx:id="lbNomAdmin" layoutX="723.0" layoutY="27.0" prefHeight="17.0" prefWidth="253.0" text="Nom de l'administrateur connecté" />
-      <VBox alignment="TOP_CENTER" layoutX="581.0" layoutY="65.0" prefHeight="226.0" prefWidth="260.0">
+      <HBox alignment="CENTER">
          <children>
-            <Label alignment="CENTER" text="Postes de jeu" />
-            <Separator prefWidth="200.0" />
-            <ListView fx:id="lvListeDePoste" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15;" />
+            <HBox>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#doRechercher" styleClass="btn-search">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SEARCH" />
+                     </graphic>
+                  </Button>
+                  <TextField prefHeight="25.0" prefWidth="205.0" style="-fx-border-radius: 0 5 5 0;" styleClass="text-search" />
+               </children>
+            </HBox>
+            <HBox HBox.hgrow="ALWAYS" />
+            <Label fx:id="lbNomAdmin" styleClass="title-sub" text="Nom de l'administrateur connecté">
+               <graphic>
+                  <FontIcon iconLiteral="bx-user" iconSize="25" />
+               </graphic>
+            </Label>
          </children>
-      </VBox>
-      <Button fx:id="btnAjouter" layoutX="850.0" layoutY="92.0" mnemonicParsing="false" onAction="#doAjouterPosteASession" prefHeight="26.0" prefWidth="54.0" style="-fx-background-color: TRANSPARENT;" />
-      <Button fx:id="btnSupprimer" layoutX="847.0" layoutY="124.0" mnemonicParsing="false" onAction="#doSupprimerPosteDeSession" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: TRANSPARENT;" />
-      <Separator layoutX="-4.0" layoutY="303.0" prefHeight="18.0" prefWidth="921.0" />
-      <VBox layoutX="44.0" layoutY="65.0" prefHeight="97.0" prefWidth="467.0">
+      </HBox>
+      <Separator />
+      <HBox spacing="25.0">
          <children>
-            <HBox prefHeight="38.0" prefWidth="318.0" spacing="50.0">
+            <VBox spacing="25.0">
                <children>
-                  <Label text="Nombre de poste :" />
-                  <Label fx:id="lbNbrPoste" text="0" />
-                  <Label prefHeight="18.0" prefWidth="190.0" text="connectés à cette session">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
+                  <HBox alignment="CENTER" spacing="50.0">
+                     <children>
+                        <Label prefWidth="225.0" styleClass="sub-title-sub" text="Nombre de postes connectés:" />
+                        <VBox HBox.hgrow="ALWAYS" />
+                        <Label fx:id="lbNbrPoste" styleClass="sub-title-sub" text="0" />
+                     </children>
+                  </HBox>
+                  <VBox VBox.vgrow="ALWAYS" />
+                  <HBox spacing="50.0">
+                     <children>
+                        <Label prefWidth="225.0" styleClass="sub-title-sub" text="Mode de jeu" />
+                        <VBox HBox.hgrow="ALWAYS" />
+                        <ChoiceBox fx:id="chbModeJeu" prefWidth="200.0" styleClass="input-select" />
+                     </children>
+                  </HBox>
+                  <VBox VBox.vgrow="ALWAYS" />
+                  <HBox spacing="50.0">
+                     <children>
+                        <Label prefWidth="225.0" styleClass="sub-title-sub" text="Thème" />
+                        <VBox HBox.hgrow="ALWAYS" />
+                        <ChoiceBox fx:id="chbTheme" prefWidth="200.0" styleClass="input-select" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="50.0">
+                     <children>
+                        <Button fx:id="btnDemarrerSession" mnemonicParsing="false" onAction="#doDemarrerSession" style="-fx-background-radius: 10;">
+                           <graphic>
+                              <FontIcon iconColor="WHITE" iconLiteral="bx-play" iconSize="25" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnSupprimerSession" mnemonicParsing="false" onAction="#doSupprimerSession" style="-fx-background-radius: 10;">
+                           <graphic>
+                              <FontIcon iconColor="WHITE" iconLiteral="bx-trash" iconSize="25" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
-               <padding>
-                  <Insets left="50.0" top="10.0" />
-               </padding>
-            </HBox>
-            <HBox prefHeight="46.0" prefWidth="467.0" spacing="50.0">
+            </VBox>
+            <VBox HBox.hgrow="ALWAYS" />
+            <HBox HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Mode de jeu" />
-                  <ChoiceBox fx:id="chbModeJeu" prefWidth="150.0" style="-fx-background-radius: 10;" />
+                  <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label alignment="CENTER" styleClass="sub-title-sub" text="Postes de jeu" />
+                        <ListView fx:id="lvListeDePoste" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 15;" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" spacing="15.0">
+                     <children>
+                        <Button fx:id="btnAjouter" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doAjouterPosteASession" style="-fx-background-color: TRANSPARENT;">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="PLUS" text="" />
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnSupprimer" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#doSupprimerPosteDeSession" style="-fx-background-color: TRANSPARENT;">
+                           <graphic>
+                              <FontAwesomeIconView glyphName="TRASH" text="" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
                </children>
-               <padding>
-                  <Insets left="50.0" top="10.0" />
-               </padding>
             </HBox>
          </children>
-      </VBox>
-      <Button fx:id="btnDemarrerSession" layoutX="98.0" layoutY="202.0" mnemonicParsing="false" onAction="#doDemarrerSession" prefHeight="24.0" prefWidth="99.0" style="-fx-background-radius: 10;">
-         <graphic>
-            <FontAwesomeIconView glyphName="PLAY" />
-         </graphic>
-      </Button>
-      <FontAwesomeIconView glyphName="PLUS" layoutX="872.0" layoutY="112.0" text="" />
-      <FontAwesomeIconView glyphName="TRASH" layoutX="872.0" layoutY="143.0" text="" />
-      <Button fx:id="btnSupprimerSession" layoutX="229.0" layoutY="202.0" mnemonicParsing="false" onAction="#doSupprimerSession" prefHeight="25.0" prefWidth="99.0" style="-fx-background-radius: 10;">
-
-<graphic>
-            <FontAwesomeIconView glyphName="TRASH" text="" />
-         </graphic>
-      </Button>
-      <TableView fx:id="table" layoutX="71.0" layoutY="321.0" prefHeight="262.0" prefWidth="806.0" style="-fx-background-radius: 5;" tableMenuButtonVisible="true">
+      </HBox>
+      <Separator />
+      <TableView fx:id="table" style="-fx-background-radius: 5;" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
          <columns>
-            <TableColumn fx:id="tableIdSession" prefWidth="75.0" text="Id Session" />
-            <TableColumn fx:id="tableIdPoste" prefWidth="108.8000259399414" text="Id Poste" />
+            <TableColumn fx:id="tableModeJeu" prefWidth="172.800048828125" text="Mode de jeu" />
             <TableColumn fx:id="tableTheme" prefWidth="187.20001220703125" text="Thème" />
             <TableColumn fx:id="tableHeure" prefWidth="133.60006713867188" text="Heure" />
-            <TableColumn fx:id="tableModeJeu" prefWidth="172.800048828125" text="Mode de jeu" />
-            <TableColumn fx:id="tableStatus" prefWidth="124.80002441406248" text="Status" />
+            <TableColumn fx:id="tableQuestions" prefWidth="124.80002441406248" text="Questions" />
+            <TableColumn fx:id="tableScore" prefWidth="124.80002441406248" text="Score" />
          </columns>
          <effect>
             <Glow level="0.0" />
          </effect>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
-      <Button layoutX="23.0" layoutY="23.0" mnemonicParsing="false" onAction="#doRechercher" prefHeight="25.0" prefWidth="25.0" style="-fx-border-color: TRANSPARENT; -fx-background-color: TRANSPARENT;">
-         <graphic>
-            <FontAwesomeIconView glyphName="SEARCH" />
-         </graphic>
-      </Button>
    </children>
-</AnchorPane>
+   <padding>
+      <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+   </padding>
+</VBox>

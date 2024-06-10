@@ -52,11 +52,11 @@ public class DaoEtreAssocier extends DaoAbstract {
     // Actions
     //-------
 
-    public void mettreAJourPourQuestion(Question question) throws SQLException {
+   /* public void mettreAJourPourQuestion(Question question) throws SQLException {
     	var query = createQuery( "SELECT  r.*,ea.* FROM etre_associer ea JOIN Reponse r ON ea.idreponse = r.idreponse WHERE idquestion = ?" );
 		query.setParam( 1, question.getId() );
 		query.updateChildren( question.getReponses(), q -> build( q, question,false) ,this::setData );
-    }
+    }*/
 
     public List<Etre_associer> listerPourQuestion(Question question) {
     	var query = createQuery( "SELECT  r.*,ea.* FROM etre_associer ea JOIN Reponse r ON ea.idreponse = r.idreponse WHERE idquestion = ? ORDER BY r.libelle" );

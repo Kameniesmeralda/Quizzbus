@@ -15,10 +15,12 @@ import jfox.javafx.view.ControllerAbstract;
 import jfox.javafx.view.Mode;
 import quizzbus.dao.DaoTheme;
 import quizzbus.data.Question;
+import quizzbus.data.Quizz;
 import quizzbus.data.Theme;
 import quizzbus.view.ManagerGui;
 
 import quizzbus.view.question.ModelQuestion;
+import quizzbus.view.question.ViewQuestionForm;
 import quizzbus.view.question.ViewQuestionList;
 
 public class ViewGestionQuizzForm extends ControllerAbstract {
@@ -64,7 +66,22 @@ public class ViewGestionQuizzForm extends ControllerAbstract {
 
 	@FXML
 	private void initialize() {
+		// ListView
+//		lsvQuestions.setItems(modelQuestion.getListParQuizz(1));
+	/*	for(Question q: modelQuestion.getListParQuizz(1)){
+			System.out.println(q.getEnonce());
+		}*/
+//		lsvQuestions.setItems(modelQuestion.getList());
+//		UtilFX.setCellFactory(lsvQuestion, "enonce");
+//		bindBidirectional(lsvQuestion, modelQuestion.currentProperty(), modelQuestion.flagRefreshingListProperty());
 
+		// Configuraiton des boutons
+//		lsvQuestion.getSelectionModel().selectedItemProperty().addListener(obs -> {
+//			configurerBoutons();
+//		});
+//		configurerBoutons();
+		
+		
 		var draft = modelQuizz.getDraft();
 
 		// Id
@@ -79,11 +96,15 @@ public class ViewGestionQuizzForm extends ControllerAbstract {
 		// Description
 		bindBidirectional(txaDescription, draft.descriptionProperty());
 
+		/*
 		// Questions
-		lsvQuestions.setItems(draft.getQuestions());
+		lsvQuestions.setItems(modelQuestion.getList());
+		labId.textProperty().addListener(a->{
+			lsvQuestions.setItems(modelQuestion.getList());
+		});
 		UtilFX.setCellFactory(lsvQuestions, "enonce");
 		lsvQuestions.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
+*/
 		// Thèmes
 		cbThemes.setItems(daoTheme.listerTout());
 		bindBidirectional(cbThemes, draft.themeProperty());
@@ -102,7 +123,10 @@ public class ViewGestionQuizzForm extends ControllerAbstract {
 
 	@Override
 	public void refresh() {
+//		draft.getQuestions();
 		txfDescription.requestFocus();
+		modelQuestion.refreshList();
+		lsvQuestions.setItems(modelQuestion.getList());
 		validator.reinit();
 
 	}
@@ -124,7 +148,11 @@ public class ViewGestionQuizzForm extends ControllerAbstract {
 
 	@FXML
 	private void doQuestionAjouter() {
-		managerGui.showDialog(ViewQuestionList.class);
+		//modelQuestion.getDraft().setQuizz(Integer.parseInt(labId.getText()));
+		//modelQuestion.setQuizz(Integer.parseInt(labId.getText()));
+		/*modelQuestion.getDraft().setQuizz(null);
+		modelQuestion.setQuizz(Integer.parseInt(labId.getText()));*/
+		managerGui.showView(ViewQuestionForm.class);
 	}
 
 	@FXML
@@ -137,7 +165,7 @@ public class ViewGestionQuizzForm extends ControllerAbstract {
 	@FXML
 	private void doQuestionModier() {
 		modelQuestion.initDraft(Mode.EDIT);
-		managerGui.showDialog(ViewGestionQuizzForm.class);
+		managerGui.showDialog(ViewQuestionForm.class);
 	}
 
 	// -------

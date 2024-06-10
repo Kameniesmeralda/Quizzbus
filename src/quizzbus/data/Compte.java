@@ -28,7 +28,9 @@ public class Compte  {
 	private final ObservableList<Poste> administrations = FXCollections.observableArrayList();
 	private final ObservableList<Statistique> statistiques = FXCollections.observableArrayList();
 	private final ObservableList<Configuration_Poste> configurations = FXCollections.observableArrayList();
-
+	private final StringProperty			ville 		= new SimpleStringProperty();
+	private final StringProperty			categorie	= new SimpleStringProperty();
+	
 	//-------
 	// Getters & Setters
 	//-------
@@ -158,6 +160,30 @@ public class Compte  {
 				+ ", motDePasse=" + motDePasse + ", email=" + email + ", flagAdmin=" + flagAdmin + ", administrations="
 				+ administrations + ", statistiques=" + statistiques + ", configurations=" + configurations + "]";
 	}
+	public final StringProperty villeProperty() {
+		return this.ville;
+	}
+	
+	public final String getVille() {
+		return this.villeProperty().get();
+	}
+	
+	public final void setVille(final String ville) {
+		this.villeProperty().set(ville);
+	}
+	
+	public final StringProperty categorieProperty() {
+		return this.categorie;
+	}
+	
+	public final String getCategorie() {
+		return this.categorieProperty().get();
+	}
+	
+	public final void setCategorie(final String categorie) {
+		this.categorieProperty().set(categorie);
+	}
+	
 
 
 	

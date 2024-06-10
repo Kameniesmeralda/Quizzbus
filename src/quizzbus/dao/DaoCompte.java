@@ -26,6 +26,8 @@ public class DaoCompte extends DaoAbstract {
 		query.set( "motdepasse",	compte.getMotDePasse() );
 		query.set( "email",			compte.getEmail() );
 		query.set( "flagadmin",		compte.isFlagAdmin() );
+		query.set( "ville",		compte.getVille());
+		query.set( "categorie",		compte.getCategorie() );
 	}
 	
 	protected Compte build( Query query ) throws SQLException {
@@ -37,6 +39,8 @@ public class DaoCompte extends DaoAbstract {
 		compte.setMotDePasse(	query.get( "motdepasse", String.class ) );
 		compte.setEmail(		query.get( "email", String.class ) );
 		compte.setFlagAdmin(	query.get( "flagadmin", Boolean.class ) );
+		compte.setVille(			query.get( "ville", String.class ) );
+		compte.setCategorie(		query.get( "categorie", String.class ) );
 		return compte;
 	}
 
